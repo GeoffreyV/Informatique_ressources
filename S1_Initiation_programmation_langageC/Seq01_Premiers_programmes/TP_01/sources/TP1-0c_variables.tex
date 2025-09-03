@@ -1,0 +1,67 @@
+\section{Notre première variable}
+Nous allons à présent utiliser nos premières variables. Pour cela, commençons simplement avec l'exemple du cours et le cahier des charges suivant :
+\begin{UPSTIcahierDesCharges}{Afficher le nom de l'utilisateur}
+	\begin{itemize}
+		\item Le programme doit demander le nom de l'utilisateur avec le message de votre choix.
+		\item Le programme doit afficher "Hello, <nom>" où <nom> est le nom entré par l'utilisateur.
+	\end{itemize}
+	\textbf{Sortie attendue :}
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			Entrée         & Affichage attendue    \\
+			\hline
+			\texttt{<nom>} & Hello, \texttt{<nom>} \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\textbf{Exemples de tests :}
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			Entrée & Affichage attendue \\
+			\hline
+			Alice  & Hello, Alice       \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\hrule
+	Pour lancer les tests :
+	\begin{lstlisting}[language=bash,style=console]
+	check50 iut-geii-annecy/exercices/2025/info1/tp1/0_hello/variable
+\end{lstlisting}
+\end{UPSTIcahierDesCharges}
+
+Le cahier des charges mentionne la sortie attendue. \textbf{Votre programme doit ABSOLUMENT afficher la sortie attendue pour être correct.}
+
+\begin{UPSTIManipulation}{Afficher le nom de l'utilisateur}
+
+	Pour répondre à ce cahier des charges, vous devez réaliser les 4 prochaines étapes. A vous de trouver où effectuer chacune des modifications.
+	\begin{itemize}
+		\item[$\Box$] Inclure la bibliothèque \texttt{cs50.h} pour utiliser la fonction \texttt{get\_string}.
+		      \begin{lstlisting}[language=c]
+	#include <cs50.h>
+\end{lstlisting}
+		\item[$\Box$] Déclarer une variable de type \texttt{string} pour stocker le nom de l'utilisateur.
+		      \begin{lstlisting}[language=c]
+	string nom;
+\end{lstlisting}
+		\item[$\Box$] Utiliser \texttt{get\_string} pour obtenir le nom de l'utilisateur.
+		      \begin{lstlisting}[language=c]
+	nom = get_string("Entrez votre nom : ");
+\end{lstlisting}
+		\item[$\Box$] Modifier \texttt{printf} pour afficher le message "Hello , [nom]!" où [nom] est le nom entré par l'utilisateur.
+	\end{itemize}
+\end{UPSTIManipulation}
+
+
+\begin{UPSTIManipulation}{Vérification}
+	A l'aide de la fiche "Aide Mémoire" :
+	\begin{itemize}
+		\item[$\Box$] Vérifier la mise en page de votre code (\texttt{style50})
+		\item[$\Box$] Faire passer les tests automatiques (\texttt{check50})
+	\end{itemize}
+\end{UPSTIManipulation}
+
+
+

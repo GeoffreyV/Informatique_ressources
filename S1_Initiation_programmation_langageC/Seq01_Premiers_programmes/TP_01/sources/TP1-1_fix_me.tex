@@ -1,0 +1,37 @@
+\section{Fix Me : Cherchez l'erreur}
+
+Oups ! Le fichier fixme.c contient plein d'erreurs qui rendent la compilation impossible.
+A vous de les corriger !
+
+
+\begin{UPSTIManipulation}{Corrige le fichier}
+	\begin{itemize}
+		\item[$\Box$] Se rendre dans le dossier \texttt{1\_fixme}
+		      \begin{itemize}
+			      \item[$\Box$] Soit en revenant d'abord à la racine avec \texttt{cd} seul
+			            \begin{lstlisting}[language=bash,style=console]
+	cd
+	cd tp1/1_fixme
+\end{lstlisting}
+			      \item[$\Box$] Soit directement depuis \texttt{0\_hello} :
+			            \begin{lstlisting}[language=bash,style=console]
+	cd ../1_fixme
+\end{lstlisting}
+			      \item[$\Box$] Dans les deux cas, votre terminal doit maintenant commencer par
+			            \begin{lstlisting}[language=bash,style=console]
+	tp1/1_fixme $
+\end{lstlisting}
+		      \end{itemize}
+		\item[$\Box$] Tenter de compiler \texttt{make fixme} -> Des erreurs apparaissent
+		\item[$\Box$] Corriger le fichier \texttt{fixme.c}
+		\item[$\Box$] Compiler, puis tester votre code
+		      \begin{lstlisting}[language=bash,style=console]
+	make fixme
+	./fixme
+\end{lstlisting}
+		\item[$\Box$] \textbf{Si tout fonctionne}, exécuter
+		      \begin{lstlisting}[language=bash,style=console]
+check50 iut-geii-annecy/exercices/2025/info1/tp1/1_fixme/fixme
+\end{lstlisting}
+	\end{itemize}
+\end{UPSTIManipulation}

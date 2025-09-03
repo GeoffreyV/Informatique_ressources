@@ -1,0 +1,120 @@
+
+\section{La pause Tacos}
+\subsection{Niveau 1}
+
+\begin{UPSTIcahierDesCharges}{Pause Tacos - Niveau 1}
+	Votre programme tient un Tacos dont vous devez inventer le nom.
+	Il reçoit un client, qui lui commande un certain nombre de tacos et de kebab et votre programme lui dit annonce alors le montant total de la commande
+	\begin{itemize}
+		\item[$\Box$] Le programme Affiche d'abord une phrase de bienvenue
+		      \begin{lstlisting}[language=bash,style=console]
+Bonjour, bienvenu chez <nom_du_tacos>
+\end{lstlisting}
+		\item[$\Box$] Le programme demande alors le nombre de Tacos, puis le nombre de Kebab voulu
+		\item[$\Box$] Le programme écrit alors le prix total de la commande, arrondi au centième.
+		\item[$\Box$] Le programme écrit ensuite le message de remerciement
+		      \begin{lstlisting}[language=bash,style=console]
+Montant total : <montant_total> euros
+Merci pour votre commande chez <nom_du_tacos>
+\end{lstlisting}
+	\end{itemize}
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			Produit & Prix   \\
+			\hline
+			Tacos   & 6,30 € \\
+			Kebab   & 5,50 € \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\hrule
+	\textbf{Checks:}
+	\begin{lstlisting}[language=bash,style=console]
+check50 IUT-GEII-Annecy/exercices/2025/info1/tp1/3_tacos/niveau1
+\end{lstlisting}
+\end{UPSTIcahierDesCharges}
+
+
+\begin{UPSTIinfor}{Exemple de sortie pour cet exercice}
+	\lstinputlisting[language=bash, style=console]{console/hD1h6Kxu9xtn1pfwgW2e7oetj.txt}
+\end{UPSTIinfor}
+
+\begin{UPSTIinfor}{Fiche méthode}
+	Pour ce programme, comme pour beaucoup, posez-vous ces questions, dans l'ordre.
+	\begin{enumerate}
+		\item "Si j'étais à la place du programme, comment je ferai ?"
+		      \begin{itemize}
+			      \item Vous pourrez en déduire les étapes de l'algorithme
+		      \end{itemize}
+		\item "Si j'étais vraiment très mauvais en mémorisation, qu'est-ce que je devrais écrire ?"
+		      \begin{itemize}
+			      \item Vous pourrez en déduire les variables du programme
+		      \end{itemize}
+		      \begin{itemize}
+			      \item[$\Box$] Lesquelles sont des entiers \texttt{int} ?
+			      \item[$\Box$] Lesquelles sont des nombres à virgule \texttt{float} ?
+			      \item[$\Box$] Autres ?
+		      \end{itemize}
+		\item "Y a-t-il des 'cas bizarre' ?"
+	\end{enumerate}
+\end{UPSTIinfor}
+
+\subsection{Niveau 2}
+Même chose avec gestion des stocks
+
+\begin{UPSTIcahierDesCharges}{Pause Tacos - Niveau 2 - Gestion des stocks}
+	\begin{itemize}
+		\item[$\Box$] Même cahier des charges que le niveau 1 auquel s'ajoute :
+		\item[$\Box$] Le restaurant a un stock limité.
+		      \begin{itemize}
+			      \item[$\Box$] Après avoir demandé le nombre de tacos et de kebab :
+			            \begin{itemize}
+				            \item[$\Box$] Si le client demande unnombre négatif de l'un, l'autre ou les deux :
+				                  \begin{itemize}
+					                  \item[$\Box$] affiche le message
+					                        \begin{lstlisting}[language=bash,style=console]
+			ERREUR : Valeurs négatives interdites.
+\end{lstlisting}
+					                  \item[$\Box$] Arrête le programme sans autre affichage -> \texttt{return 1;}
+				                  \end{itemize}
+				            \item[$\Box$] Si les stocks sont insuffisant, le programme
+				                  \begin{itemize}
+					                  \item[$\Box$] affiche un message selon le tableau ci-dessous
+					                  \item[$\Box$] affiche ensuite le message de remerciement du Niveau 1
+				                  \end{itemize}
+				            \item[$\Box$] Sinon, pas de changement par rapport au niveau 1
+			            \end{itemize}
+		      \end{itemize}
+	\end{itemize}
+
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			Produit hors stock & Sortie attendue                                               \\
+			\hline
+			Kebab              & \texttt{Désolé, nous n'avons pas assez de Kebab}              \\
+			Tacos              & \texttt{Désolé, nous n'avons pas assez de Tacos}              \\
+			Tacos et Kebab     & \texttt{Désolé, nous n'avons pas assez de Tacos, ni de Kebab} \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\hrule
+	\begin{lstlisting}[language=bash,style=console]
+check50 IUT-GEII-Annecy/exercices/2025/info1/tp1/3_tacos/niveau2
+\end{lstlisting}
+\end{UPSTIcahierDesCharges}
+
+\subsection{Bonus : Niveau 3}
+
+\begin{UPSTIcahierDesCharges}{Pause Tacos - Niveau 3 - Réduction}
+	\begin{itemize}
+		\item[$\Box$] Même cahier des charges que précédemment
+		\item[$\Box$] Si le client commande plus de 5 articles au total, une réduction de 10\% est appliquée sur le montant total de la commande
+		\item[$\Box$] Les sorties attendues sont identiques aux cahiers des charges précédents
+	\end{itemize}
+	\hrule
+	\begin{lstlisting}[language=bash,style=console]
+check50 IUT-GEII-Annecy/exercices/2025/info1/tp1/3_tacos/niveau3
+\end{lstlisting}
+\end{UPSTIcahierDesCharges}

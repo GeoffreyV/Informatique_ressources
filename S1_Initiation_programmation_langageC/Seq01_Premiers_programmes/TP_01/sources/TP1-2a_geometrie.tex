@@ -1,0 +1,93 @@
+\section{Parlons surface !}
+\subsection{Premier calculs : aires et périmètres}
+
+\begin{UPSTIManipulation}{Géométrie - Niveau1}
+	\begin{itemize}
+		\item[$\Box$] Rendez-vous dans le dossier \texttt{tp1/2\_geometrie}
+		\item[$\Box$] Compléter le programme \texttt{rectangle.c} pour qu'il respecte le cahier des charges \href{\#aire-dun-rectangle}{Rectangle - Niveau 1}
+		\item[$\Box$] Compléter le programme \texttt{cercle.c} pour qu'il respecte le cahier des charges \href{\#aire-et-périmètre-dun-cercle}{Cercle - Niveau 1}
+	\end{itemize}
+\end{UPSTIManipulation}
+
+\subsubsection{Aire d'un rectangle}
+\begin{UPSTIcahierDesCharges}{Aire d'un rectangle}
+	\begin{itemize}
+		\item Le programme doit demander la largueur et la longueur du rectangle
+		\item Le programme calcule alors l'aire du rectangle.
+	\end{itemize}
+	\textbf{Sortie attendue :}
+	\begin{center}
+		\begin{tabular}{|l|l|l|}
+			\hline
+			Entrée 1           & Entrée 2            & Affichage attendue     \\
+			\hline
+			\texttt{<largeur>} & \texttt{<longueur>} & Aire : \texttt{<aire>} \\
+			\hline
+		\end{tabular}
+	\end{center}
+	Avec \texttt{<aire>} L'aire du rectangle \textbf{arrondie au centième}.
+
+	\textbf{Exemples de tests :}
+	\begin{center}
+		\begin{tabular}{|l|l|l|}
+			\hline
+			Entrée 1 & Entrée 2 & Affichage attendue \\
+			\hline
+			10       & 13       & Aire : 130.00      \\
+			5.5      & 3        & Aire : 16.50       \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\hrule
+	\textbf{Check :}
+	\begin{lstlisting}[language=bash,style=console]
+check50 IUT-GEII-Annecy/exercices/2025/info1/tp1/2_geometrie/rectangle/niveau1
+\end{lstlisting}
+\end{UPSTIcahierDesCharges}
+
+
+
+
+
+\subsubsection{Aire et périmètre d'un cercle}
+
+\begin{UPSTIcahierDesCharges}{Cercle Niveau 1}
+	\begin{itemize}
+		\item Le programme doit demander le rayon du cercle puis afficher l'aire et le périmètre.
+	\end{itemize}
+
+	Avec [aire] et [perimetre] respectivement l'aire et le périmètre du cercle.
+
+	\textbf{Sortie attendue :}
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			Entrée           & Affichage attendue                   \\
+			\hline
+			\texttt{<rayon>} & \makecell[tl]{Aire : \texttt{<aire>} \\Périmètre : \texttt{<perimetre>}} \\
+			\hline
+		\end{tabular}
+	\end{center}
+	Avec \texttt{<aire>} et \texttt{<perimetre>} \textbf{arrondis au centième}.
+
+	\textbf{Exemples de tests :}
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			Entrée 1 & Affichage attendue          \\
+			\hline
+			10       & \makecell[tl]{Aire : 314.16 \\Périmètre : 62.83} \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\hrule
+	\textbf{Check :}
+	\begin{lstlisting}[language=bash,style=console]
+check50 IUT-GEII-Annecy/exercices/2025/info1/tp1/2_geometrie/cercle/niveau1
+\end{lstlisting}
+\end{UPSTIcahierDesCharges}
+
+
+
+
+

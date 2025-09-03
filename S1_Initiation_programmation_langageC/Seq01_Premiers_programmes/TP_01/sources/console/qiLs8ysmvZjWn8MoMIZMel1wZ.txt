@@ -1,0 +1,40 @@
+$ wget https://github.com/IUT-GEII-Annecy/squelettes/raw/refs/heads/main/tp1.zip
+--2025-08-30 13:22:35--  https://github.com/IUT-GEII-Annecy/squelettes/raw/refs/heads/main/tp1.zip
+Resolving github.com (github.com)... 140.82.121.3
+Connecting to github.com (github.com)|140.82.121.3|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://raw.githubusercontent.com/IUT-GEII-Annecy/squelettes/refs/heads/main/tp1.zip [following]
+--2025-08-30 13:22:35--  https://raw.githubusercontent.com/IUT-GEII-Annecy/squelettes/refs/heads/main/tp1.zip
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.109.133, 185.199.111.133, 185.199.108.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.109.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1460 (1,4K) [application/zip]
+Saving to: ‘tp1.zip’
+
+tp1.zip                                               100%[=========================================================================================================================>]   1,43K  --.-KB/s    in 0s
+
+2025-08-30 13:22:35 (15,7 MB/s) - ‘tp1.zip’ saved [1460/1460]
+
+$ unzip tp1.zip
+Archive:  tp1.zip
+   creating: tp1/
+   creating: tp1/1_fixme/
+  inflating: tp1/1_fixme/fixme.c
+   creating: tp1/2_geometrie/
+  inflating: tp1/2_geometrie/rectangle.c
+   creating: tp1/0_hello/
+$
+$ rm tp1.zip
+rm: remove regular file 'tp1.zip'? y
+$
+$ ls
+tp1/
+$
+$ cd tp1/
+tp1/ $ ls
+0_hello/  1_fixme/  2_geometrie/
+tp1/ $
+tp1/ $ cd 0_hello/
+tp1/0_hello/ $
+tp1/0_hello/ $ code hello.c
+tp1/0_hello/ $

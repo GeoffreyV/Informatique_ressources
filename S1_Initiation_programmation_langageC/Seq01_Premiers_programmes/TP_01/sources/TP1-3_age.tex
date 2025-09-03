@@ -1,0 +1,54 @@
+
+\section{Êtes-vous majeur ?}
+Exerçons-nous avec quelques conditions simple
+
+\begin{UPSTIManipulation}{Majeur ou mineur}
+	\begin{itemize}
+		\item[$\Box$] aller dans le dossier \texttt{tp1/3\_age} puis ouvrir age.c
+		      \begin{lstlisting}[language=bash,style=console]
+cd
+cd tp1/3_age
+code age.c
+\end{lstlisting}
+		\item[$\Box$] Compléter le programme pour les Niveaux 1 et 2
+	\end{itemize}
+\end{UPSTIManipulation}
+
+\subsection{Niveau 1}
+
+\begin{UPSTIcahierDesCharges}{Age - Niveau 1}
+	\begin{itemize}
+		\item[$\Box$] Le programme demande quel age a l'utilisateur
+		\item[$\Box$] Le programme répond alors selon la logique suivante :
+		      \begin{itemize}
+			      \item[$\Box$] Sinon, si l'utilisateur a strictement moins de 18 ans : \texttt{Vous êtes un mineur.}
+			      \item[$\Box$] Sinon \texttt{Vous êtes un adulte.}
+		      \end{itemize}
+	\end{itemize}
+	\hrule
+	\textbf{Checks:}
+	\begin{lstlisting}[language=bash,style=console]
+check50 IUT-GEII-Annecy/exercices/2025/info1/tp1/3_age/niveau1
+\end{lstlisting}
+\end{UPSTIcahierDesCharges}
+
+\subsection{Niveau 2}
+
+\begin{UPSTIcahierDesCharges}{Age - Niveau 2}
+	\begin{itemize}
+		\item[$\Box$] Le programme demande quel age a l'utilisateur
+		\item[$\Box$] Le programme répond alors selon la logique suivante :
+		      \begin{itemize}
+			      \item[$\Box$] Si l'utilisateur a strictement moins de 12 ans : \texttt{Vous êtes un enfant.}
+			      \item[$\Box$] Sinon, si l'utilisateur a strictement moins de 18 ans : \texttt{Vous êtes un mineur.}
+			      \item[$\Box$] Sinon, si l'utilisateur a strictement moins de 60 ans : \texttt{Vous êtes un adulte.}
+			      \item[$\Box$] Sinon, si l'utilisateur a strictement moins de 120 ans : \texttt{Vous êtes un sénior.}
+			      \item[$\Box$] Sinon : \texttt{Vous êtes un menteur.}
+		      \end{itemize}
+	\end{itemize}
+	\hrule
+	\textbf{Checks:}
+	\begin{lstlisting}[language=bash,style=console]
+check50 IUT-GEII-Annecy/exercices/2025/info1/tp1/3_age/niveau2
+\end{lstlisting}
+\end{UPSTIcahierDesCharges}
