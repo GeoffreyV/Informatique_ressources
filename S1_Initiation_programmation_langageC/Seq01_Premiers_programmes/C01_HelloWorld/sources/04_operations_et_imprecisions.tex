@@ -1,0 +1,68 @@
+
+\section{Quelques opérateurs mathématiques}
+
+En C, on dispose d’opérateurs de base pour manipuler des nombres.
+Pour des calculs plus avancés (racines, puissances, arrondis…), il existe la bibliothèque standard \texttt{math.h}.
+Elle fournit de nombreuses fonctions que l’on peut appeler dans nos programmes.
+\subsection{Opérateurs}
+
+\begin{center}
+	\begin{tabular}{|l|l|}
+		\hline
+		Symbole     & Opération                             \\
+		\hline
+		\texttt{+}  & addition                              \\
+		\texttt{-}  & soustraction                          \\
+		\texttt{*}  & multiplication                        \\
+		\texttt{/}  & division                              \\
+		\texttt{\%} & modulo (reste de la division entière) \\
+		\hline
+	\end{tabular}
+\end{center}
+\begin{lstlisting}[language=c]
+int a = 7;
+int b = 2;
+printf("a / b = %i\n", a / b); // !! Affiche 3 !!
+printf("a %% b = %i\n", a % b);
+\end{lstlisting}
+
+\begin{UPSTIwarning}{Attention}
+	La division entre entiers \textbf{supprime la partie décimale}.
+\end{UPSTIwarning}
+
+\subsection{Fonctions usuelles de \texttt{math.h}}
+
+Vous pourrez trouver plus de fonctions usuelles (mathématiques ou non) sur le site \href{https://manual.cs50.io/}{manual.cs50.io}
+Pour utiliser ces fonctions, il faut inclure la bibliothèque \texttt{math.h}
+
+\begin{lstlisting}[language=c]
+#include <math.h>
+\end{lstlisting}
+
+\begin{center}
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		Fonction          & Description                                    & Exemple             & Résultat     \\
+		\hline
+		\texttt{sqrt(x)}  & Racine carrée de \texttt{x}                    & \texttt{sqrt(9)}    & \texttt{3.0} \\
+		\texttt{pow(x,y)} & Puissance : \texttt{x} élevé à \texttt{y}      & \texttt{pow(2, 3)}  & \texttt{8.0} \\
+		\texttt{fabs(x)}  & Valeur absolue (flottant)                      & \texttt{fabs(-5.5)} & \texttt{5.5} \\
+		\texttt{floor(x)} & Arrondi par défaut (partie entière inférieure) & \texttt{floor(3.7)} & \texttt{3.0} \\
+		\texttt{ceil(x)}  & Arrondi supérieur                              & \texttt{ceil(3.2)}  & \texttt{4.0} \\
+		\texttt{round(x)} & Arrondi à l’entier le plus proche              & \texttt{round(3.6)} & \texttt{4.0} \\
+		\hline
+	\end{tabular}
+\end{center}
+\begin{lstlisting}[language=c]
+#include <stdio.h>
+#include <math.h>
+
+int main(void) {
+    printf("sqrt(9) = %.1f\n", sqrt(9));
+    printf("pow(2, 3) = %.1f\n", pow(2, 3));
+    printf("fabs(-5.5) = %.1f\n", fabs(-5.5));
+    printf("floor(3.7) = %.1f\n", floor(3.7));
+    printf("ceil(3.2) = %.1f\n", ceil(3.2));
+    printf("round(3.6) = %.1f\n", round(3.6));
+}
+\end{lstlisting}

@@ -1,0 +1,93 @@
+\section{Types et Variables}
+\begin{UPSTIinfor}{Encore une histoire de binaire}
+	On l'a vu, toutes les données sont représentées sous forme binaire (des 1 et des 0). C'est aussi le cas pour les variables que l'on utilisera.
+	Or, l'ordinateur doit pouvoir déterminer s'il faut interpréter le mot binaire de cette variable comme un nombre, une lettre, une couleur ou autre.
+	Il donc faut préciser à quel type est associé chacune des variables que l'on déclare.
+\end{UPSTIinfor}
+
+\subsection{Les types de données en C}
+
+Chaque variable a un type précis :
+\begin{center}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		Type            & Description                             & Exemple                    \\
+		\hline
+		\texttt{int}    & nombres entiers                         & \texttt{10}, \texttt{-5}   \\
+		\texttt{char}   & un seul caractère                       & \texttt{'a'}, \texttt{'Z'} \\
+		\texttt{float}  & nombres décimaux approximatifs          & \texttt{3.14}              \\
+		\texttt{double} & nombres décimaux avec plus de précision & \texttt{3.141592}          \\
+		\texttt{long}   & entiers plus grands que \texttt{int}    & \texttt{123456789}         \\
+		\texttt{string} & texte (via la bibliothèque CS50)        & \texttt{"Hello"}           \\
+		\texttt{bool}   & vrai/faux (via la bibliothèque CS50)    & \texttt{true}              \\
+		\hline
+	\end{tabular}
+\end{center}
+\subsection{Déclaration et utilisation}
+
+\begin{UPSTIinfor}{Déclaration de variable}
+	Syntaxe : \texttt{<type> <nom>;}
+	Exemple :
+	\begin{lstlisting}[language=c]
+int nombre;
+\end{lstlisting}
+	On peut affecter une valeur en même temps :
+	\begin{lstlisting}[language=c]
+int nombre = 42;
+\end{lstlisting}
+\end{UPSTIinfor}
+
+\subsection{Afficher une variable dans un texte}
+Pour afficher une variable dans une phrase, on utilise \texttt{printf} avec un \textbf{placeholder}.
+
+\begin{lstlisting}[language=c]
+#include <stdio.h>
+
+int main(void)
+{
+    int age = 20;
+    printf("J'ai %i ans.\n", age);
+}
+\end{lstlisting}
+
+
+\subsubsection{Placeholders courants}
+
+\begin{center}
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		Spécificateur  & Description                    & Exemple d'utilisation                                    & Sortie                 \\
+		\hline
+		\texttt{\%i}   & entier                         & \texttt{printf("Valeur : \%i\textbackslash n", 42);}     & \texttt{Valeur : 42}   \\
+		\texttt{\%f}   & flottant (nombre à virgule)    & \texttt{printf("Pi = \%f\textbackslash n", 3.141593);}   & \texttt{Pi = 3.141593} \\
+		\texttt{\%.2f} & flottant arrondi à 2 décimales & \texttt{printf("Pi = \%.2f\textbackslash n", 3.141593);} & \texttt{Pi = 3.14}     \\
+		\texttt{\%c}   & caractère                      & \texttt{printf("Lettre : \%c\textbackslash n", 'A');}    & \texttt{Lettre : A}    \\
+		\texttt{\%s}   & texte (string)                 & \texttt{printf("Bonjour \%s\textbackslash n", "Alice");} & \texttt{Bonjour Alice} \\
+		\hline
+	\end{tabular}
+\end{center}
+\begin{UPSTIinfor}{Exemple}
+	\begin{lstlisting}[language=c]
+float pi = 3.14159;
+printf("Pi = %.2f\n", pi);
+\end{lstlisting}
+	Affiche : \texttt{Pi = 3.14}
+\end{UPSTIinfor}
+
+
+\subsubsection{Imprécision des flottants}
+Puisqu'ils sont codés sur un nombre de bits finis, les nombres à virgule ont une précision limitée :
+
+\begin{lstlisting}[language=c]
+float x = 1.0 / 10.0;
+printf("%.20f\n", x);
+\end{lstlisting}
+
+Affiche par exemple :
+\begin{lstlisting}[language=bash,style=console]
+0.10000000149011611938
+\end{lstlisting}
+
+\begin{UPSTIinfor}{Conseil}
+	Toujours limiter l’affichage des décimales avec \texttt{\%.2f}, \texttt{\%.3f}, etc.
+\end{UPSTIinfor}

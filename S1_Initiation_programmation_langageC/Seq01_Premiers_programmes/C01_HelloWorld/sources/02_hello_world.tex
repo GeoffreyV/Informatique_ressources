@@ -1,0 +1,71 @@
+
+\section{Hello, World : Premier programme}
+
+\begin{lstlisting}[language=c]
+#include <stdio.h>
+
+int main(void)
+{
+    printf("hello, world\n");
+}
+\end{lstlisting}
+
+\subsection{Explications}
+Le programme précédent peut se décomposer de la façon suivante :
+
+\begin{itemize}
+	\item Import de la bibliothèque pour afficher du texte.
+	      \begin{lstlisting}[language=c]
+#include <stdio.h>
+\end{lstlisting}
+\end{itemize}
+
+\begin{itemize}
+	\item Fonction principale :
+	      \begin{lstlisting}[language=c]
+int main(void)
+\end{lstlisting}
+	      \begin{itemize}
+		      \item Le contenu de cette fonction est compris entre les accolades : \texttt{\{ ... \}}
+	      \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Appel de la fonction \texttt{printf}
+	      \begin{lstlisting}[language=c]
+printf("...");  
+\end{lstlisting}
+	\item \texttt{\textbackslash n} demande un retour à la ligne.
+	\item En C, chaque instruction se termine par un \texttt{;}
+\end{itemize}
+
+\subsection{Compilation et exécution}
+\texttt{Encore une histoire de 1 et de 0 !}
+Pour le moment, notre programme est écrit sous la forme de texte. Il est compréhensible par les humains (développeurs). Il faut, à présent, le convertir en un langage que le processeur comprend : des instructions binaires.
+
+C'est le rôle du \texttt{compilateur} : Créer un fichier exécutable à partir d'un code \texttt{.c}. Dans ce module, cela se fera avec la commande \texttt{make}. Ensuite, on peut exécuter le programme.
+\begin{lstlisting}[language=bash,style=console]
+make hello
+./hello
+\end{lstlisting}
+
+\begin{UPSTIinfor}{Étapes}
+	\begin{enumerate}
+		\item \texttt{make hello} → compile.
+		\item \texttt{./hello} → exécute.
+	\end{enumerate}
+\end{UPSTIinfor}
+
+Résultat :
+\begin{lstlisting}[language=bash,style=console]
+hello, world
+\end{lstlisting}
+
+\begin{UPSTIwarning}{Erreurs fréquentes}
+
+	\begin{itemize}
+		\item Oublier le \texttt{;} → erreur de compilation.
+		\item Oublier \texttt{\#include <stdio.h>} → \texttt{printf} inconnu.
+		\item Écrire le texte à afficher sans guillemets → interprété comme variable.
+	\end{itemize}
+\end{UPSTIwarning}

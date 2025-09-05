@@ -1,0 +1,99 @@
+
+\section{Les conditions en C}
+
+En C, les conditions permettent d'exécuter certaines parties du programme uniquement si des critères sont vérifiés.
+
+\subsection{Structure générale : if / else}
+
+
+
+\begin{lstlisting}[language=c]
+if (<condition1>) // Si la condition 1 est vraie
+{
+    // Partie exécutée si la <condition1> est vérifiée
+}
+else if (<condition2>) // Sinon, si la condition 2 est vraie
+{
+    // Partie exécutée si la <condition2> est vérifiée
+}
+else // Sinon, dans tous les autres cas
+{
+    // Partie exécutée par défaut
+}
+\end{lstlisting}
+
+La structure \texttt{if} peut prendre plusieurs formes :
+
+\begin{itemize}
+	\item \texttt{if} seul
+	\item \texttt{if} puis \texttt{else}
+	\item \texttt{if} puis \texttt{else if} puis \texttt{else}
+\end{itemize}
+
+On peut placer autant de \texttt{else if} que l'on veut à la suite.
+\subsection{Opérateurs de comparaison}
+
+Les comparaisons sont faites à l'aide des opérateurs suivants :
+
+\begin{center}
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		Symbole     & Signification     & Exemple (\texttt{x=5}, \texttt{y=10}) & Résultat \\
+		\hline
+		\texttt{==} & égal              & \texttt{x == 5}                       & vrai     \\
+		\texttt{!=} & différent         & \texttt{x != y}                       & vrai     \\
+		\texttt{<}  & inférieur         & \texttt{x < y}                        & vrai     \\
+		\texttt{>}  & supérieur         & \texttt{x > y}                        & faux     \\
+		\texttt{<=} & inférieur ou égal & \texttt{x <= 5}                       & vrai     \\
+		\texttt{>=} & supérieur ou égal & \texttt{y >= 11}                      & faux     \\
+		\hline
+	\end{tabular}
+\end{center}
+\begin{UPSTIwarning}{Piège ! Ne pas confondre affectation et comparaison}
+	L'opérateur \texttt{=} sert à affecter une variable et l'opérateur \texttt{==} sert à comparer deux variables ! Si vous les confondez, rien ne fonctionnera...
+\end{UPSTIwarning}
+
+\subsection{Opérateurs logiques}
+
+On peut combiner plusieurs conditions avec les opérateurs logiques :
+
+\begin{center}
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		Symbole                                         & Signification & Exemple (x=5, y=10)                                            & Résultat attendu \\
+		\hline
+		\texttt{\&\&}                                   & ET logique    & \texttt{(x > 0 \&\& y < 20)}                                   & vrai             \\
+		\texttt{\textbar\textbar} & OU logique    & \texttt{(x < 0 \textbar\textbar y > 100)} & vrai             \\
+		\hline
+	\end{tabular}
+\end{center}
+\begin{lstlisting}[language=c]
+if ((x > 0) && (x < 10))
+{
+    printf("x est compris entre 0 et 10\n");
+}
+
+if ((x < 0) || (x > 100))
+{
+    printf("x est en dehors de l'intervalle [0,100]\n");
+}
+\end{lstlisting}
+
+\subsection{Un exemple simple}
+
+Si \texttt{x} est une variable entière, le code suivant vérifie si \texttt{x} est positif, négatif ou nul.
+
+\begin{lstlisting}[language=c]
+if (x > 0)
+{
+    printf("x est positif\n");
+}
+else if (x < 0)
+{
+    printf("x est négatif\n");
+}
+else
+{
+    printf("x vaut zéro\n");
+}
+\end{lstlisting}
