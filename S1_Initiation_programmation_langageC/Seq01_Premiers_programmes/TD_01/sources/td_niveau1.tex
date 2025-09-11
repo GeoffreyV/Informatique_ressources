@@ -1,0 +1,81 @@
+\section{Niveau 1}
+\subsection{Variables}
+\begin{UPSTIexercice}{Informations personnelles (partie 1)}
+    On souhaite stocker des informations simples concernant un étudiant :
+    \begin{itemize}
+        \item Son prénom
+        \item Son âge
+        \item Sa taille (en centimètres)
+    \end{itemize}
+    \UPSTIquestion{Pour chaque variable, proposer un type de données adapté et justifier le choix.}
+    \UPSTIquestion{Écrire les lignes de \textbf{déclaration} de ces variables (sans initialisation).}
+    \UPSTIquestion{Ecrire des lignes \textbf{d'initialisation} cohérentes pour un étudiant fictif.}
+\end{UPSTIexercice}
+
+\begin{UPSTIexercice}{Affectations successives}
+    On considère le programme suivant :
+    \begin{lstlisting}[language=C]
+int x = 2;
+int y = 5;
+int z;
+z = x + y;
+y = z - 1;
+x = y + z + x;
+\end{lstlisting}
+    \UPSTIquestion{Donner les valeurs finales de \verb|x|, \verb|y| et \verb|z|.}
+\end{UPSTIexercice}
+
+
+\begin{UPSTIexercice}{Types adaptés}
+On considère les informations suivantes :
+\begin{itemize}
+    \item Nombre d'étudiants d'une promo
+    \item Température extérieure
+    \item Numéro de salle
+    \item Prix d'un sandwich
+\end{itemize}
+
+\UPSTIquestion{Pour chacune, donner le type le plus approprié et la déclaration de la variable.}
+\end{UPSTIexercice}
+
+\begin{UPSTIexercice}{Prédire l'affichage (entier vs réel)}
+On exécute le programme suivant.
+\begin{lstlisting}[language=C]
+int a = 7, b = 2;
+float x = 7, y = 2;
+printf("A:%d\n", a / b);
+printf("B:%f\n", x / y);
+printf("C:%f\n", a / (float)b);
+printf("D:%d\n", a % b);
+\end{lstlisting}
+
+\UPSTIquestion{Si ce n'est pas déjà fait, lire l'encart sur la division, page~\pageref{info:division}}
+\UPSTIquestion{Prédire l'affichage généré par les lignes ci-dessus.}
+\end{UPSTIexercice}
+
+
+
+\subsection{Conditions}
+
+\begin{UPSTIexercice}{Majorité (partie 1)}
+On veut afficher \og Majeur \fg{} si \verb|age >= 18|, sinon \og Mineur \fg{}.
+\UPSTIquestion{Décrire la logique en français ou pseudo-code avec un \texttt{if/else}. Donner deux exemples d'entrées et la sortie attendue.}
+\end{UPSTIexercice}
+
+\begin{UPSTIexercice}{Qui est le plus grand ?}
+    On souhaite écrire un programme qui affiche lequel de deux nombres \verb|a| et \verb|b| est le plus grand. S'ils sont égaux, le programme le dira. 
+\UPSTIquestion{Proposer les lignes de codes qui, pour deux entiers \verb|a| et \verb|b|, affichent le plus grand ou s'ils sont égaux.}
+\end{UPSTIexercice}
+
+
+\begin{UPSTIexercice}{Nombre mystère (logique)}
+    On considère un programme dont deux variables ont été déclarées : \verb|nombre_mystere| et \verb|nombre_joueur|. Le nombre mystère n'est pas connu du joueur. Il doit le deviner en tentant des valeurs au hasard. 
+\begin{lstlisting}
+int nombre_mystere = 7; 
+int nombre_joueur = get_int("Deviner le nombre mystere : ");
+\end{lstlisting}
+On veut écrire \textbf{bravo} si l'utilisateur à trouvé le nombre, \textbf{Raté} sinon.
+\UPSTIquestion{Ecrire un pseudo-code décrivant la logique à implémenter}
+\UPSTIquestion{Traduire ces lignes en langage C}
+\UPSTIquestion{Réécrire le programme pour afficher si le nombre proposé est \textbf{Trop petit} et \textbf{Trop grand}.}
+\end{UPSTIexercice}

@@ -1,0 +1,93 @@
+\section{Niveau 2}
+
+\subsection{Opérations et conversions}
+
+\begin{UPSTIexercice}{Opérations et priorités}
+Soit le code suivant : 
+\begin{lstlisting}[language=C]
+int r = 10 - 2 * 3 + 8 / 2;
+int s = r + 5 * (3 - 1);
+\end{lstlisting}
+\UPSTIquestion{Donner l'ordre exact des opérations.}
+\UPSTIquestion{Donner les valeurs finales de \verb|r| et \verb|s|}
+\end{UPSTIexercice}
+
+\noindent\begin{minipage}{.49\linewidth}
+\begin{UPSTIexercice}{Conversions et cast}
+On considère :
+\begin{lstlisting}[language=C]
+int a = 13, b = 5;
+float u = 13, v = 5;
+int A = a/b;
+float C = (float)a / b;
+int D = (float)a / b;
+int E = a%b;
+\end{lstlisting}
+\UPSTIquestion{Donner les valeurs des variables A, B, C, D et E.}
+\end{UPSTIexercice}
+\end{minipage}\hfill
+\begin{minipage}{.49\linewidth}
+    \begin{UPSTIinfor}{Le transtypage (cast)}
+        En langage C, on peut momentanément considérer qu'une variable est d'un certain type au lieu de celui déclaré. Il suffit de spécifier le type entre parenthèses devant la variable. \\
+        Par exemple : 
+        \begin{lstlisting}[language=c]
+int variable_entiere;
+float resultat = (float) variable_entiere/2;\end{lstlisting}
+        Durant cette opération, \verb|variable_entiere| sera considérée comme \verb|float|.
+    \end{UPSTIinfor}
+\end{minipage}
+
+
+\begin{UPSTIexercice}{Prédire l'affichage (mélange de types)}
+\begin{lstlisting}[language=C]
+int n = 9, d = 4;
+float p = 9, q = 4;
+n = n - d/2;
+p = p / q;
+printf("A:%d\n", n);
+printf("B:%f\n", p);
+printf("C:%f\n", (float)n / d);
+printf("D:%d\n", n % d);
+\end{lstlisting}
+\UPSTIquestion{Prédire chaque ligne affichée et expliquer le rôle de la \textbf{division entière} dans la mise à jour de \verb|n|.}
+\end{UPSTIexercice}
+
+\subsection{Conditions multiples et booléens}
+
+\begin{UPSTIexercice}{Intervalle inclusif et exclusif}
+\UPSTIquestion{Ecrire un condition en langage C pour tester \(5 \le x \le 10\).}
+\UPSTIquestion{Ecrire ce même test d'une façon différente.}
+\UPSTIquestion{Expliquer pourquoi \lstinline[language=c]{(x > 5 || x < 10)} est incorrecte.}
+\UPSTIquestion{Expliquer pourquoi \lstinline[language=c]{(5 <= x <= 10)} est incorrecte.}
+\end{UPSTIexercice}
+
+
+\begin{UPSTIexercice}{Autorisation d'accès}
+On considère trois variables booléennes (le type \textbf{bool} est défini dans la bibliothèque \texttt{stdbool}) :
+\begin{lstlisting}[language=c]
+    bool isRegistered;
+    bool hasBadge; 
+    bool isAdmin;
+\end{lstlisting}
+
+On veut accorder l'accès à une personne si elle possède un badge et est enregistrée. L'accès sera aussi accordé si la personne est administratrice.
+\UPSTIquestion{Donner une condition booléenne correctement parenthésée qui accorde, ou non, l'accès.}
+\end{UPSTIexercice}
+
+
+\begin{UPSTIexercice}{Calcul d'expressions booléennes}
+Soient \verb|a=3, b=7, c=7|.
+\UPSTIquestion{Évaluer les expressions booléennes suivante (pour chacune, dire si elle renvoie \textbf{vrai} ou \textbf{faux}) : }
+\begin{multicols}{3}
+\begin{itemize}
+    \item \verb|(a<b) && (b==c)|
+    \item \verb$(a>=b) || (c!=7)$
+    \item \verb|!(a<b) && (b==c)|
+    \item \verb|(a<b) && !(b==c)|
+    \item \verb$(a<b) || (b==c)$
+    \item \verb$!(a<b) || (b==c)$
+\end{itemize}
+\end{multicols}
+\end{UPSTIexercice}
+
+
