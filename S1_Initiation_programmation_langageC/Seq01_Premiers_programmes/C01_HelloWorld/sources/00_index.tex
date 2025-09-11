@@ -96,15 +96,8 @@ Quelques exemples sont donnés dans cette section
 \begin{itemize}
 	\item Les lettres peuvent être codées en binaire via la norme \textbf{ASCII}, qui associe des nombres aux caractères. Par exemple, \texttt{A} correspond à 65 : \texttt{01000001}.
 	\item Exemple : un message texte pourrait avoir pour valeurs binaires 72, 73 et 33, correspondant aux caractères \texttt{H}, \texttt{I} et \texttt{!}.
-	\item La Figure~\ref{table-ascii} représente cette table ASCII.
+	\item Une table ASCII est fournie avec la feuille \textit{Aide-mémoire}
 \end{itemize}
-
-\begin{figure}[h!t]
-	\centering
-	\includegraphics[width=0.8\textwidth]{ASCII-Table.png}
-	\caption{Table ASCII}
-	\label{table-ascii}
-\end{figure}
 
 \subsubsection{Unicode : Représenter plus de caractères}
 
@@ -122,15 +115,19 @@ Quelques exemples sont donnés dans cette section
 \end{itemize}
 
 
-\subsection{Les algorithmes}
+\subsection{Algorithmes}
 
-Un \textbf{algorithme} est une suite d’instructions permettant de résoudre un problème.
+Un \textbf{algorithme} est une suite d’instructions logiques, organisées et ordonnées, permettant la résolution d'un problème.
+
+Ce problème peut être très simple (ex : \textit{Compter le nombre d'étudiant} ), ou très complexe (ex : \textit{Générer une image à partir d'un prompt de l'utilisateur})
 
 \begin{UPSTIinfor}{Propriétés d’un algorithme}
 	\begin{itemize}
-		\item Il doit être \textbf{fini} (il s’arrête).
-		\item Il doit être \textbf{précis} (chaque étape est claire).
-		\item Il doit être \textbf{réalisable} par une machine.
+		\item \textbf{Lisible} : Il doit être compréhensible par tout le monde.
+		\item \textbf{Exécutablee} : Chaque étape doit correspondre à une opération logique ou mécanique que le système peut réaliser
+		\item \textbf{Fini} : L'algorithme doit pouvoir aboutir à une solution après un nombre fini d'étapes.
+		\item \textbf{Déterministe} : A chaque étape, pour des entrées données, un seul chemin doit être possible
+		\item \textbf{Détermination} : Avec les même conditions, un algotithme doit toujours produire les même résultats. \textit{(Cette propriété ne s'applique pas aux algorithmes probabilistes, type IA)}
 	\end{itemize}
 \end{UPSTIinfor}
 
@@ -152,12 +149,29 @@ Un \textbf{algorithme} est une suite d’instructions permettant de résoudre un
 	      \end{itemize}
 \end{itemize}
 
-\begin{UPSTIinfor}{Algorithme de recherche dichotomique}
+\begin{UPSTIinfor}{Exemple de l'annuaire : Recherche dichotomique}
 	\begin{enumerate}
-		\item Ouvrir l’annuaire au milieu.
-		\item Si le nom cherché est avant, prendre la moitié gauche.
-		\item Sinon, prendre la moitié droite.
-		\item Répéter jusqu’à trouver le nom.
+		\item Prendre l'annuaire
+		\item Ouvrir l'annuaire au milieu 
+		\item Parcourir la page
+		\item \textit{Si} la personne se trouve dans la page
+		\begin{enumerate}
+			\item Appeler la personne
+		\end{enumerate}
+		\item \textit{Sinon, si} la personne se trouve plus tôt dans l'annuaire (ordre alphabétique)
+		\begin{enumerate}
+			\item Ouvrir le livre au milieu de la partie droite
+			\item Retourner à l'étape 3
+		\end{enumerate}
+		\item \textit{Sinon, si} la personne se trouve plus tard dans l'annuaire (ordre alphabétique)
+		\begin{enumerate}
+			\item Ouvrir le livre au milieu de la partie gauche
+			\item Retourner à l'étape 3
+		\end{enumerate}
+		\item \textit{Sinon}
+		\begin{enumerate}
+			\item Quitter - La personne ne se trouve pas dans l'annuaire
+		\end{enumerate}
 	\end{enumerate}
 \end{UPSTIinfor}
 
