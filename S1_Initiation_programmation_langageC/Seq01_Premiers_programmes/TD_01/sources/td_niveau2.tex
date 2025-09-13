@@ -12,6 +12,14 @@ int s = r + 5 * (3 - 1);
 \UPSTIquestion{Donner les valeurs finales de \verb|r| et \verb|s|}
 \end{UPSTIexercice}
 
+\begin{UPSTIprofOnlyEnv}
+  \begin{UPSTIcorrectionP}{Opérations et priorités}
+    Ordre : \textbf{*} et \textbf{/} de gauche à droite, puis \textbf{+} et \textbf{-}.  
+    $r$: $10 - (2\cdot3) + (8/2) \rightarrow 10 - 6 + 4 \rightarrow 4 + 4 \rightarrow \boxed{8}$.  
+    $s$: $(3-1)=2$, $5\cdot2=10$, donc $s=r+10=8+10=\boxed{18}$.
+  \end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}
+
 \noindent\begin{minipage}{.49\linewidth}
 \begin{UPSTIexercice}{Conversions et cast}
 On considère :
@@ -32,11 +40,21 @@ int E = a%b;
         Par exemple : 
         \begin{lstlisting}[language=c]
 int variable_entiere;
-float resultat = (float) variable_entiere/2;\end{lstlisting}
+float resultat = (float) variable_entiere/2;
+        \end{lstlisting}
         Durant cette opération, \verb|variable_entiere| sera considérée comme \verb|float|.
     \end{UPSTIinfor}
 \end{minipage}
 
+\begin{UPSTIprofOnlyEnv}
+  \begin{UPSTIcorrectionP}{Conversions et cast}
+    $A=\boxed{2}$ (division entière $13/5$).  
+    $C=\boxed{2{,}6}$ (division réelle).  
+    $D=\boxed{2}$ (résultat réel $2{,}6$ converti en \texttt{int} $\Rightarrow$ troncature).  
+    $E=\boxed{3}$ (reste de $13\%5$).  
+    \textit{Remarque :} $B$ n'est pas déclaré dans le code. S’il s’agit de $u/v$, alors $B=\boxed{2{,}6}$.
+  \end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}
 
 \begin{UPSTIexercice}{Prédire l'affichage (mélange de types)}
 \begin{lstlisting}[language=C]
@@ -52,6 +70,16 @@ printf("D:%d\n", n % d);
 \UPSTIquestion{Prédire chaque ligne affichée et expliquer le rôle de la \textbf{division entière} dans la mise à jour de \verb|n|.}
 \end{UPSTIexercice}
 
+\begin{UPSTIprofOnlyEnv}
+  \begin{UPSTIcorrectionP}{Prédire l'affichage (mélange de types)}
+    $d/2$ est une \textbf{division entière} ($4/2=2$), donc $n=9-2=\boxed{7}$.  \\
+    $p/q$ est réel ($9/4=\boxed{2{,}25}$).  \\
+    $(\text{float})n/d = 7{,}0/4 = \boxed{1{,}75}$.  
+    $n\%d = 7\%4 = \boxed{3}$.  \\
+    Affichage : \texttt{A:7}, \texttt{B:2.250000}, \texttt{C:1.750000}, \texttt{D:3}.
+  \end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}
+
 \subsection{Conditions multiples et booléens}
 
 \begin{UPSTIexercice}{Intervalle inclusif et exclusif}
@@ -61,19 +89,32 @@ printf("D:%d\n", n % d);
 \UPSTIquestion{Expliquer pourquoi \lstinline[language=c]{(5 <= x <= 10)} est incorrecte.}
 \end{UPSTIexercice}
 
+\begin{UPSTIprofOnlyEnv}
+  \begin{UPSTIcorrectionP}{Intervalle inclusif et exclusif}
+    Test direct : \lstinline[language=C]{(x >= 5 && x <= 10)}.  \\
+    Variante équivalente : \lstinline[language=C]{!(x < 5 || x > 10)}.  \\
+    \lstinline[language=C]{(x > 5 || x < 10)} est toujours vraie (union des deux demi-axes).  \\
+    \lstinline[language=C]{(5 <= x <= 10)} évalue \lstinline[language=C]{(5 <= x)} en 0/1, puis compare à 10 $\Rightarrow$ toujours vrai.
+  \end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}
 
 \begin{UPSTIexercice}{Autorisation d'accès}
 On considère trois variables booléennes (le type \textbf{bool} est défini dans la bibliothèque \texttt{stdbool}) :
 \begin{lstlisting}[language=c]
-    bool isRegistered;
-    bool hasBadge; 
-    bool isAdmin;
+bool isRegistered;
+bool hasBadge; 
+bool isAdmin;
 \end{lstlisting}
 
 On veut accorder l'accès à une personne si elle possède un badge et est enregistrée. L'accès sera aussi accordé si la personne est administratrice.
 \UPSTIquestion{Donner une condition booléenne correctement parenthésée qui accorde, ou non, l'accès.}
 \end{UPSTIexercice}
 
+\begin{UPSTIprofOnlyEnv}
+  \begin{UPSTIcorrectionP}{Autorisation d'accès}
+    Condition : \lstinline[language=C]{( (hasBadge && isRegistered) || isAdmin )}.
+  \end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}
 
 \begin{UPSTIexercice}{Calcul d'expressions booléennes}
 Soient \verb|a=3, b=7, c=7|.
@@ -90,4 +131,14 @@ Soient \verb|a=3, b=7, c=7|.
 \end{multicols}
 \end{UPSTIexercice}
 
-
+\begin{UPSTIprofOnlyEnv}
+  \begin{UPSTIcorrectionP}{Calcul d'expressions booléennes}
+    Avec $a=3$, $b=7$, $c=7$ :  \\
+    $(a<b)\land(b==c)$ : \textbf{vrai}.  \\
+    $(a\ge b)\lor(c\neq7)$ : \textbf{faux}.  \\
+    $\neg(a<b)\land(b==c)$ : \textbf{faux}.  \\
+    $(a<b)\land\neg(b==c)$ : \textbf{faux}.  \\
+    $(a<b)\lor(b==c)$ : \textbf{vrai}.  \\
+    $\neg(a<b)\lor(b==c)$ : \textbf{vrai}.
+  \end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}

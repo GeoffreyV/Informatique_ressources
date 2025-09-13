@@ -21,7 +21,6 @@ En langage C, il existe deux types principaux pour représenter des nombres à v
 
 \subsection{Traces, erreurs et structures}
 
-
 \begin{UPSTIexercice}{Exécution pas à pas}
 Analyser l'exécution suivante pas à pas :
 \begin{lstlisting}[language=C]
@@ -34,11 +33,25 @@ c = a + b + c; // 4
 \UPSTIquestion{Donner les valeurs finales de \verb|a|, \verb|b| et \verb|c|.}
 \end{UPSTIexercice}
 
+\begin{UPSTIprofOnlyEnv}
+  \begin{UPSTIcorrectionP}{Exécution pas à pas}
+    Étapes : $c=15$, $b=10$, $a=6$, puis $c=6+10+15=31$.  
+    \textbf{Final :} $a=6$, $b=10$, $c=31$.
+  \end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}
+
 \begin{UPSTIexercice}{Précision et débordements}
 \UPSTIquestion{Expliquer ce qui peut arriver pour \verb|int x = 2000000000 + 2000000000;|. Donner un exemple d'impact réel.}
 \UPSTIquestion{Comparer \verb|float| vs \verb|double| pour accumuler des montants (somme de 1/10 répété 100 fois).}
 \end{UPSTIexercice}
 
+\begin{UPSTIprofOnlyEnv}
+  \begin{UPSTIcorrectionP}{Précision et débordements}
+    \textbf{Débordement :} la somme dépasse \texttt{INT\_MAX} (32 bits). En C, le dépassement d’entier \emph{signé} est \textit{indéfini} (comportements possibles : wrap-around, valeur erronée, optimisations trompeuses). Impact : compteurs, minuteries, totaux financiers qui « bouclent ».  \\
+    Exemple : La fusée arianne 5 s’est autodétruite en 1996 à cause d’un dépassement d’entier dans le calcul de la trajectoire.\\
+    \textbf{Accumulation :} additionner $0.1$ $100$ fois n’aboutit pas exactement à $10$. En \texttt{float}, l’erreur relative est notable (affiche souvent $9.999999$ ou $10.000001$) ; en \texttt{double}, l’erreur est bien plus faible. Pour des montants, préférer \texttt{double} (voire des entiers en centimes).
+  \end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}
 
 \begin{UPSTIexercice}{Prédire l'affichage (mélange et cast)}
 \begin{lstlisting}[language=C]
@@ -54,6 +67,15 @@ printf("D:%d\n", (i * j) % 5);
 \UPSTIquestion{Prédire chaque ligne d'affichage et expliquer l'effet du cast et de la division entière sur \verb|i|.}
 \end{UPSTIexercice}
 
+\begin{UPSTIprofOnlyEnv}
+  \begin{UPSTIcorrectionP}{Prédire l'affichage (mélange et cast)}
+    \textbf{A:} $j/2$ est entier ($3/2=1$), donc $i=7+1=8$ $\Rightarrow$ \texttt{A:8}.  
+    \textbf{B:} $u/v$ réel $=7/3\approx2{,}333333$ $\Rightarrow$ \texttt{B:2.333333}.  
+    \textbf{C:} $(\text{float})i/j=8/3\approx2{,}666667$ $\Rightarrow$ \texttt{C:2.666667}.  
+    \textbf{D:} $(i\cdot j)\%5=(8\cdot3)\%5=24\%5=4$ $\Rightarrow$ \texttt{D:4}.  
+    Effet : la division entière réduit $j/2$ à $1$ (pas de décimales) ; le \textit{cast} force une division réelle.
+  \end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}
 
 \subsection{Imbrications et logique avancée}
 
@@ -67,10 +89,37 @@ printf("D:%d\n", (i * j) % 5);
 \UPSTIquestion{Écrire l'expression booléenne correspondante.}
 \end{UPSTIexercice}
 
+\begin{UPSTIprofOnlyEnv}
+  \begin{UPSTIcorrectionP}{Écrire ses propres conditions}
+\begin{lstlisting}[language=C]
+if ( isResponsable || (badgeOK && (formationOK || tenueOK)) ) {
+    /* accès accordé */
+} else {
+    /* accès refusé */
+}
+\end{lstlisting}
+  \end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}
+
 \begin{UPSTIexercice}{Majorité avancée (partie 3)}
 Une billetterie donne un tarif réduit si l'âge de la personne est un multiple de 10. Le tarif sera majoré pour les plus de 60 ans.
 \UPSTIquestion{Proposer une structure \texttt{if/else if/else} lisible.}
 \end{UPSTIexercice}
+
+\begin{UPSTIprofOnlyEnv}
+  \begin{UPSTIcorrectionP}{Majorité avancée (partie 3)}
+    Hypothèse claire : la majoration $>$\,$60$ \textbf{prime} sur la réduction « multiple de 10 ».
+\begin{lstlisting}[language=C]
+if (age > 60) {
+    printf("Tarif majore\n");
+} else if (age % 10 == 0) {
+    printf("Tarif reduit\n");
+} else {
+    printf("Tarif normal\n");
+}
+\end{lstlisting}
+  \end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}
 
 \begin{UPSTIexercice}{Court-circuit et sécurité}
 Analyser les deux versions suivantes :\\
@@ -92,4 +141,11 @@ if ( (j != 0) && (i / j > 2) ) {
 \UPSTIquestion{Laquelle vous semble la plus efficace et pourquoi ? Justifier votre réponse et donner un exemple.}
 \end{UPSTIexercice}
 
-
+\begin{UPSTIprofOnlyEnv}
+  \begin{UPSTIcorrectionP}{Court-circuit et sécurité}
+    Avec l’opérateur \texttt{\&\&}, l’évaluation est \textbf{court-circuitée} de gauche à droite.  \\
+    \textbf{À gauche la division :} la première version peut diviser par zéro si \texttt{j==0} (dangereux/UB).  \\
+    \textbf{À gauche le test de zéro :} la seconde est \textbf{sûre} : si \texttt{j==0}, la division n’est pas évaluée. \\ 
+    \textbf{Efficacité :} la seconde évite une division inutile quand \texttt{j==0} (et protège contre l’erreur). \\Exemple : \texttt{i=10, j=0} — 1\iere{} version: erreur potentielle ; 2\ieme{}: pas de division.
+  \end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}

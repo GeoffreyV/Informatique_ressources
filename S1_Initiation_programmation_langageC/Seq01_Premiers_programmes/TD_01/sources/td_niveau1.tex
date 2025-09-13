@@ -1,16 +1,29 @@
 \section{Niveau 1}
 \subsection{Variables}
-\begin{UPSTIexercice}{Informations personnelles (partie 1)}
+\begin{UPSTIexercice}{Informations personnelles}
     On souhaite stocker des informations simples concernant un étudiant :
     \begin{itemize}
         \item Son prénom
         \item Son âge
-        \item Sa taille (en centimètres)
+        \item Sa taille (en mètres)
     \end{itemize}
     \UPSTIquestion{Pour chaque variable, proposer un type de données adapté et justifier le choix.}
     \UPSTIquestion{Écrire les lignes de \textbf{déclaration} de ces variables (sans initialisation).}
     \UPSTIquestion{Ecrire des lignes \textbf{d'initialisation} cohérentes pour un étudiant fictif.}
 \end{UPSTIexercice}
+
+\begin{UPSTIprofOnlyEnv}%
+    \begin{UPSTIcorrectionP}{Informations personnelles}
+        \begin{lstlisting}[language=c]
+string prenom;
+int age;
+float taille;
+prenom = "John";
+age = 20;
+taille = 1.74;
+        \end{lstlisting}
+    \end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}
 
 \begin{UPSTIexercice}{Affectations successives}
     On considère le programme suivant :
@@ -21,26 +34,64 @@ int z;
 z = x + y;
 y = z - 1;
 x = y + z + x;
-\end{lstlisting}
+    \end{lstlisting}
     \UPSTIquestion{Donner les valeurs finales de \verb|x|, \verb|y| et \verb|z|.}
 \end{UPSTIexercice}
 
+\begin{UPSTIprofOnlyEnv}
+    \begin{UPSTIcorrectionP}{Affectations successives}
+        \begin{lstlisting}[language=C]
+// Etapes de calcul :
+int x = 2;      // x = 2
+int y = 5;      // y = 5
+int z;          // z = ?
+z = x + y;      // z = 2 + 5 = 7
+y = z - 1;      // y = 7 - 1 = 6
+x = y + z + x;  // x = 6 + 7 + 2 = 15
+
+// Valeurs finales :
+x = 15;
+y = 6;
+z = 7;
+        \end{lstlisting}
+    \end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}
+
 
 \begin{UPSTIexercice}{Types adaptés}
-On considère les informations suivantes :
-\begin{itemize}
-    \item Nombre d'étudiants d'une promo
-    \item Température extérieure
-    \item Numéro de salle
-    \item Prix d'un sandwich
-\end{itemize}
+    On considère les informations suivantes :
+    \begin{itemize}
+        \item Nombre d'étudiants d'une promo
+        \item Température extérieure
+        \item Numéro de salle
+        \item Prix d'un sandwich
+    \end{itemize}
 
-\UPSTIquestion{Pour chacune, donner le type le plus approprié et la déclaration de la variable.}
+    \UPSTIquestion{Pour chacune, donner le type le plus approprié et la déclaration de la variable.}
 \end{UPSTIexercice}
 
+\begin{UPSTIprofOnlyEnv}
+    \begin{UPSTIcorrectionP}{Types adaptés}
+        \begin{lstlisting}[language=C]
+// Nombre d'etudiants d'une promo : entier naturel
+int nb_etudiants;
+
+// Temperature exterieure : reel
+float temperature;
+
+// Numero de salle : souvent alphanumerique -> texte
+string numero_salle;
+
+// Prix d'un sandwich : reel en euros, préférer le double pour la précision (cf Niveau 3)
+// (Remarque : on peut aussi stocker en centimes avec un int)
+double prix_sandwich;\end{lstlisting}
+    \end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}
+
+
 \begin{UPSTIexercice}{Prédire l'affichage (entier vs réel)}
-On exécute le programme suivant.
-\begin{lstlisting}[language=C]
+    On exécute le programme suivant.
+    \begin{lstlisting}[language=C]
 int a = 7, b = 2;
 float x = 7, y = 2;
 printf("A:%d\n", a / b);
@@ -49,33 +100,129 @@ printf("C:%f\n", a / (float)b);
 printf("D:%d\n", a % b);
 \end{lstlisting}
 
-\UPSTIquestion{Si ce n'est pas déjà fait, lire l'encart sur la division, page~\pageref{info:division}}
-\UPSTIquestion{Prédire l'affichage généré par les lignes ci-dessus.}
+    \UPSTIquestion{Si ce n'est pas déjà fait, lire l'encart sur la division, page~\pageref{info:division}}
+    \UPSTIquestion{Prédire l'affichage généré par les lignes ci-dessus.}
 \end{UPSTIexercice}
+
+\begin{UPSTIprofOnlyEnv}
+    \begin{UPSTIcorrectionP}{Prédire l'affichage (entier vs réel)}
+        \begin{itemize}
+            \item a / b est une division entière (entiers) : 7/2 = 3
+            \item x / y est une division réelle (flottants) : 7.0/2.0 = 3.5
+            \item a / (float)b force une division réelle (cast) : 3.5
+            \item a \% b est le reste de la division euclidienne : 7 \% 2 = 1
+        \end{itemize}
+        Affichage attendu :
+        \begin{lstlisting}[language=bash]
+A:3
+B:3.500000
+C:3.500000
+D:1
+\end{lstlisting}
+    \end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}
 
 
 
 \subsection{Conditions}
 
 \begin{UPSTIexercice}{Majorité (partie 1)}
-On veut afficher \og Majeur \fg{} si \verb|age >= 18|, sinon \og Mineur \fg{}.
-\UPSTIquestion{Décrire la logique en français ou pseudo-code avec un \texttt{if/else}. Donner deux exemples d'entrées et la sortie attendue.}
+    On veut afficher \og Majeur \fg{} si \verb|age >= 18|, sinon \og Mineur \fg{}.
+    \UPSTIquestion{Décrire la logique en français ou pseudo-code avec un \texttt{if/else}. Donner deux exemples d'entrées et la sortie attendue.}
 \end{UPSTIexercice}
 
+\begin{UPSTIprofOnlyEnv}
+    \begin{UPSTIcorrectionP}{Majorité (partie 1)}
+        \begin{lstlisting}[language=C]
+// Pseudo-code :
+// si age >= 18 alors afficher "Majeur"
+// sinon afficher "Mineur"
+
+// Traduction C (extrait) :
+if (age >= 18)
+{
+    printf("Majeur\n");
+}
+else
+{
+    printf("Mineur\n");
+}
+
+// Exemples :
+// age = 17 -> "Mineur"
+// age = 21 -> "Majeur"
+        \end{lstlisting}
+    \end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}
+
+
 \begin{UPSTIexercice}{Qui est le plus grand ?}
-    On souhaite écrire un programme qui affiche lequel de deux nombres \verb|a| et \verb|b| est le plus grand. S'ils sont égaux, le programme le dira. 
-\UPSTIquestion{Proposer les lignes de codes qui, pour deux entiers \verb|a| et \verb|b|, affichent le plus grand ou s'ils sont égaux.}
+    On souhaite écrire un programme qui affiche lequel de deux nombres \verb|a| et \verb|b| est le plus grand. S'ils sont égaux, le programme le dira.
+    \UPSTIquestion{Proposer les lignes de codes qui, pour deux entiers \verb|a| et \verb|b|, affichent le plus grand ou s'ils sont égaux.}
 \end{UPSTIexercice}
+
+\begin{UPSTIprofOnlyEnv}
+    \begin{UPSTIcorrectionP}{Qui est le plus grand ?}
+        \begin{lstlisting}[language=C]
+if (a > b)
+{
+    printf("a est plus grand (%d)\n", a);
+}
+else if (b > a)
+{
+    printf("b est plus grand (%d)\n", b);
+}
+else
+{
+    printf("a et b sont egaux (%d)\n", a);
+}
+        \end{lstlisting}
+    \end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}
 
 
 \begin{UPSTIexercice}{Nombre mystère (logique)}
-    On considère un programme dont deux variables ont été déclarées : \verb|nombre_mystere| et \verb|nombre_joueur|. Le nombre mystère n'est pas connu du joueur. Il doit le deviner en tentant des valeurs au hasard. 
-\begin{lstlisting}
+    On considère un programme dont deux variables ont été déclarées : \verb|nombre_mystere| et \verb|nombre_joueur|. Le nombre mystère n'est pas connu du joueur. Il doit le deviner en tentant des valeurs au hasard.
+    \begin{lstlisting}
 int nombre_mystere = 7; 
 int nombre_joueur = get_int("Deviner le nombre mystere : ");
-\end{lstlisting}
-On veut écrire \textbf{bravo} si l'utilisateur à trouvé le nombre, \textbf{Raté} sinon.
-\UPSTIquestion{Ecrire un pseudo-code décrivant la logique à implémenter}
-\UPSTIquestion{Traduire ces lignes en langage C}
-\UPSTIquestion{Réécrire le programme pour afficher si le nombre proposé est \textbf{Trop petit} et \textbf{Trop grand}.}
+    \end{lstlisting}
+    On veut écrire \textbf{bravo} si l'utilisateur à trouvé le nombre, \textbf{Raté} sinon.
+    \UPSTIquestion{Ecrire un pseudo-code décrivant la logique à implémenter}
+    \UPSTIquestion{Traduire ces lignes en langage C}
+    \UPSTIquestion{Réécrire le programme pour afficher si le nombre proposé est \textbf{Trop petit} et \textbf{Trop grand}.}
 \end{UPSTIexercice}
+
+\begin{UPSTIprofOnlyEnv}
+    \begin{UPSTIcorrectionP}{Nombre mystère (logique)}
+        \begin{lstlisting}[language=C]
+// 1) Pseudo-code :
+// si nombre_joueur == nombre_mystere afficher "Bravo"
+// sinon afficher "Rate"
+
+// 2) Traduction C (version simple) :
+if (nombre_joueur == nombre_mystere)
+{
+    printf("Bravo\n");
+}
+else
+{
+    printf("Rate\n");
+}
+
+// 3) Variante avec "Trop petit" / "Trop grand" :
+if (nombre_joueur == nombre_mystere)
+{
+    printf("Bravo\n");
+}
+else if (nombre_joueur < nombre_mystere)
+{
+    printf("Trop petit\n");
+}
+else
+{
+    printf("Trop grand\n");
+}
+        \end{lstlisting}
+    \end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}
