@@ -1,0 +1,102 @@
+
+
+
+\section{Convertisseur de température - Echauffement !}
+On souhaite créer un programme permettant de convertir une température en degrés Celsius en degrés Fahrenheit et vice versa.
+
+On donne la formule de conversion suivante :
+\begin{itemize}
+	\item Pour convertir des degrés Celsius (C) en degrés Fahrenheit (F) : F = C * 9/5 + 32
+\end{itemize}
+
+Donner la formule de conversion inverse (Fahrenheit vers Celsius).
+
+\begin{UPSTIManipulation}{Conversion de température}
+	Le programme affichera un menu permettant à l'utilisateur de choisir entre deux options :
+	\begin{itemize}
+		\item F : Convertir Celsius en Fahrenheit
+		\item C : Convertir Fahrenheit en Celsius
+	\end{itemize}
+	L'utilisateur entrera son choix (F ou C) puis appuiera sur Entrée. Ensuite, le programme demandera la température à convertir.
+	Le programme effectuera la conversion et affichera le résultat.\\
+	\textbf{Attention :} Le choix de l'opération doit être fait avec un \texttt{switch case}. Structure \texttt{if} interdite.\\
+	La dernière sortie doit être de la forme :
+	`\texttt{<temperature\_utilisateur>} \texttt{<unite\_utilisateur>} = \texttt{<temperature\_convertie>} \texttt{<unite\_convertie>}\\
+	Exemple d'exécution :
+	\begin{lstlisting}[language=bash,style=console]
+Choisissez l'opération (F pour Celsius->Fahrenheit, C pour Fahrenheit->Celsius) :
+F 
+Entrez la température en degrés Celsius :
+25
+25.00 C = 77.00 F
+\end{lstlisting}
+\tcblower
+\begin{lstlisting}[language=bash]
+check50 IUT-GEII-Annecy/exercices/2025/info1/tp2/temperatures
+\end{lstlisting}
+\end{UPSTIManipulation}
+
+
+\section{Calculatrice - Entrainement !}
+On souhaite créer une calculatrice basique qui effectue les opérations addition, soustraction, multiplication et division.
+
+
+\subsection{Niveau 1 : Opérations}
+\begin{UPSTIManipulation}{Calculatrice}
+	Dossier : 2\_calculatrice\\
+	Écrire un programme qui demande à l'utilisateur un nombre, une opération (addition, soustraction, multiplication, division), puis un second nombre. \textbf{L'utilisateur appuiera sur Entrée après chaque nombre/opération}.\\
+	Pour choisir l'opération, l'utilisateur entrera \texttt{+}, \texttt{-}, \texttt{*}ou \texttt{/} respectivement.\\
+	Le programme affichera alors l'opération et son résultat sur une ligne
+
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|}
+			\hline
+			Entrée 1      & Entrée 2             & Entrée 3      & Sortie                                      \\
+			\hline
+			\texttt{<n1>} & \texttt{<operation>} & \texttt{<n2>} & \texttt{<n1> <operation> <n2> = <resultat>} \\
+			\hline
+		\end{tabular}
+	\end{center}
+	Avec \texttt{<n1>} et \texttt{<n2>} les deux nombres entrés par l'utilisateur, \texttt{<operation>} l'opération choisie et \texttt{<resultat>} le résultat de l'opération.
+	\textbf{Attention :} Le choix de l'opéaration doit être fait avec un \texttt{switch case}. Structure \texttt{if} interdite.
+	Exemple :
+	\begin{lstlisting}[language=bash,style=console]
+Bonjour, entrez votre opération : 
+3
+* 
+2
+Merci. Voici le résultat de votre opération : 
+3 * 2 = 6
+\end{lstlisting}
+\tcblower
+	check50 IUT-GEII-Annecy/exercices/2025/info1/tp2/calculatrice/niveau1
+\end{UPSTIManipulation}
+
+\subsection{Niveau 2 : Gestion des erreurs}
+
+\begin{UPSTIManipulation}{Gestion des erreurs}
+	\begin{itemize}
+		\item[$\Box$] Ajouter la gestion des erreurs dans le programme de la calculatrice
+		      \begin{itemize}
+			      \item Si l'utilisateur entre une opération invalide, le programme doit afficher \texttt{ERREUR : Opération invalide} et terminer.
+			      \item Si l'utilisateur entre une division par zéro, le programme doit afficher \texttt{ERREUR : Division par zéro} et terminer.
+		      \end{itemize}
+	\end{itemize}
+	L'utilisation de \texttt{if} est autorisé pour cette partie.
+	\begin{itemize}
+		\item[$\Box$] Après avoir vérifié manuellement votre programme, faire valider par l'enseignant.
+	\end{itemize}
+
+	\tcblower 
+\begin{lstlisting}
+check50 IUT-GEII-Annecy/exercices/2025/info1/tp2/calculatrice/niveau2
+\end{lstlisting}
+\end{UPSTIManipulation}
+
+
+
+
+
+
+
+

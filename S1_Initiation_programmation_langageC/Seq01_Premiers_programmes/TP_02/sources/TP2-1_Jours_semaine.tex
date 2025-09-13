@@ -1,0 +1,125 @@
+
+\section{Validateur de date}
+
+\subsection{Niveau 1 — Valider une date (jour/mois/année)}
+
+\begin{UPSTIManipulation}{Validateur de date}
+	\textbf{Dossier :} \texttt{3\_dates}
+	Écrire un programme qui lit trois entiers dans cet ordre : \textbf{jour}, \textbf{mois}, \textbf{année} (l’utilisateur appuie sur Entrée après chaque saisie).\\
+	Le programme doit \textbf{vérifier} si la date est \textbf{valide} en tenant compte des différentes longueurs de mois \textbf{et} des \textbf{années bissextiles}.
+
+	\textbf{Contraintes / attentes :}
+	\begin{itemize}
+		\item Utiliser un \textbf{\texttt{switch (mois)}} pour déterminer \textbf{le nombre de jours} dans le mois (\texttt{maxJours}).
+		\item Penser aux cas particuliers :
+		      \begin{itemize}
+			      \item Le \texttt{mois} doit être valide
+			      \item Le \texttt{jour} doit exister (attention aux années bixestiles)
+			      \item
+		      \end{itemize}
+		\item \textbf{Affichages attendus :}
+		      \begin{itemize}
+			      \item Si la date est valide : \texttt{Date valide}
+			      \item Sinon : \texttt{ERREUR : Date invalide.}
+		      \end{itemize}
+	\end{itemize}
+	\textbf{Rappels utiles :}
+	\begin{itemize}
+		\item \textbf{Année bissextile} :
+	\end{itemize}
+	Une année est bissextile si l'une de ces deux conditions est remplie :
+	\begin{itemize}
+		\item L'année est un mutiple de 400
+		\item L'année est un multiple de 4 mais pas un multiple de 100.
+	\end{itemize}
+	\texttt{(année \% 400 == 0) || (année \% 4 == 0 \&\& année \% 100 != 0)}
+	\begin{itemize}
+		\item \textbf{Longueur des mois} (hors février) :
+		      \begin{itemize}
+			      \item 31 jours : 1, 3, 5, 7, 8, 10, 12
+			      \item 30 jours : 4, 6, 9, 11
+		      \end{itemize}
+	\end{itemize}
+	\textbf{Exemples d’exécution :}
+	\begin{lstlisting}[language=bash]
+Entrez le jour :
+29
+Entrez le mois :
+2
+Entrez l'année :
+2024
+Date valide
+\end{lstlisting}
+	\begin{lstlisting}[language=bash]
+Entrez le jour :
+31
+Entrez le mois :
+4
+Entrez l'année :
+2025
+ERREUR : Date invalide.
+\end{lstlisting}
+	\textbf{Types conseillés :} \texttt{int} pour jour, mois, année.
+	\textbf{Pas de boucles ni de tableaux} nécessaires pour ce niveau.
+	\tcblower
+	\begin{lstlisting}[language=bash]
+check50 IUT-GEII-Annecy/exercices/2025/info1/tp2/date/niveau1
+	\end{lstlisting}
+\end{UPSTIManipulation}
+
+\begin{UPSTIinfor}{Structure possible (pseudo‑code)}
+	1) Lire \texttt{jour}, \texttt{mois}, \texttt{annee}
+	2) \texttt{Si mois n'est pas entre 1 et 12} → invalide
+	3) \texttt{switch (mois)} → donner \texttt{maxJours} (28 par défaut pour février)
+	4) \texttt{Si l'année est bissextile} → \texttt{maxJours = 29}
+	5) \texttt{Si le jour est plus grand que maxJours (ou inférieur à 1)} → invalide, sinon valide
+\end{UPSTIinfor}
+\hrule
+\subsection{Niveau 2 — Ajouter la saison (météorologique)}
+
+\begin{UPSTIManipulation}{Saison (en plus de la validation)}
+	Reprendre le programme du \textbf{Niveau 1}. \\
+	S’il détecte une \textbf{date valide}, il doit \textbf{afficher} la \textbf{saison météorologique} correspondante en \textbf{France} :
+	\begin{itemize}
+		\item \textbf{Printemps} : du \textbf{21 mars} au \textbf{20 juin}
+		\item \textbf{Été} : du \textbf{21 juin} au \textbf{20 septembre}
+		\item \textbf{Automne} : du \textbf{21 septembre} au \textbf{20 décembre}
+		\item \textbf{Hiver} : du \textbf{21 décembre} au \textbf{20 mars}
+	\end{itemize}
+
+	\begin{itemize}
+		\item \textbf{Affichages attendus :}
+		      \begin{itemize}
+			      \item Si la date est valide :
+		      \end{itemize}
+	\end{itemize}
+	\texttt{Date valide} (à la ligne suivante) \texttt{Saison : <saison>}
+	\begin{itemize}
+		\item Sinon : \texttt{ERREUR : Date invalide}
+	\end{itemize}
+	\textbf{Exemples d’exécution :}
+	\begin{lstlisting}[language=bash]
+Entrez le jour :
+15
+Entrez le mois :
+6
+Entrez l'année :
+2025
+Date valide
+Saison : été
+\end{lstlisting}
+	\begin{lstlisting}[language=bash]
+Entrez le jour :
+1
+Entrez le mois :
+12
+Entrez l'année :
+2025
+Date valide
+Saison : Hiver
+\end{lstlisting}
+	\tcblower
+	\begin{lstlisting}[language=bash]
+check50 IUT-GEII-Annecy/exercices/2025/info1/tp2/date/niveau2
+	\end{lstlisting}
+\end{UPSTIManipulation}
