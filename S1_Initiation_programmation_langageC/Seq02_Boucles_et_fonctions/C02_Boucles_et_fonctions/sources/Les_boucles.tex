@@ -1,0 +1,117 @@
+
+\section{Boucles en C — while, for, do...while}
+
+\subsection{La boucle While}
+\begin{UPSTIinfor}{Structure d'une boucle \texttt{while}}
+	Le mot clef \texttt{while}signifie "tant que". Une boucle \texttt{while} répète un bloc d'instructions \textbf{tant qu'}une condition est vraie.
+	La syntaxe est la suivante :
+	\begin{lstlisting}[language=c]
+while (condition) {
+    // bloc d'instructions à répéter
+}
+\end{lstlisting}
+	\begin{itemize}
+		\item La \textbf{condition} est une expression qui est évaluée avant chaque itération de la boucle. Si elle est vraie (non nulle), le bloc d'instructions est exécuté. Si elle est fausse (zéro), la boucle se termine.
+		\item Le \textbf{bloc d'instructions} est le code qui sera répété tant que la condition est vraie.
+	\end{itemize}
+	Une fois la boucle terminé, le programme continue avec les instructions qui suivent la boucle.
+\end{UPSTIinfor}
+
+\subsubsection{Exemple rapide : Miauler 3 fois avec \texttt{while}}
+
+\begin{lstlisting}[language=c]
+#include <stdio.h>
+int main(void) {
+    int i = 0;
+    while (i < 3) {
+        printf("Miaou !\n");
+        i++;
+    }
+    return 0;
+}
+\end{lstlisting}
+Ici, tant que \texttt{i} est inférieur à 3, on affiche "Miaou !" et on incrémente \texttt{i} de 1.
+Cela produit l'affichage suivant :
+\begin{lstlisting}[language=bash,style=console]
+Miaou !
+Miaou !
+Miaou ! 
+\end{lstlisting}
+
+\subsection{La boucle For}
+
+Une boucle \texttt{for} est une autre structure de boucle en C. Elle permet également de répéter un bloc d'instructions et est particulièrement utile lorsque le nombre d'itérations est connu à l'avance.
+
+\begin{UPSTIinfor}{For Vs While}
+	Il est totalement possible d'écrire le même programme avec une boucle \texttt{while} ou une boucle \texttt{for}. Le choix entre les deux dépend souvent de la préférence personnelle et du contexte du problème à résoudre.
+	La boucle \texttt{for} est souvent adaptée pour compter un nombre fixe d'itérations, tandis que la boucle \texttt{while} est plus flexible pour des conditions basées sur des événements ou des états qui peuvent changer de manière imprévisible.
+\end{UPSTIinfor}
+
+\begin{UPSTIinfor}{Structure d'une boucle \texttt{for}}
+La syntaxe d'une boucle \texttt{for} est la suivante :
+\begin{lstlisting}[language=c]
+for (initialisation; condition; mise_à_jour) {
+    // bloc d'instructions à répéter
+}
+\end{lstlisting}
+\begin{itemize}
+	\item Le \textbf{bloc d'instructions} est le code qui sera exécuté tant que la condition est vraie.
+	\item La boucle \texttt{for} comprend trois parties dans ses parenthèses :
+	      \begin{description}
+		      \item[initialisation] : C'est l'endroit où vous initialisez une variable de compteur. Cette partie est exécutée une seule fois, au début de la boucle.
+		      \item[condition] : C'est une expression qui est évaluée avant chaque itération de la boucle. Si elle est vraie (non nulle), le bloc d'instructions est exécuté. Si elle est fausse (zéro), la boucle se termine.
+		      \item[mise\_à\_jour] : C'est l'endroit où vous mettez à jour la variable de compteur. Cette partie est exécutée à la fin de chaque itération de la boucle.
+	      \end{description}
+\end{itemize}
+\end{UPSTIinfor}
+
+\begin{UPSTIinfor}{Exemple rapide : Aboyer 3 fois avec \texttt{for}}
+	\begin{lstlisting}[language=c]
+#include <stdio.h>
+int main(void) {
+    for (int i = 0; i < 3; i++) {
+        printf("Ouaf !\n");
+    }
+    return 0;
+}
+\end{lstlisting}
+	Ici, la boucle \texttt{for} initialise \texttt{i} à 0, vérifie si \texttt{i} est inférieur à 3, et incrémente \texttt{i} de 1 après chaque itération.
+\end{UPSTIinfor}
+
+\begin{UPSTIinfor}{Exemple de boucles imbriquées}
+	Il est possible d'imbriquer des boucles, c'est-à-dire d'avoir une boucle à l'intérieur d'une autre. Cela est souvent utilisé pour parcourir des structures de données à plusieurs dimensions, comme des matrices.
+	\begin{lstlisting}[language=c]
+for (int i = 0; i < 3; i++) {
+	for (int j = 0; j < 2; j++) {
+		printf("i = %d, j = %d\n", i, j);
+	}
+}	
+\end{lstlisting}
+
+\end{UPSTIinfor}
+
+
+\begin{UPSTIinfor}{Exemple du cours - A compléter}
+\vspace{10cm}
+\end{UPSTIinfor}
+
+\subsection{La boucle Do...While}
+Une boucle \texttt{do...while} est une structure de boucle en C qui garantit que le bloc d'instructions sera exécuté au moins une fois, car la condition est évaluée après l'exécution du bloc.
+
+\begin{UPSTIinfor}{Structure d'une boucle \texttt{do...while}}
+	La syntaxe d'une boucle \texttt{do...while} est la suivante :
+	\begin{lstlisting}[language=c]
+do {
+    // bloc d'instructions à répéter
+} while (condition);
+\end{lstlisting}
+	\begin{itemize}
+		\item Le \textbf{bloc d'instructions} est le code qui sera exécuté au moins une fois.
+		\item La \textbf{condition} est une expression qui est évaluée après chaque exécution du bloc. Si elle est vraie (non nulle), le bloc est répété. Si elle est fausse (zéro), la boucle se termine.
+	\end{itemize}
+\end{UPSTIinfor}
+
+\begin{UPSTIwarning}{Exécutée au moins une fois}
+	Contrairement aux boucles \texttt{while} et \texttt{for}, une boucle \texttt{do...while} garantit que le bloc d'instructions sera exécuté au moins une fois, même si la condition est fausse dès le départ.
+	La condition est évaluée \textbf{après} l'exécution du bloc, ce qui signifie que le bloc sera toujours exécuté une première fois avant que la condition ne soit vérifiée.
+\end{UPSTIwarning}

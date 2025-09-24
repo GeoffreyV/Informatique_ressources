@@ -1,0 +1,7 @@
+tp1/0_hello/ $ ls
+hello.c
+tp1/0_hello/ $ make hello
+tp1/0_hello/ $
+tp1/0_hello/ $ ./hello
+Hello, World!
+tp1/0_hello/ $

@@ -1,0 +1,18 @@
+\begin{UPSTIinfor}{La division en langage C}
+    \label{info:division}
+    En langage C, l'opérateur division ne se comporte pas de la même façon selon les types de données.
+    \begin{description}
+        \item[Si les deux variables sont des \textbf{entiers} : ] La division est une division euclidienne (division entière). Le résultat de l'opération est donc un ENTIER qui ne contient que le quotient de la division.
+              \begin{itemize}
+                  \item Exemple : \verb|5/2| retournera la valeur \verb|2|
+              \end{itemize}
+        \item[Si une des deux variables est flotante (float ou double) : ] La division est une division à virgule et le résultat sera donc un nombre à virgule.
+              \begin{itemize}
+                  \item Exemple : \verb|5/2.0| retournera la valeur \verb|2.5|
+              \end{itemize}
+    \end{description}
+\end{UPSTIinfor}
+
+\begin{UPSTIinfor}{L'opérateur modulo \% -- Le reste de la division euclidienne}
+L'opérateur modulo \% retourne le reste de la division euclidienne. \\Par exemple : \lstinline[language=c]{5%2} donnera 1, car 5 = 2*2 + 1.
+\end{UPSTIinfor}

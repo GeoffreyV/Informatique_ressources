@@ -1,0 +1,50 @@
+
+\section{Les fonctions void}
+
+Cette section se concentre sur les fonctions `void`, fontions qui produisent un effet sans retourner de valeur. Les fonctions d'affichages en sont des exemples typiques.
+
+\begin{UPSTIinfor}{Une fonction}
+	Une fonction sert à regrouper un ensemble d'instructions que l'on peut réutiliser plusieurs fois dans un programme. Cela permet de rendre le code plus lisible, plus modulaire et plus facile à maintenir.
+\end{UPSTIinfor}
+
+\subsection{Définir une fonction}
+Pour définir une fonction en C, on utilise la syntaxe suivante :
+
+\begin{lstlisting}[language=c]
+type_de_retour nom_de_fonction(paramètres) {
+    // bloc d'instructions
+}
+\end{lstlisting}
+
+\begin{itemize}
+	\item \textbf{type\_de\_retour} : C'est le type de donnée que la fonction renvoie après son exécution (par exemple, \texttt{int}, \texttt{float}, \texttt{char}, etc.). Si la fonction ne renvoie rien, on utilise le mot clef \texttt{void}.
+	\item \textbf{nom\_de\_fonction} : C'est le nom que vous donnez à la fonction. Il doit être descriptif de ce que fait la fonction.
+	\item \textbf{paramètres} : Ce sont les variables que la fonction peut prendre en entrée pour effectuer son travail. Elles sont optionnelles. Si la fonction ne prend pas de paramètres, on laisse les parenthèses vides.
+	\item \textbf{bloc d'instructions} : C'est le code qui sera exécuté lorsque la fonction est appelée.
+\end{itemize}
+
+\subsubsection{Exemple rapide : Une fonction void qui affiche un message de bienvenue}
+
+\begin{lstlisting}[language=c]
+#include <stdio.h>
+
+void afficher_bienvenue(); // Déclaration de la fonction
+
+int main(void) {
+    afficher_bienvenue(); // Appel de la fonction
+    return 0;
+}
+
+void afficher_bienvenue() { // Définition de la fonction
+    printf("Bienvenue dans le monde de la programmation en C !\n");
+}
+\end{lstlisting}
+
+Trois choses importantes à noter dans cet exemple :
+\begin{enumerate}
+	\item La fonction \texttt{afficher\_bienvenue} est déclarée avant son utilisation dans \texttt{main}. Cela informe le compilateur qu'une fonction avec ce nom et cette signature existe.
+	\item La fonction est définie après \texttt{main} -- mais elle pourrait aussi être définie avant.
+	\item La fonction est \textbf{appelée} dans \texttt{main} en utilisant son nom suivi de parenthèses.
+\end{enumerate}
+
+\subsubsection{Exemple du cours : Fonction qui affiche une ligne de \texttt{n} blocs}

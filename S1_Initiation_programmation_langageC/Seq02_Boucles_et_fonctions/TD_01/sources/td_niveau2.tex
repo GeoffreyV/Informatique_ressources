@@ -1,0 +1,97 @@
+\section{Niveau 2}
+\begin{UPSTIexercice}{Dessiner un rectangle avec une fonction}
+    \UPSTIquestion{Ecrire une fonction \texttt{dessiner\_ligne(int longueur)} qui dessine une ligne d'étoiles de longueur `longueur`.}
+    \UPSTIquestion{Ecrire un programme qui utilise cette fonction pour dessinner un rectangle d'étoiles à partir des nombres hauteur et largeur demandés à l'utilisateur.}
+    \paragraph{Exemple, pour hauteur=2 et largeur=4 }
+     \begin{lstlisting}
+****
+****
+     \end{lstlisting}
+     \UPSTIquestion{Comparer cette solution avec celle du niveau 1.}
+\end{UPSTIexercice}
+
+
+
+\begin{UPSTIexercice}{Moyenne de n nombres}
+  \UPSTIquestion{Ecrire un programme qui calcule la moyenne de `n` nombres entrés par l'utilisateur. \textit{Le programme demandera d'abord combien de nombres l'utilisateur veut utiliser avant de demander les nombres en question.}}
+\end{UPSTIexercice}
+
+\begin{UPSTIprofOnlyEnv}
+\begin{UPSTIcorrectionP}{Moyenne}
+    \lstinputlisting{sources/moyenne.c}
+\end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}
+
+\begin{UPSTIexercice}{Intérêts bancaire}
+  \UPSTIquestion{Ecrire un programme qui calcule le montant d'un placement après `n` années, sachant que le taux d'intérêt annuel est de 3.5\%. Le programme demandera à l'utilisateur le montant initial du placement et le nombre d'années `n`.}
+  \UPSTIquestion{Ecrire une une version qui calcule le nombre d'années nécessaires pour que le placement double.}  
+\end{UPSTIexercice}
+
+\begin{UPSTIprofOnlyEnv}
+\begin{UPSTIcorrectionP}{Intérêts bancaire}
+    \lstinputlisting{sources/interets_bancaire.c}
+\end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}
+
+\begin{UPSTIexercice}{Compter les moutons et les poulets}
+  Un fermier fait l'élevage de poulets et de moutons. Un jour, un voleur entre dans la ferme et vole un certain nombre d'animaux. Le fermier constate qu'il reste 74 pattes.
+  \UPSTIquestion{Ecrire un programme qui écrit toutes les combinaisons possibles de poulets et de moutons qu'il peut y avoir dans la ferme.}
+  \textit{Vous utiliserez une boucle pour tester toutes les combinaisons possibles.} 
+\end{UPSTIexercice}
+
+\begin{UPSTIprofOnlyEnv}
+\begin{UPSTIcorrectionP}{Compter les moutons et les poulets}
+    \lstinputlisting{sources/poulets_moutons.c}
+\end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}
+
+ \begin{UPSTIexercice}{Prédire l'affichage de boucles}
+   \UPSTIquestion{Prédire l'affichage des programmes suivants.}
+   \begin{lstlisting}
+#include <stdio.h>
+int main() {
+    int i;
+    for (i=0; i<5; i++) {
+        printf("*");
+    }
+    return 0;
+}
+   \end{lstlisting}
+   \begin{lstlisting}
+#include <stdio.h>
+int main() {
+    int i;
+    for (i=0; i<5; i++) {
+        printf("*\n");
+    }
+    return 0;
+}
+   \end{lstlisting}
+   \begin{lstlisting}
+#include <stdio.h>
+int main() {
+    int i;
+    int a = 0, b = 0;
+    for (i=0; i<3; i++) {
+            a = a + 1;
+            b = b + 2;
+            printf("a=%i b=%i\n", a, b);
+    }
+    return 0;
+}
+   \end{lstlisting}
+   \begin{lstlisting}
+#include <stdio.h>
+int main() {
+    int i;  
+    for (i=0; i<4; i++) {
+        if (i%2 == 0) {
+            printf("*");
+        } else {
+            printf("#");
+        }
+    }
+    return 0;
+}
+   \end{lstlisting}
+ \end{UPSTIexercice}

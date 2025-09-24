@@ -1,0 +1,65 @@
+\section{Boucles en C — while, for, do...while}
+
+\begin{UPSTIinfor}{Objectifs}
+	\begin{itemize}
+		\item Comprendre le fonctionnement de la boucle concernée.
+		\item Savoir \textbf{quand} l'utiliser par rapport aux alternatives.
+		\item Éviter les boucles infinies et apprendre à \textbf{déboguer}.
+	\end{itemize}
+\end{UPSTIinfor}
+
+\subsection{Une boucle, c'est quoi ?}
+Les boucles permettent de \textbf{répéter} un bloc d'instructions tant qu'une condition est vraie
+(ou un compteur pas encore à terme).
+
+\subsection{Exemple rapide : Miauler 3 fois avec \texttt{while}}
+
+\begin{lstlisting}[language=c]
+#include <stdio.h>
+int main(void) {
+    int i = 0;
+    while (i < 3) {
+        printf("Miaou !\n");
+        i++;
+    }
+    return 0;
+}
+\end{lstlisting}
+Ici, tant que \texttt{i} est inférieur à 3, on affiche "Miaou !" et on incrémente \texttt{i} de 1.
+Cela produit l'affichage suivant :
+\begin{lstlisting}[language=bash,style=console]
+Miaou !
+Miaou !
+Miaou ! 
+\end{lstlisting}
+
+
+\begin{lstlisting}[language=c]
+#include <stdio.h>
+
+int main(void) {
+    int i = 0;
+    while (i < 3) {
+        printf("i = %d\n", i);
+        i++;
+    }
+    return 0;
+}
+\end{lstlisting}
+
+
+
+\begin{UPSTIwarning}{Pièges}
+	\begin{itemize}
+		\item Condition mal mise à jour -> \textbf{boucle infinie}.
+		\item Off‑by‑one (\texttt{<} vs \texttt{<=}).
+		\item Variables modifiées \textbf{dans} la condition.
+	\end{itemize}
+\end{UPSTIwarning}
+
+\subsection{Exercices flash}
+\begin{enumerate}
+	\item Afficher les nombres de 1 à 10 sur une ligne.
+	\item Somme des entiers de 1 à \texttt{n} (entré par l'utilisateur).
+	\item Lire jusqu'à ce que l'utilisateur tape \texttt{0}, puis afficher le comptage.
+\end{enumerate}

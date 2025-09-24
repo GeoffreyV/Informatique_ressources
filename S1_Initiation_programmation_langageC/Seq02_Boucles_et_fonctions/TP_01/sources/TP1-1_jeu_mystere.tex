@@ -1,0 +1,74 @@
+
+\begin{UPSTIManipulation}{Devine le nombre - Version While, avec n vies}
+	Un nombre mystère est choisi au hasard entre 1 et 100. Le joueur a \texttt{n} vies pour deviner ce nombre.
+
+	Tout d'abord, le programme affiche un menu avec 4 niveux de difficulté, qu'il choisira en entrant un chiffre entre 1 et 4 :
+	\begin{enumerate}
+		\item Facile (10 vies)
+		\item Moyen (7 vies)
+		\item Difficile (5 vies)
+		\item Impossible (0 vies)
+	\end{enumerate}
+	Ensuite, le programme choisit un nombre au hasard entre 1 et 100, puis demande au joueur de deviner ce nombre.
+
+	\begin{itemize}
+		\item Après chaque proposition, le programme indique si le nombre mystère est plus grand ou plus petit que la proposition.
+		\item Le jeu continue jusqu'à ce que le joueur trouve le nombre mystère ou qu'il n'ait plus de vies.
+		\item Si le joueur trouve le nombre mystère, le programme affiche un message de félicitations.
+		\item Si le joueur n'a plus de vies, le programme affiche un message de défaite et révèle le nombre mystère.
+		\item Le programme doit utiliser une boucle \texttt{while} pour gérer les tentatives du joueur.
+	\end{itemize}
+	Le programme \texttt{devine\_le\_nombre\_while.c}contient le code suivant :
+	\begin{lstlisting}[language=c]
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+int main(void) {
+    int vies;
+    int nombre_mystere;
+    int proposition;
+    int niveau;
+   // A COMPLETER : Demander le niveau de difficulté et initialiser le nombre de vies
+   // L'utilisation d'un switch case parait appropriée ici. 
+    // Initialiser le générateur de nombres aléatoires
+    srand(time(NULL));
+    nombre_mystere = rand() % 100 + 1; // Nombre entre 1 et 100
+   // A COMPLETER : Boucle principale du jeu
+   return 0;
+}
+\end{lstlisting}
+	\begin{itemize}
+		\item[$\Box$] Compléter le programme \texttt{devine\_le\_nombre\_while.c} pour qu'il fonctionne comme décrit.
+		\item[$\Box$] Tester le programme avec chaque niveau de difficulté.
+		\item[$\Box$] Que se passe-t-il si le joueur choisit le niveau "Impossible" ? Pourquoi ?
+		\item[$\Box$] Que se passe-t-il si le joueur choisi un niveau invalide (par exemple 5) ? Pourquoi ?
+	\end{itemize}
+	\hrule
+	check50 IUT-GEII-Annecy/squelettes/branch-2025/tp3/devinelenombre/while
+\end{UPSTIManipulation}
+
+\begin{UPSTIManipulation}{Devine le nombre - Version For, avec n vies}
+	\begin{itemize}
+		\item[$\Box$] Faire le même exercice que précédemment, mais en utilisant une boucle \texttt{for} pour gérer les tentatives du joueur.
+	\end{itemize}
+	\hrule
+	check50 IUT-GEII-Annecy/squelettes/branch-2025/tp3/devinelenombre/for
+\end{UPSTIManipulation}
+
+\begin{UPSTIManipulation}{Devine le nombre - Version Do...While, avec n vies}
+	\begin{itemize}
+		\item[$\Box$] Faire le même exercice que précédemment, mais en utilisant une boucle \texttt{do...while} pour gérer les tentatives du joueur.
+		\item[$\Box$] Tester le programme avec n = 0. Que constatez-vous ?
+		\item[$\Box$] Ce type de boucle vous parait-il pertinent pour ce jeu ? Pourquoi ?
+	\end{itemize}
+	\hrule
+	check50 IUT-GEII-Annecy/squelettes/branch-2025/tp3/devinelenombre/doWhile
+\end{UPSTIManipulation}
+
+\begin{UPSTIManipulation}{Vérifier le choix d'un menu}
+	\begin{itemize}
+		\item[$\Box$] Quelle boucle est la plus adaptée pour vérifier que l'utilisateur a bien entré un choix valide dans un menu ? Justifier.
+		\item[$\Box$] Vérifier votre choix avec l'enseignant.
+		\item[$\Box$] Modifier vos programme précédents pour utiliser la boucle choisie.
+	\end{itemize}
+\end{UPSTIManipulation}
