@@ -1,0 +1,123 @@
+% ==========================================================================
+
+\begin{UPSTIexercice}{Le problème sans structure}
+On souhaite gérer les informations d’un étudiant :
+\begin{itemize}
+  \item son prénom,
+  \item son âge,
+  \item sa moyenne.
+\end{itemize}
+
+\UPSTIquestion{Proposer une liste de variables pour stocker ces informations.}
+\UPSTIquestion{Écrire un code qui affiche les informations d'une étudiante nommée « Alice », 20 ans, moyenne 14.2.}
+\UPSTIquestion{Comment stocker les informations de 3 étudiants différents ?}
+\UPSTIquestion{Pourquoi cette approche devient-elle source d'erreurs ?}
+\end{UPSTIexercice}
+
+% ==========================================================================
+
+\begin{UPSTIinfor}{Les types structurés en C}
+En C, on peut regrouper plusieurs variables dans une seule entité appelée \textbf{structure}, définie avec le mot-clé \texttt{struct}. 
+
+Dans notre cas, nous allons créer un type structuré qui contiendra différentes informations concernant une même entité. 
+
+La définition d'un type structuré se fait généralement avec le mot-clé \texttt{typedef} pour simplifier son utilisation ultérieure. La syntaxe générale est la suivante :
+\begin{lstlisting}[language=C]
+typedef struct {
+    type1 champ1;
+    type2 champ2;
+    ...
+    typeN champN;
+} NomDeLaStructure;
+\end{lstlisting}
+
+Prenons l'exemple d'un contact dans un carnet d'adresses. On peut définir une structure \texttt{Contact} qui regroupe plusieurs champs :
+\begin{lstlisting}[language=C]
+typedef struct {
+    char nom[50];
+    char prenom[50];
+    char telephone[15];
+    char email[100];
+    int anneeNaissance;
+} T_Contact;
+\end{lstlisting}
+\end{UPSTIinfor}
+
+\begin{UPSTIexercice}{Créer une structure cohérente}
+On regroupe les données dans une seule entité : un \textbf{type structuré}.
+
+\UPSTIquestion{A l'aide de l'exemple précédent, écris la définition d'une structure \texttt{Etudiant} contenant les champs correspondants aux informations d'un étudiant (prénom, âge, moyenne).}
+\UPSTIquestion{Écrire les déclarations suivantes :}
+\begin{itemize}
+  \item une variable \texttt{etudiant\_1} représentant un étudiant,
+  \item un tableau \texttt{classe} de 30 étudiants.
+\end{itemize}
+\UPSTIquestion{Ecrire les lignes de code permettant d'initialiser les informations de l'étudiant \texttt{etudiant\_1} avec les valeurs suivantes : prénom « Bob », âge 22, moyenne 15.5.}
+\UPSTIquestion{Ecrire les lignes de codes permettant de demander à l'utilisateur de saisir les informations des 30 étudiants du tableau \texttt{classe}.}
+\UPSTIquestion{Ecrire les lignes de code permettant d'afficher le nom, prenom et la moyenne du meilleur étudiant de la classe.}
+\end{UPSTIexercice}
+
+% ==========================================================================
+
+\begin{UPSTIexercice}{Représenter une heure}
+On veut manipuler une heure sous la forme \texttt{HH:MM:SS}.
+
+\UPSTIquestion{Proposer un type structuré \texttt{T\_Heure} permettant de stocker les information d'un horaire.}
+\UPSTIquestion{Écrire une fonction \texttt{void afficher\_heure(\texttt{T\_Heure} t)} qui affiche \texttt{HH:MM:SS}.}
+\UPSTIquestion{Écrire \texttt{int en\_secondes(T\_Heure)} qui renvoie le nombre total de secondes.}
+\UPSTIquestion{Créer deux horaires dans le \texttt{main} et afficher la différence en secondes.}
+\end{UPSTIexercice}
+
+% --------------------------------------------------------------------------
+
+\begin{UPSTIexercice}{Gérer un produit en stock}
+On veut garder les informations suivantes pour chaque produit :
+\begin{itemize}
+  \item son nom (chaîne de caractères),
+  \item son prix HT (nombre à virgule),
+  \item son taux de TVA (nombre à virgule).
+\end{itemize}
+
+
+\UPSTIquestion{Proposer un type structuré \texttt{T\_Produit} pour stocker ces informations.}
+\UPSTIquestion{Écrire une fonction qui renvoie le prix TTC d'un produit (la fonction ne prendra qu'un seul argument.)}
+\end{UPSTIexercice}
+
+% --------------------------------------------------------------------------
+
+\begin{UPSTIexercice}{Gestion d’un vecteur 2D}
+On manipule des vecteurs dans un plan :
+\begin{lstlisting}[language=C]
+typedef struct{
+    float x;
+    float y;
+} T_Vecteur;
+\end{lstlisting}
+
+\UPSTIquestion{Écrire une fonction qui renvoie la norme $\sqrt{x^2 + y^2}$ d'un vecteur donné en paramètre.}
+\UPSTIquestion{Écrire une fonction permettant de sommer deux vecteurs.}
+\UPSTIquestion{Écrire une fonction peremattant de donner l'opposé d'un vecteur.}
+\UPSTIquestion{Dans le \texttt{main}, déclarer trois vecteurs, afficher leurs normes, puis afficher la norme de $a-b$.}
+\end{UPSTIexercice}
+
+\begin{UPSTIexercice}{Extension : struct imbriquées}
+Il est également possible de créer des structures imbriquées, c'est-à-dire d'utiliser une structure comme champ d'une autre structure. Par exemple, on peut définir une structure \texttt{Adresse} et l'utiliser dans une structure \texttt{Etudiant} :
+\begin{lstlisting}[language=C]
+typedef struct {
+    char rue[50];
+    int codePostal;
+    char ville[30];
+} T_Adresse;
+
+struct Etudiant {
+    char prenom[30];
+    int age;
+    float moyenne;
+    T_Adresse adresse;
+};
+\end{lstlisting}
+
+\UPSTIquestion{Comment accéder à la ville d’un étudiant ?}
+\UPSTIquestion{Quel est l’avantage de créer une structure imbriquée plutôt qu’ajouter 3 champs à \texttt{Etudiant} ?}
+
+\end{UPSTIexercice}

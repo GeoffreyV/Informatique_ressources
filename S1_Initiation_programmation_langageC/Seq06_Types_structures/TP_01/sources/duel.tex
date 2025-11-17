@@ -1,0 +1,53 @@
+Dans cette partie, on propose de factoriser le code d'un duel de dé entre plusieurs joueurs.
+
+\subsection{Premières fonctions}
+\begin{UPSTIManipulation}{Test du programme}
+    \UPSTIetape Tester le code duel 
+    \UPSTIetape Lire l'architecture du programme
+\end{UPSTIManipulation}
+
+On propose de découper ce code selon les fonctions suivantes : 
+\begin{description}
+    \item[\texttt{Lancer\_de}] : Simule le lancement d'un dé
+    \begin{description}
+        \item[\textbf{Arguments :}] Aucun
+        \item[\textbf{Valeur de retour : }] Le résultat du lancer de dé
+    \end{description}
+    \item[\texttt{Afficher\_gagnant}] : Affiche le gagnant selon les scores donnés en entrée.
+    \begin{description}
+        \item[\textbf{Arguments :}] les scores des joueurs
+        \item[\textbf{Valeur de retour : }] Aucune
+        \item[\textbf{Comportement annexe : }] Affiche le gagnant sur la console. 
+    \end{description}
+\end{description}
+
+\paragraph{} Le programme utilisera alors ces fonctions tout en conservant le même comportement : 
+
+\begin{enumerate}
+    \item Deux appels de la fonction \texttt{lancer\_de}
+    \item Appel de la fonction \texttt{Afficher\_gagnant}
+\end{enumerate}
+\begin{UPSTIManipulation}{Factorisation du programme}
+    \UPSTIetape Déclarer les fonctions en écrivant les prototypes en début de fichier.
+    \UPSTIetape Définir les fonctions correspondantes en fin de fichier
+    \UPSTIetape Créer une fonction \texttt{duel} qui prend en entrée le numéro du duel et qui gère un duel.
+    \UPSTIetape Modifier la fonction \texttt{main} pour qu'elle appelle les fonctions 
+    \UPSTIetape Faire vérifier par l'enseigant.
+\end{UPSTIManipulation}
+
+\subsection{Généralisation des fonctions}
+
+On propose à présent d'améliorer les fonctions précédentes pour les rendre plus générale. Dans tous les cas, l'idée est de conserver le même fonctionnement mais de \textbf{généraliser} les fonctions pour les rendre les plus utilies possibles. Les modifications proposées sont les suivantes : 
+\paragraph{\text{lancer\_de}} Cette fonction doit maintenant permettre de lancer un dé avec un nombre de face variable. 
+On pourrait même proposer le tirage d'un nombre compris entre deux bornes données en paramètres.
+
+
+\begin{UPSTIManipulation}{Généralisation des fonctions}
+    \UPSTIetape Modifier les fonctions pour obtenir les généralisations présentées ci-dessus.
+    \UPSTIetape Faire vérifier par l'enseignant.
+\end{UPSTIManipulation}
+
+\begin{UPSTIManipulation}{Bonus : Généralisation de la fonction Afficher\_gagnant}
+    \UPSTIetape Modifier la fonction \texttt{Afficher\_gagnant} pour qu'elle puisse gérer un nombre variable de joueurs.
+    \UPSTIetape Faire vérifier par l'enseignant.
+\end{UPSTIManipulation}

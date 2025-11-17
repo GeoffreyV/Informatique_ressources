@@ -1,0 +1,381 @@
+% ==========================================================================
+
+\begin{UPSTIexercice}{Le problème sans structure}
+    On souhaite gérer les informations d’un étudiant :
+    \begin{itemize}
+        \item son prénom,
+        \item son âge,
+        \item sa moyenne.
+    \end{itemize}
+
+    \UPSTIquestion{Proposer une liste de variables pour stocker ces informations.}
+    \begin{UPSTIprofOnlyEnv}
+        Par exemple :
+    \begin{lstlisting}[language=C]
+    string prenom;
+    int age;
+    float moyenne;
+    \end{lstlisting}
+        On peut discuter de la taille du tableau de caractères (ici 30).
+    \end{UPSTIprofOnlyEnv}
+
+    \UPSTIquestion{Écrire un code qui définit puis affiche les informations d'une étudiante nommée « Alice », 20 ans, moyenne 14.2.}
+    \begin{UPSTIprofOnlyEnv}
+    \begin{lstlisting}[language=C]
+    string prenom = "Alice";
+    int age = 20;
+    float moyenne = 14.2f;
+
+    printf("%s, %d ans, moyenne = %.1f\\n", prenom, age, moyenne);
+    \end{lstlisting}
+    \end{UPSTIprofOnlyEnv}
+
+    \UPSTIquestion{Comment stocker les informations de 3 étudiants différents ?}
+    \begin{UPSTIprofOnlyEnv}
+    Sans structure, on peut multiplier les variables :
+    \begin{lstlisting}[language=C]
+    string prenom1, prenom2, prenom3;
+    int age1, age2, age3;
+    float moyenne1, moyenne2, moyenne3;
+    \end{lstlisting}
+    On peut aussi utiliser 3 tableaux parallèles :
+    \begin{lstlisting}[language=C]
+    string prenoms[3];
+    int ages[3];
+    float moyennes[3];
+    \end{lstlisting}
+    Mais on voit déjà que cela devient plus difficile à suivre.
+    \end{UPSTIprofOnlyEnv}
+
+    \UPSTIquestion{Pourquoi cette approche devient-elle source d'erreurs ?}
+    \begin{UPSTIprofOnlyEnv}
+    Parce qu’il faut constamment \textbf{se souvenir} que les éléments
+        	exttt{prenom1}, \texttt{age1}, \texttt{moyenne1} vont ensemble, etc.
+        On risque facilement de mélanger les indices ou d’oublier un champ.
+        On ne manipule jamais « un étudiant » mais « plusieurs variables séparées »,
+        ce qui augmente la probabilité d’erreurs et rend le code difficile à maintenir.
+    \end{UPSTIprofOnlyEnv}
+\end{UPSTIexercice}
+
+% ==========================================================================
+
+\begin{UPSTIinfor}{Les types structurés en C}
+    En C, on peut regrouper plusieurs variables dans une seule entité appelée \textbf{structure}, définie avec le mot-clé \texttt{struct}.
+
+    Dans notre cas, nous allons créer un type structuré qui contiendra différentes informations concernant une même entité.
+
+    La définition d'un type structuré se fait généralement avec le mot-clé \texttt{typedef} pour simplifier son utilisation ultérieure. La syntaxe générale est la suivante :
+    \begin{lstlisting}[language=C]
+typedef struct {
+    type1 champ1;
+    type2 champ2;
+    ...
+    typeN champN;
+} NomDeLaStructure;
+\end{lstlisting}
+
+    Prenons l'exemple d'un contact dans un carnet d'adresses. On peut définir une structure \texttt{Contact} qui regroupe plusieurs champs :
+    \begin{lstlisting}[language=C]
+typedef struct {
+    string nom;
+    string prenom;
+    string telephone;
+    string email;
+    int anneeNaissance;
+} T_Contact;
+\end{lstlisting}
+\end{UPSTIinfor}
+
+% ==========================================================================
+
+\begin{UPSTIexercice}{Créer une structure cohérente}
+    On regroupe les données dans une seule entité : un \textbf{type structuré}.
+
+    \UPSTIquestion{À l'aide de l'exemple précédent, écris la définition d'une structure \texttt{Etudiant} contenant les champs correspondants aux informations d'un étudiant (prénom, âge, moyenne).}
+    \begin{UPSTIprofOnlyEnv}
+        Par exemple, avec un \texttt{typedef} :
+        \begin{lstlisting}[language=C]
+    typedef struct {
+        string prenom;
+        int age;
+        float moyenne;
+    } T_Etudiant;
+    \end{lstlisting}
+    \end{UPSTIprofOnlyEnv}
+
+    \UPSTIquestion{Écrire les déclarations suivantes :}
+    \begin{itemize}
+        \item une variable \texttt{etudiant\_1} représentant un étudiant,
+        \item un tableau \texttt{classe} de 30 étudiants.
+    \end{itemize}
+    \begin{UPSTIprofOnlyEnv}
+        \begin{lstlisting}[language=C]
+T_Etudiant etudiant_1;
+T_Etudiant classe[30];
+\end{lstlisting}
+    \end{UPSTIprofOnlyEnv}
+
+    \UPSTIquestion{Écrire les lignes de code permettant d'initialiser les informations de l'étudiant \texttt{etudiant\_1} avec les valeurs suivantes : prénom « Bob », âge 22, moyenne 15.5.}
+    \begin{UPSTIprofOnlyEnv}
+    Deux possibilités :
+
+    	\textbf{Initialisation directe :}
+    \begin{lstlisting}[language=C]
+T_Etudiant etudiant_1 = {"Bob", 22, 15.5f};
+\end{lstlisting}
+
+    	\textbf{Affectation champ par champ :}
+    \begin{lstlisting}[language=C]
+etudiant_1.prenom = "Bob";
+etudiant_1.age = 22;
+etudiant_1.moyenne = 15.5f;
+\end{lstlisting}
+    \end{UPSTIprofOnlyEnv}
+
+    \UPSTIquestion{Écrire les lignes de code permettant de demander à l'utilisateur de saisir les informations des 30 étudiants du tableau \texttt{classe}.}
+    \begin{UPSTIprofOnlyEnv}
+        \begin{lstlisting}[language=C]
+    int i;
+    for (i = 0; i < 30; i++) {
+        printf("Etudiant %d\\n", i+1);
+        classe[i].prenom = get_string("Prenom : ");
+
+        classe[i].age = get_int("Age : ");
+
+        classe[i].moyenne = get_float("Moyenne : ");
+    }
+    \end{lstlisting}
+    \end{UPSTIprofOnlyEnv}
+
+    \UPSTIquestion{Écrire les lignes de code permettant d'afficher le prénom et la moyenne du meilleur étudiant de la classe.}
+    \begin{UPSTIprofOnlyEnv}
+        \begin{lstlisting}[language=C]
+int i, indice_meilleur = 0;
+
+for (i = 1; i < 30; i++) {
+    if (classe[i].moyenne > classe[indice_meilleur].moyenne) {
+        indice_meilleur = i;
+    }
+}
+
+printf("Meilleur etudiant : %s, moyenne = %.2f\\n",
+       classe[indice_meilleur].prenom,
+       classe[indice_meilleur].moyenne);
+\end{lstlisting}
+    \end{UPSTIprofOnlyEnv}
+\end{UPSTIexercice}
+
+% ==========================================================================
+
+\begin{UPSTIexercice}{Représenter une heure}
+    On veut manipuler une heure sous la forme \texttt{HH:MM:SS}.
+
+    \UPSTIquestion{Proposer un type structuré \texttt{T\_Heure} permettant de stocker les informations d'un horaire.}
+    \begin{UPSTIprofOnlyEnv}
+        \begin{lstlisting}[language=C]
+typedef struct {
+    int h;
+    int m;
+    int s;
+} T_Heure;
+\end{lstlisting}
+    \end{UPSTIprofOnlyEnv}
+
+    \UPSTIquestion{Écrire une fonction \texttt{void afficher\_heure(T\_Heure t)} qui affiche \texttt{HH:MM:SS}.}
+    \begin{UPSTIprofOnlyEnv}
+        \begin{lstlisting}[language=C]
+void afficher_heure(T_Heure t) {
+    printf("%02d:%02d:%02d\\n", t.h, t.m, t.s);
+}
+\end{lstlisting}
+    \end{UPSTIprofOnlyEnv}
+
+    \UPSTIquestion{Écrire \texttt{int en\_secondes(T\_Heure t)} qui renvoie le nombre total de secondes.}
+    \begin{UPSTIprofOnlyEnv}
+        \begin{lstlisting}[language=C]
+int en_secondes(T_Heure t) {
+    return t.h * 3600 + t.m * 60 + t.s;
+}
+\end{lstlisting}
+    \end{UPSTIprofOnlyEnv}
+
+    \UPSTIquestion{Créer deux horaires dans le \texttt{main} et afficher la différence en secondes.}
+    \begin{UPSTIprofOnlyEnv}
+        \begin{lstlisting}[language=C]
+int main(void) {
+    T_Heure h1 = {8, 30, 0};
+    T_Heure h2 = {10, 15, 30};
+
+    int s1 = en_secondes(h1);
+    int s2 = en_secondes(h2);
+
+    printf("Différence = %d secondes\\n", s2 - s1);
+    return 0;
+}
+\end{lstlisting}
+    \end{UPSTIprofOnlyEnv}
+
+    \UPSTIquestion{Ecrire la fonction inverse qui prend en paramètre un entier représentant un nombre de secondes et qui renvoie une structure \texttt{T\_Heure} correspondante.}
+    \begin{UPSTIprofOnlyEnv}
+        \begin{lstlisting}[language=C]
+T_Heure inverse(int total_secondes) {
+    T_Heure t;
+    t.h = total_secondes / 3600;
+    total_secondes %= 3600;
+    t.m = total_secondes / 60;
+    t.s = total_secondes % 60;
+    return t;
+}
+\end{lstlisting}
+    \end{UPSTIprofOnlyEnv}
+\end{UPSTIexercice}
+
+% --------------------------------------------------------------------------
+
+\begin{UPSTIexercice}{Gérer un produit en stock}
+    On veut garder les informations suivantes pour chaque produit :
+    \begin{itemize}
+        \item son nom (chaîne de caractères),
+        \item son prix HT (nombre à virgule),
+        \item son taux de TVA (nombre à virgule).
+    \end{itemize}
+
+    \UPSTIquestion{Proposer un type structuré \texttt{T\_Produit} pour stocker ces informations.}
+    \begin{UPSTIprofOnlyEnv}
+        \begin{lstlisting}[language=C]
+    typedef struct {
+        string nom;
+        float prixHT;
+        float tva;   // en pourcentage, par ex. 20.0
+    } T_Produit;
+    \end{lstlisting}
+    \end{UPSTIprofOnlyEnv}
+
+    \UPSTIquestion{Écrire une fonction qui renvoie le prix TTC d'un produit (la fonction ne prendra qu'un seul argument).}
+    \begin{UPSTIprofOnlyEnv}
+        \begin{lstlisting}[language=C]
+float prixTTC(T_Produit p) {
+    return p.prixHT * (1.0f + p.tva / 100.0f);
+}
+\end{lstlisting}
+        On pourra ensuite utiliser cette fonction dans un \texttt{main} pour comparer plusieurs produits.
+    \end{UPSTIprofOnlyEnv}
+\end{UPSTIexercice}
+
+% --------------------------------------------------------------------------
+
+\begin{UPSTIexercice}{Gestion d’un vecteur 2D}
+    On manipule des vecteurs dans un plan :
+    \begin{lstlisting}[language=C]
+typedef struct{
+    float x;
+    float y;
+} T_Vecteur;
+\end{lstlisting}
+
+    \UPSTIquestion{Écrire une fonction qui renvoie la norme $\sqrt{x^2 + y^2}$ d'un vecteur donné en paramètre.}
+    \begin{UPSTIprofOnlyEnv}
+        \begin{lstlisting}[language=C]
+#include <math.h>
+
+float norme(T_Vecteur v) {
+    return sqrtf(v.x * v.x + v.y * v.y);
+}
+\end{lstlisting}
+    \end{UPSTIprofOnlyEnv}
+
+    \UPSTIquestion{Écrire une fonction permettant de sommer deux vecteurs.}
+    \begin{UPSTIprofOnlyEnv}
+        \begin{lstlisting}[language=C]
+T_Vecteur addition(T_Vecteur a, T_Vecteur b) {
+    T_Vecteur res;
+    res.x = a.x + b.x;
+    res.y = a.y + b.y;
+    return res;
+}
+\end{lstlisting}
+    \end{UPSTIprofOnlyEnv}
+
+    \UPSTIquestion{Écrire une fonction permettant de donner l'opposé d'un vecteur.}
+    \begin{UPSTIprofOnlyEnv}
+        \begin{lstlisting}[language=C]
+T_Vecteur oppose(T_Vecteur v) {
+    T_Vecteur res;
+    res.x = -v.x;
+    res.y = -v.y;
+    return res;
+}
+\end{lstlisting}
+    \end{UPSTIprofOnlyEnv}
+
+    \UPSTIquestion{Dans le \texttt{main}, déclarer trois vecteurs, afficher leurs normes, puis afficher la norme de $a-b$.}
+    \begin{UPSTIprofOnlyEnv}
+        \begin{lstlisting}[language=C]
+int main(void) {
+    T_Vecteur a = {3.0f, 4.0f};
+    T_Vecteur b = {1.0f, 2.0f};
+    T_Vecteur c = {-2.0f, 0.5f};
+
+    printf("||a|| = %f\\n", norme(a));
+    printf("||b|| = %f\\n", norme(b));
+    printf("||c|| = %f\\n", norme(c));
+
+    T_Vecteur diff;
+    diff.x = a.x - b.x;
+    diff.y = a.y - b.y;
+
+    printf("||a-b|| = %f\\n", norme(diff));
+    return 0;
+}
+\end{lstlisting}
+    \end{UPSTIprofOnlyEnv}
+\end{UPSTIexercice}
+
+% ==========================================================================
+
+\begin{UPSTIexercice}{Extension : struct imbriquées}
+    Il est également possible de créer des structures imbriquées, c'est-à-dire d'utiliser une structure comme champ d'une autre structure. Par exemple, on peut définir une structure \texttt{Adresse} et l'utiliser dans une structure \texttt{Etudiant} :
+    \begin{lstlisting}[language=C]
+typedef struct {
+    string rue;
+    int codePostal;
+    string ville;
+} T_Adresse;
+
+typedef struct {
+    string prenom;
+    int age;
+    float moyenne;
+    T_Adresse adresse;
+} T_EtudiantAdresse;
+\end{lstlisting}
+
+    \UPSTIquestion{Comment accéder à la ville d’un étudiant ?}
+    \begin{UPSTIprofOnlyEnv}
+        Si \texttt{e} est une variable de type \texttt{T\_EtudiantAdresse}, on accède à la ville par :
+        \begin{lstlisting}[language=C]
+e.adresse.ville
+\end{lstlisting}
+    \end{UPSTIprofOnlyEnv}
+
+    \UPSTIquestion{Quel est l’avantage de créer une structure imbriquée plutôt qu’ajouter 3 champs à \texttt{Etudiant} ?}
+    \begin{UPSTIprofOnlyEnv}
+        On regroupe tous les champs liés à l'adresse dans une seule structure \texttt{T\_Adresse}.
+        Cela permet :
+        \begin{itemize}
+            \item de réutiliser \texttt{T\_Adresse} pour d'autres structures (Professeur, Entreprise, etc.) ;
+            \item de rendre le code plus lisible (une entité logique = une structure) ;
+            \item de faciliter les modifications (ajouter un champ à l'adresse sans toucher toutes les structures qui l'utilisent).
+        \end{itemize}
+    \end{UPSTIprofOnlyEnv}
+
+    \UPSTIquestion{Proposer une fonction \texttt{int habite\_ville(T\_EtudiantAdresse e, const char* ville)} qui renvoie 1 si l'étudiant habite dans la ville donnée, 0 sinon.}
+    \begin{UPSTIprofOnlyEnv}
+        \begin{lstlisting}[language=C]
+int habite_ville(T_EtudiantAdresse e, const char* ville) {
+    return (strcmp(e.adresse.ville, ville) == 0);
+}
+\end{lstlisting}
+        On peut ensuite parcourir un tableau d'étudiants et afficher ceux qui habitent dans une ville donnée.
+    \end{UPSTIprofOnlyEnv}
+\end{UPSTIexercice}
