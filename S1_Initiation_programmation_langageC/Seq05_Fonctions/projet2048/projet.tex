@@ -1,0 +1,27 @@
+\documentclass[TP, noCustomPackages]{UPSTI_Document}
+\usepackage{IUT_Annecy}
+\usepackage{logos_iut}
+
+% --- Git info (nécessite git et les hooks gitinfo2 activés) ---
+\usepackage{gitinfo2} % génère gitHeadInfo.gin via hooks post-commit/checkout/merge
+% Voir doc gitinfo2 pour activer les hooks une fois:
+%   git config --local gitinfo2.enabled true
+%   git info # ou copier les hooks fournis par le package
+\input{../preamble.tex}
+\input{../../preamble_module.tex}
+
+\documentVersion{E}
+\newcommand{\UPSTInumeroVersion}{\gitAuthorDate\if \gitDirty*dirty \fi}
+\newcommand{\UPSTInumero}{Mini Projet}
+\begin{document}
+
+Télécharger et décompresser le squelette du projet : 
+\begin{lstlisting}[language=bash]
+wget https://github.com/IUT-GEII-Annecy/squelettes/releases/download/branch-2025/projet_2048.zip
+unzip projet_2048.zip
+rm projet_2048.zip
+\end{lstlisting}
+
+\input{main.tex}
+
+\end{document}

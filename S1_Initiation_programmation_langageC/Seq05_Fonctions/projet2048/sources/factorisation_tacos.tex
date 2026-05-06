@@ -1,0 +1,39 @@
+Dans cette partie, nous allons reprendre l'exercice du magasin de tacos pour en factoriser le code à l'aide de fonctions. L'objectif est donc de rendre le code plus lisible et propres à l'aide de fonctions pertinentes.
+\begin{UPSTIprepa}{Conception des fonctions}
+  \UPSTIquestion{En reprenant le cahier des charges et le code sur les Tacos, proposer une liste de fonctions à concevoir.}
+  \begin{itemize}
+    \item Chaque fonction devra-t-être la plus générique possible
+    \item Une fonction peut appeler une autre fonction (la fonction prenant la commande du client, par exemple.)
+    \item Pour chaque fonction, préciser :%
+          \vspace{-10pt}
+          \begin{multicols}{2}
+            \begin{itemize}
+              \item son nom ;
+              \item son rôle (ce qu'elle fait) ;
+              \item ses paramètres (type et nom) ;
+              \item son type de retour.
+            \end{itemize}
+          \end{multicols}
+  \end{itemize}
+  \vspace{-0.9cm}
+  \casesGrid{\linewidth*2}{32}
+  \UPSTIquestion{Faire valider par l'enseignant}
+\end{UPSTIprepa}
+\pagebreak
+\begin{UPSTIManipulation}{Fonctions et réutilisation}
+  \UPSTIetape Recoder le programme des Tacos en utilisant les fonctions définies précédemment.
+  \begin{itemize}
+    \item Placer les prototypes des fonctions dans un fichier \texttt{boutique.h}
+    \item Placer les définitions des fonctions dans un fichier \texttt{boutique.c}
+    \item Placer le \texttt{main} dans un fichier \texttt{main.c}
+  \end{itemize}
+  \UPSTIetape En utilisant le plus de fonction possible du programme précédent, coder un programme pour une boulangerie qui propose les produits suivants :
+  \begin{multicols}{2}
+    \begin{itemize}
+      \item Baguette : 1.00 € ;
+      \item Croissant : 0.90 € ;
+      \item Pain au chocolat : 1.20 € ;
+      \item Pain aux raisins : 1.30 €.
+    \end{itemize}
+  \end{multicols}
+\end{UPSTIManipulation}

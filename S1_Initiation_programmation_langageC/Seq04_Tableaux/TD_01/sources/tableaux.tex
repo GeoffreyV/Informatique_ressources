@@ -1,0 +1,110 @@
+\begin{UPSTIexercice}{Identifier les tableaux}
+    Voici un extrait de programme :
+    \begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main(void) {
+    int notes[5] = {12, 15, 9, 14, 18};
+    printf("%d\n", notes[2]);
+}
+\end{lstlisting}
+
+    \UPSTIquestion{Combien d'éléments contient le tableau \texttt{notes} ?}
+    \UPSTIquestion{Quel est le type de ses éléments ?}
+    \UPSTIquestion{Que va afficher le programme ?}
+    \UPSTIquestion{Quel est l’indice du premier élément ? Et du dernier ?}
+\end{UPSTIexercice}
+
+
+\begin{UPSTIexercice}{Remplir un tableau}
+    On veut lire 5 entiers au clavier et les stocker dans un tableau.
+
+    \UPSTIquestion{Déclarer un tableau capable de contenir 5 entiers.}
+    \UPSTIquestion{Écrire une boucle \texttt{for} permettant de saisir les valeurs au clavier.}
+    \UPSTIquestion{Afficher ensuite le contenu du tableau, séparé par des espaces.}
+    \UPSTIquestion{Tester le programme avec des valeurs connues.}
+\end{UPSTIexercice}
+
+
+\begin{UPSTIexercice}{Somme et moyenne}
+    On dispose d’un tableau \texttt{notes[5]} contenant des entiers.
+
+    \UPSTIquestion{Écrire un programme qui calcule la somme de ses éléments.}
+    \UPSTIquestion{En déduire la moyenne.}
+\end{UPSTIexercice}
+
+
+\begin{UPSTIexercice}{Trouver le maximum}
+    \UPSTIquestion{Écrire un programme qui parcourt un tableau d’entiers et affiche la plus grande valeur contenue.}
+    \UPSTIquestion{Que se passe-t-il si tous les éléments sont égaux ?}
+    \UPSTIquestion{Proposer une variable \texttt{indiceMax} pour mémoriser l’indice du maximum et l’afficher à la fin.}
+\end{UPSTIexercice}
+
+
+\begin{UPSTIexercice}{Inverser un tableau}
+    \UPSTIquestion{Écrire un programme qui recopie un tableau dans un autre tableau, mais dans l’ordre inverse.}
+    \UPSTIquestion{Afficher le tableau d’origine et le tableau inversé.}
+\end{UPSTIexercice}
+
+
+\begin{UPSTIexercice}{Recherche dans un tableau}
+    On souhaite savoir si une valeur donnée se trouve dans un tableau.
+
+    \UPSTIquestion{Écrire une fonction \texttt{int contient(int t[], int n, int valeur)} qui renvoie 1 si la valeur est présente, 0 sinon.}
+    \UPSTIquestion{Modifier la fonction pour qu’elle renvoie l’indice de la valeur recherchée, ou -1 si elle n’existe pas.}
+\end{UPSTIexercice}
+
+
+\begin{UPSTIexercice}{Moyenne d'une classe}
+    On dispose d’un tableau contenant les notes d’une classe de 30 étudiants.
+
+    \UPSTIquestion{Écrire une fonction \texttt{float moyenne(int notes[], int n)}.}
+    \UPSTIquestion{Écrire une autre fonction \texttt{int au\_dessus\_de\_moyenne(int notes[], int n)} qui compte le nombre d’étudiants au-dessus de la moyenne.}
+    \UPSTIquestion{Comment tester rapidement ces fonctions dans le \texttt{main} ?}
+\end{UPSTIexercice}
+
+
+\begin{UPSTIexercice}{Tableau de caractères}
+    \UPSTIquestion{Créer une chaîne de caractères \texttt{char mot[] = "bonjour";}}
+    \UPSTIquestion{Quelle est la longueur de ce tableau ? Expliquer.}
+    \UPSTIquestion{Afficher chaque caractère un par un avec une boucle.}
+    \UPSTIquestion{Modifier le programme pour inverser la chaîne.}
+\end{UPSTIexercice}
+
+
+\begin{UPSTIexercice}{Défi — Histogramme de notes}
+    \begin{minipage}{.8\linewidth}
+        On suppose que l'on dispose d'un tableau \lstinline[language=c]{int notes[N]} de \texttt{N} notes d'étudiants.
+        On souhaite représenter ces notes sous la forme d'un histogramme horizontal, par exemple :
+
+        \UPSTIquestion{Dans un premier temps, tenter de faire l'exercice sans aide. Si c'est trop difficile, lire les questions suivantes.}
+        \UPSTIquestion{On suppose que les notes sont comprises entre 0 et 20. Créer un tableau \texttt{frequence[21]} initialisé à 0.}
+        \UPSTIquestion{Pour chaque note du tableau \texttt{notes}, incrémenter la case correspondante.}
+        \UPSTIquestion{Afficher ensuite un histogramme avec une étoile par étudiant (ex : 12 : ***).}
+        \UPSTIquestion{Que faudrait-il modifier pour accepter des notes réelles (float) ?}
+    \end{minipage}\hfill
+    \begin{minipage}{.15\linewidth}
+        \begin{tabular}{ll}
+            0 &        \\
+            1 & **     \\
+            2 & *      \\
+            3 & *      \\
+            4 & ****   \\
+            5 & **     \\
+            6 & ***    \\
+            7 & ****   \\
+            8 & *****  \\
+            9 & ****** \\
+        \end{tabular}
+    \end{minipage}
+
+\end{UPSTIexercice}
+
+\begin{UPSTIexercice}{Tableaux à deux dimensions}
+    On souhaite manipuler une matrice $3 \times 3$.
+
+    \UPSTIquestion{Déclarer un tableau \texttt{int M[3][3]}.}
+    \UPSTIquestion{Écrire deux boucles imbriquées pour le remplir.}
+    \UPSTIquestion{Afficher la matrice sous forme de grille.}
+    \UPSTIquestion{Écrire une fonction \texttt{int somme\_diagonale(int M[3][3])}.}
+\end{UPSTIexercice}

@@ -1,0 +1,6 @@
+wget https://github.com/IUT-GEII-Annecy/squelettes/releases/download/branch-2025/tp1.zip
+unzip tp1.zip
+rm tp1.zip
+ls
+cd tp1/
+code hello.c

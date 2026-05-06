@@ -1,0 +1,68 @@
+\section{2048}
+\begin{center}
+    \includegraphics[width=.4\textwidth]{2048.png}
+\end{center}
+On souhaite développer le célèbre jeu 2048 en C en utilisant des fonctions pour structurer le code. Le but du jeu est de faire glisser des tuiles numérotées sur une grille afin de combiner des tuiles identiques et atteindre la tuile 2048.
+
+\subsection{Représentation de la grille}
+La grille de jeu est une matrice 4x4 d'entiers. Chaque case peut contenir un nombre (2, 4, 8, etc.) ou être vide (représentée par 0).
+\begin{lstlisting}[language=C]
+#define SIZE 4
+typedef int Grid[SIZE][SIZE];
+\end{lstlisting}
+
+Le projet sera organisé de la façon suivante :
+\begin{itemize}
+    \item \texttt{jeu\_2048.c} : Contient la fonction \texttt{main} et la logique principale du jeu.
+    \item \texttt{affichage.c} : Contient les fonctions liées à l'affichage de la grille.
+    \item \texttt{deplacement.c} : Contient les fonctions pour gérer les déplacements des tuiles.
+    \item \texttt{utils.c} : Contient des fonctions utilitaires, comme l'initialisation de la grille et la vérification de la fin du jeu.
+    \item \texttt{affichage.h}, \texttt{deplacement.h}, \texttt{utils.h} : Fichiers d'en-tête correspondants pour déclarer les fonctions.
+\end{itemize}
+
+\subsection{Fonctions à implémenter}
+\begin{itemize}
+    \item \textbf{Initialisation de la grille} : Une fonction pour initialiser la grille avec deux tuiles aléatoires (2 ou 4).
+    \item \textbf{Affichage de la grille} : Une fonction pour afficher la grille dans la console.
+    \item \textbf{Déplacement des tuiles} : Quatre fonctions pour déplacer les tuiles vers le haut, le bas, la gauche et la droite. Chaque fonction doit gérer la fusion des tuiles identiques.
+    \item \textbf{Ajout d'une nouvelle tuile} : Une fonction pour ajouter une nouvelle tuile (2 ou 4) dans une case vide après chaque déplacement.
+    \item \textbf{Vérification de la fin du jeu} : Une fonction pour vérifier si le joueur a gagné (atteint la tuile 2048) ou perdu (plus de mouvements possibles).
+\end{itemize}
+
+\begin{UPSTIManipulation}{Initialisation et affichage de la grille}
+    \begin{enumerate}
+        \item Implémentez la fonction \texttt{void initGrid(Grid grid)} qui initialise la grille avec deux tuiles aléatoires.
+        \item Implémentez la fonction \texttt{void displayGrid(const Grid grid)} qui affiche la grille dans la console.
+        \item Testez ces fonctions dans le fichier \texttt{jeu\_2048.c} en initialisant une grille et en l'affichant.
+        \item Compilez et exécutez le programme pour vérifier que la grille est correctement initialisée et affichée.
+        \item Faire valider par l'enseignant.
+    \end{enumerate}
+\end{UPSTIManipulation}
+
+\begin{UPSTIManipulation}{Déplacement des tuiles}
+    \begin{enumerate}
+        \item Implémentez les fonctions de déplacement : \texttt{void moveUp(Grid grid)}, \texttt{void moveDown(Grid grid)}, \texttt{void moveLeft(Grid grid)}, \texttt{void moveRight(Grid grid)}.
+        \item Chaque fonction doit gérer la fusion des tuiles identiques.
+        \item Testez ces fonctions en effectuant des déplacements sur une grille initialisée.
+        \item Compilez et exécutez le programme pour vérifier que les déplacements fonctionnent correctement.
+        \item Faire valider par l'enseignant.
+    \end{enumerate}
+\end{UPSTIManipulation}
+
+\begin{UPSTIManipulation}{Ajout d'une nouvelle tuile et vérification de la fin du jeu}
+    \begin{enumerate}
+        \item Implémentez la fonction \texttt{void addNewTile(Grid grid)} qui ajoute une nouvelle tuile (2 ou 4) dans une case vide.
+        \item Implémentez la fonction \texttt{int checkGameOver(const Grid grid)} qui vérifie si le joueur a gagné ou perdu.
+        \item Testez ces fonctions en les intégrant dans la boucle principale du jeu.
+        \item Compilez et exécutez le programme pour vérifier que l'ajout de nouvelles tuiles et la vérification de la fin du jeu fonctionnent correctement.
+        \item Faire valider par l'enseignant.
+    \end{enumerate}
+\end{UPSTIManipulation}
+
+\subsection{Extension facultative}
+Pour aller plus loin, vous pouvez ajouter des fonctionnalités supplémentaires, telles que :
+\begin{itemize}
+    \item Un système de score pour suivre les points accumulés.
+    \item La possibilité de sauvegarder et de charger une partie.
+    \item Ajout d'une couleur pour chaque tuile lors de l'affichage.
+\end{itemize}

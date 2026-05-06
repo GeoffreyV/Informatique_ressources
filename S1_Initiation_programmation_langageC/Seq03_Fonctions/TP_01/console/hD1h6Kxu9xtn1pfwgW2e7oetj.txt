@@ -1,0 +1,7 @@
+tp1/3_tacos/ $ ./tacos
+Bonjour, bienvenu chez Tacocos
+Combien voulez-vous de Tacos ? 5
+Combien voulez-vous de Kebab ? 2
+Montant total : 42.50 euros
+Merci pour votre commande chez Tacocos
+tp1/3_tacos/ $ logout

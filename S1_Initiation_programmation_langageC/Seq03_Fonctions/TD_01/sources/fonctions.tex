@@ -1,0 +1,114 @@
+
+\begin{UPSTIexercice}{Identifier les fonctions}
+Voici un extrait de programme :
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int somme(int a, int b);
+
+int main(void) {
+    int x = 4;
+    int y = 5;
+    int z = somme(x, y);
+    printf("%d\n", z);
+}
+
+int somme(int a, int b) {
+    return a + b;
+}
+\end{lstlisting}
+
+\UPSTIquestion{Donner le nom de la fonction définie par le programme.}
+\UPSTIquestion{Quels sont ses paramètres ? Quelle est sa valeur de retour ?}
+\UPSTIquestion{Où la fonction est-elle appelée ? Que va afficher le programme ?}
+\end{UPSTIexercice}
+
+
+\begin{UPSTIexercice}{Compléter une fonction}
+On souhaite écrire une fonction \texttt{difference(a,b)} qui renvoie la différence absolue entre deux nombres entiers.
+\UPSTIquestion{Dessiner cette fonction sous la forme d'une boite avec entrées et sorties}
+\UPSTIquestion{Donner le prototype de la fonction}
+\UPSTIquestion{Donner le corps de la fonction}
+\end{UPSTIexercice}
+
+
+\begin{UPSTIexercice}{Calculer et afficher}
+\UPSTIquestion{Écrire une fonction \texttt{int carre(int n)} qui renvoie le carré d’un entier.}
+\UPSTIquestion{Ecrire une fonction \texttt{void afficher\_carre(int n)} qui affiche la phrase :
+\begin{center}
+\texttt{Le carré de n est ...}
+\end{center}}
+
+\UPSTIquestion{Comment la deuxième fonction peut-elle utiliser la première ?}
+\UPSTIquestion{Pourquoi est-il utile de séparer les deux fonctions ?}
+\end{UPSTIexercice}
+
+
+\begin{UPSTIexercice}{Fonctions avec plusieurs appels}
+
+\UPSTIquestion{Ecrire une fonction minimum qui renvoie le minimum entre deux nombres.}
+
+On veut une fonction \texttt{int minimum3(int a, int b, int c)} qui renvoie le plus grand de trois entiers, en réutilisant la fonction \texttt{minimum}.
+
+\UPSTIquestion{Écrire la fonction \texttt{minimum3}.}
+\UPSTIquestion{Quel intérêt y a-t-il à réutiliser une fonction déjà écrite ?}
+\UPSTIquestion{Comment tester cette fonction rapidement dans le \texttt{main} ?}
+\end{UPSTIexercice}
+
+
+\begin{UPSTIexercice}{Heure en seconde}
+    \UPSTIquestion{Donner le prototype et le corps d'une fonction qui prend en paramètre le nombre d'\texttt{heures}, \texttt{minutes} et \texttt{secondes} et qui donne en sortie le nombre de secondes écoulées depuis le début de la journée.}
+\end{UPSTIexercice}
+
+\begin{UPSTIexercice}{Fonctions booléennes}
+On définit une fonction \texttt{est\_pair} qui teste si un nombre est pair :
+
+\UPSTIquestion{Ecrire le prototype puis le code de la fonction.}
+\UPSTIquestion{Proposer une autre fonction \texttt{est\_multiple\_de(int n, int m)}.}
+\end{UPSTIexercice}
+
+
+
+\begin{UPSTIexercice}{S'appeler soi-même}
+    Soit la fonction suivante : 
+    \begin{lstlisting}[language=c]
+        int partez(int n){
+            if (n > 0){
+                printf("%i, ",n);
+                partez(n-1);
+            }
+            else{
+                printf("GO !");
+            }
+        }
+    \end{lstlisting}  
+    
+    \UPSTIquestion{Prédire l'affichage produit par les appels suivants}
+    \begin{multicols}{4}
+    \begin{itemize}
+        \item \lstinline[language=c]|partez(0)|
+        \item \lstinline[language=c]|partez(1)|
+        \item \lstinline[language=c]|partez(3)|
+        \item \lstinline[language=c]|partez(5)|
+    \end{itemize}
+    \end{multicols}
+    
+
+    Une fonction qui s'appelle elle-même est appelée une \textbf{fonction récursive.}
+\end{UPSTIexercice}
+
+
+
+\begin{UPSTIexercice}{Fonctions normales ou récursives ?}
+On souhaite calculer la factorielle d’un entier positif $n$.
+
+\UPSTIquestion{Rappeler la définition mathématique de la factorielle.}
+\UPSTIquestion{Donner une fonction qui calcule la factorielle d'un nombre donné en paramètres.}
+\UPSTIquestion{\textbf{Difficile : }Sans utiliser de boucle, écrire une fonction qui calcule la factorielle en s'appelant elle-même.}
+\end{UPSTIexercice}
+
+\begin{UPSTIexercice}{Nombre binaire}
+    \UPSTIquestion{Ecrire une fonction qui convertie un nombre décimal en binaire avec la méthode de la division.}
+    \UPSTIquestion{Même question avec une fonction récursive.}
+\end{UPSTIexercice}
+
