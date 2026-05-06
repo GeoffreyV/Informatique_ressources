@@ -1,0 +1,242 @@
+% ==========================================================================
+
+\begin{UPSTIexercice}{Projet d'ensemble : bulletins d'une classe}
+    On souhaite écrire un petit programme qui gère les \textbf{bulletins} d'une classe.
+    Chaque élève a plusieurs notes dans différentes matières, avec un \textbf{coefficient}
+    pour chaque matière.
+
+    On suppose que :
+    \begin{itemize}
+        \item tous les élèves ont les \textbf{mêmes matières}, dans le même ordre,
+        \item il y a au maximum \texttt{30} élèves dans la classe,
+        \item il y a par exemple \texttt{4} matières par élève,
+        \item chaque élève peut avoir \textbf{plusieurs notes} par matière (par ex. contrôles, devoirs, etc.).
+    \end{itemize}
+
+    \UPSTIquestion{Proposer des constantes et des types structurés permettant de modéliser ce problème.}
+
+    \begin{UPSTIprofOnlyEnv}
+        Par exemple :
+        \begin{lstlisting}[language=C]
+#define TAILLE_MAX_CLASSE 30
+#define NB_MATIERES       4
+#define NB_NOTES_MAX      10
+
+typedef struct {
+    string nom;
+    float coeff;
+} T_Matiere;
+
+typedef struct {
+    float notes[NB_MATIERES][NB_NOTES_MAX];
+    int nb_notes[NB_MATIERES];  // nombre de notes pour chaque matière
+    string prenom;
+    int age;
+} T_Eleve;
+
+T_Matiere matieres[NB_MATIERES];
+        \end{lstlisting}
+        Cette approche sépare les définitions des matières (nom et coefficient, partagés par tous)
+        du stockage des notes individuelles de chaque élève. Chaque élève peut avoir un nombre
+        différent de notes par matière, stocké dans \texttt{nb\_notes[]}.
+    \end{UPSTIprofOnlyEnv}
+
+    % ----------------------------------------------------------------------
+
+    \UPSTIquestion{Écrire une fonction \texttt{float moyenne\_eleve(T\_Eleve e, T\_Matiere matieres[])} qui renvoie la moyenne générale de l'élève,
+    en tenant compte des coefficients de chaque matière.}
+
+    \begin{UPSTIprofOnlyEnv}
+        \begin{lstlisting}[language=C]
+float moyenne_eleve(T_Eleve e, T_Matiere matieres[]) {
+    int i, k;
+    float somme_notes = 0.0f;
+    float somme_coeffs = 0.0f;
+
+    for (i = 0; i < NB_MATIERES; i++) {
+        float moy_matiere = 0.0f;
+
+        // Calculer la moyenne pour cette matiere
+        for (k = 0; k < e.nb_notes[i]; k++) {
+            moy_matiere += e.notes[i][k];
+        }
+        if (e.nb_notes[i] > 0) {
+            moy_matiere /= e.nb_notes[i];
+        }
+
+        // Ajouter à la moyenne pondérée
+        somme_notes  += moy_matiere * matieres[i].coeff;
+        somme_coeffs += matieres[i].coeff;
+    }
+
+    if (somme_coeffs == 0.0f) {
+        return 0.0f;
+    }
+
+    return somme_notes / somme_coeffs;
+}
+        \end{lstlisting}
+        Pour chaque matière, on calcule d'abord la moyenne de toutes les notes,
+        puis on l'intègre dans la moyenne générale pondérée par le coefficient.
+    \end{UPSTIprofOnlyEnv}
+
+    % ----------------------------------------------------------------------
+
+    \UPSTIquestion{Écrire une fonction \texttt{float moyenne\_matiere(T\_Eleve classe[], int nbEleves, int indiceMatiere)}
+        qui renvoie la moyenne de la classe pour une matière donnée (identifiée par son indice).}
+
+    \begin{UPSTIprofOnlyEnv}
+        \begin{lstlisting}[language=C]
+float moyenne_matiere(T_Eleve classe[], int nbEleves, int indiceMatiere) {
+    int i, k;
+    float somme = 0.0f;
+    int nb_notes_total = 0;
+
+    for (i = 0; i < nbEleves; i++) {
+        for (k = 0; k < classe[i].nb_notes[indiceMatiere]; k++) {
+            somme += classe[i].notes[indiceMatiere][k];
+            nb_notes_total++;
+        }
+    }
+
+    if (nb_notes_total == 0) {
+        return 0.0f;
+    }
+
+    return somme / nb_notes_total;
+}
+        \end{lstlisting}
+        On parcourt tous les élèves et toutes leurs notes pour la matière donnée,
+        en tenant compte du nombre réel de notes saisies pour chaque élève.
+    \end{UPSTIprofOnlyEnv}
+
+    % ----------------------------------------------------------------------
+
+    \UPSTIquestion{On va maintenant écrire une partie de \texttt{main}. On dispose d'un tableau
+        \texttt{T\_Eleve classe[TAILLE\_MAX\_CLASSE];} et d'un tableau \texttt{T\_Matiere matieres[NB\_MATIERES];}.
+        Écrire le code permettant :}
+    \begin{enumerate}
+        \item de demander à l'utilisateur combien d'élèves sont dans la classe ;
+        \item de saisir les matières (nom et coefficient) une seule fois ;
+        \item de saisir pour chaque élève : son prénom, son âge, puis ses notes dans les matières ;
+        \item d'afficher, pour chaque élève, sa moyenne générale.
+    \end{enumerate}
+
+    \begin{UPSTIprofOnlyEnv}
+        \begin{lstlisting}[language=C]
+int main(void) {
+    T_Eleve classe[TAILLE_MAX_CLASSE];
+    T_Matiere matieres[NB_MATIERES];
+    int nbEleves;
+    int i, j, k;
+
+    // 1. Saisie du nombre d'eleves
+    do {
+        nbEleves = get_int("Nombre d'eleves (1..%d) : ", TAILLE_MAX_CLASSE);
+    } while (nbEleves < 1 || nbEleves > TAILLE_MAX_CLASSE);
+
+    // 2. Saisie des matieres
+    for (j = 0; j < NB_MATIERES; j++) {
+        printf("Matiere %d\\n", j + 1);
+        matieres[j].nom = get_string("Nom de la matiere : ");
+        matieres[j].coeff = get_float("Coefficient : ");
+    }
+    printf("\\n");
+
+    // 3. Saisie des eleves et de leurs notes
+    for (i = 0; i < nbEleves; i++) {
+        printf("Eleve %d\\n", i + 1);
+        classe[i].prenom = get_string("Prenom : ");
+        classe[i].age = get_int("Age : ");
+
+        for (j = 0; j < NB_MATIERES; j++) {
+            classe[i].nb_notes[j] = get_int("Nombre de notes en %s : ",
+                                            matieres[j].nom);
+
+            for (k = 0; k < classe[i].nb_notes[j]; k++) {
+                classe[i].notes[j][k] = get_float(
+                    "Note %d : ", k + 1);
+            }
+        }
+        printf("\\n");
+    }
+
+    // 4. Affichage des moyennes
+    for (i = 0; i < nbEleves; i++) {
+        float m = moyenne_eleve(classe[i], matieres);
+        printf("Moyenne de %s = %.2f\\n", classe[i].prenom, m);
+    }
+
+    return 0;
+}
+        \end{lstlisting}
+        Pour chaque matière et chaque élève, on demande d'abord le nombre de notes,
+        puis les notes individuelles. Cela permet une flexibilité complète.
+    \end{UPSTIprofOnlyEnv}
+
+    % ----------------------------------------------------------------------
+
+    \UPSTIquestion{À partir des fonctions précédentes, écrire le code (dans le \texttt{main} ou dans une fonction dédiée) qui :}
+    \begin{itemize}
+        \item détermine l'élève ayant la meilleure moyenne générale et affiche son prénom et sa moyenne ;
+        \item calcule la moyenne de la classe pour chaque matière ;
+        \item affiche la matière dont la moyenne de classe est la plus faible (matière « à renforcer »).
+    \end{itemize}
+
+    \begin{UPSTIprofOnlyEnv}
+        \textbf{Recherche du meilleur élève :}
+        \begin{lstlisting}[language=C]
+int indice_meilleur = 0;
+float meilleure_moy = moyenne_eleve(classe[0], matieres);
+float m;
+int i;
+
+for (i = 1; i < nbEleves; i++) {
+    m = moyenne_eleve(classe[i], matieres);
+    if (m > meilleure_moy) {
+        meilleure_moy = m;
+        indice_meilleur = i;
+    }
+}
+
+printf("Meilleur eleve : %s (moyenne = %.2f)\\n",
+       classe[indice_meilleur].prenom, meilleure_moy);
+        \end{lstlisting}
+
+        \textbf{Moyennes par matière et matière la plus faible :}
+        \begin{lstlisting}[language=C]
+float moyennesMatieres[NB_MATIERES];
+int j;
+
+for (j = 0; j < NB_MATIERES; j++) {
+    moyennesMatieres[j] = moyenne_matiere(classe, nbEleves, j);
+    printf("Moyenne de la classe en %s : %.2f\\n",
+           matieres[j].nom,
+           moyennesMatieres[j]);
+}
+
+// Recherche de la matiere avec la plus faible moyenne
+int indice_pire_matiere = 0;
+float pire_moyenne = moyennesMatieres[0];
+
+for (j = 1; j < NB_MATIERES; j++) {
+    if (moyennesMatieres[j] < pire_moyenne) {
+        pire_moyenne = moyennesMatieres[j];
+        indice_pire_matiere = j;
+    }
+}
+
+printf("Matiere a renforcer : %s (moyenne = %.2f)\\n",
+       matieres[indice_pire_matiere].nom,
+       pire_moyenne);
+        \end{lstlisting}
+
+        Cet ensemble de questions mobilise :
+        \begin{itemize}
+            \item plusieurs \textbf{structures} (struct avec données partagées et individuelles),
+            \item des \textbf{tableaux} de structures,
+            \item des \textbf{fonctions} qui prennent et renvoient des structures,
+            \item des \textbf{boucles imbriquées} et un peu d'algorithmique (recherche de max/min).
+        \end{itemize}
+    \end{UPSTIprofOnlyEnv}
+\end{UPSTIexercice}
