@@ -1,0 +1,55 @@
+
+
+\discipline{Informatique}
+\newcommand{\UPSTIidClasse}{1}
+\newcommand{\UPSTItitreEnTete}{Informatique}
+\edef\CurrentFileDir{\currfiledir} 
+
+
+%\newcommand{\UPSTIsource}{Certaines images proviennent du site freepics.com}
+
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amssymb} % pour \Box et \CheckedBox
+\usepackage{makecell} % permet \makecell{...} avec des \\ dans une cellule
+\renewcommand\arraystretch{1.2}
+
+\lstdefinelanguage{bash}{
+  alsoletter={-},           % autoriser "-" dans les mots-clés
+  morekeywords={
+    ls, cd, mv, cp, rm, mkdir, rmdir, echo, cat, less, head, tail,
+    grep, find, chmod, chown, ps, kill, top, man, which, alias, export,
+    ssh, scp, rsync, tar, gzip, gunzip, ping, curl, wget, zip, unzip, code
+  },
+  sensitive=true,           % sensible à la casse
+  morecomment=[l]{\#},      % commentaires avec #
+  morestring=[b]",          % chaînes "..."
+  morestring=[b]'           % chaînes '...'
+}
+
+\definecolor{colString}{rgb}{0.6,0.1,0.1}
+\definecolor{lightblack}{rgb}{0.3,.3,.3}
+
+\newcommand{\prompt}[1]{\textcolor{gray}{#1}}
+
+% \lstdefinestyle{console}{
+%   language=bash,
+%   basicstyle=\ttfamily,
+%   columns=fullflexible,
+%   keepspaces=true,
+%   escapeinside=||, % <- permet d'injecter du LaTeX entre |...|
+% }
+
+\lstdefinestyle{console}{
+    basicstyle      = \footnotesize\ttfamily,% ecriture standard
+    extendedchars   = true,% permet d'avoir des accents dans le code
+    tabsize         = 2,%
+    showspaces      = false,%
+    showstringspaces = false,%
+    numbers=none,%
+    breaklines=true,%
+    breakautoindent=true,%
+    escapeinside=|| % <- permet d'injecter du LaTeX entre |...|
+}
+
+
