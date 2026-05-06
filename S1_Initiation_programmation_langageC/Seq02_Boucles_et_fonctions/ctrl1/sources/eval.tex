@@ -1,0 +1,47 @@
+\documentclass[a4paper]{article}
+\usepackage[box,completemulti]{automultiplechoice}
+\usepackage{csvsimple}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{ifthen}
+
+\begin{document}
+
+% ----- Chargement des étudiants (id,name,level) -----
+\csvreader[head to column names]{students.csv}{}{% Début de la boucle sur les étudiants
+  \def\STUDENTID{\id}%
+  \def\STUDENTNAME{\name}%
+  \def\LEVEL{\level}%
+  % Graine de randomisation stable par étudiant
+  \setrandomseed{\STUDENTID}%
+
+  \onecopy{1}{% une copie par étudiant
+    \begin{center}
+      \Large \textbf{QCM — Variables \& Conditions}\\[2mm]
+      \normalsize Niveau \LEVEL\quad|\quad \STUDENTNAME\ (ID \STUDENTID)
+    \end{center}
+
+    % --- Bloc d'identification AMC (code élève pour liaison) ---
+    \AMCcodeGridInt{5}{\STUDENTID}
+
+    % Questions communes à tous
+    \shufflegroup{common}
+    \insertgroup{common}
+
+    % Sélection selon le niveau
+    \ifthenelse{\equal{\LEVEL}{1}}{%
+      \shufflegroup{L1}\insertgroup{L1}%
+    }{}
+    \ifthenelse{\equal{\LEVEL}{2}}{%
+      \shufflegroup{L2}\insertgroup{L2}%
+    }{}
+    \ifthenelse{\equal{\LEVEL}{3}}{%
+      \shufflegroup{L3}\insertgroup{L3}%
+    }{}
+
+    \clearpage
+  }% fin \onecopy
+}% fin boucle CSV
+
+\end{document}

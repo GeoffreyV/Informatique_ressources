@@ -1,0 +1,220 @@
+% ==================== NIVEAU 1 — VARIABLES / TYPES (10) ====================
+
+\element{niveau1}{
+  \begin{question}{n1-types-annee-naissance}
+    Quel type est cohérent pour représenter l'année de naissance d'un étudiant ?
+    \begin{multicols}{5}
+      \begin{reponses}
+        \bonne{\lstinline[language=c]|int|}
+        \mauvaise{\lstinline[language=c]|float|}
+        \mauvaise{\lstinline[language=c]|double|}
+        \mauvaise{\lstinline[language=c]|string|}
+        \mauvaise{\lstinline[language=c]|bool|}
+      \end{reponses}
+    \end{multicols}
+  \end{question}
+}
+
+\element{niveau1}{
+  \begin{question}{n1-types-initiale}
+    Quel type convient pour stocker une \textbf{initiale} (une seule lettre) ?
+    \begin{multicols}{5}
+      \begin{reponses}
+        \bonne{\lstinline[language=c]|char|}
+        \mauvaise{\lstinline[language=c]|int|}
+        \mauvaise{\lstinline[language=c]|float|}
+        \mauvaise{\lstinline[language=c]|double|}
+        \mauvaise{\lstinline[language=c]|string|}
+      \end{reponses}
+    \end{multicols}
+  \end{question}
+}
+
+\element{niveau1}{
+  \begin{question}{n1-types-temperature}
+    Pour une température mesurée avec décimales, le type le plus adapté est :
+    \begin{multicols}{5}
+      \begin{reponses}
+        \mauvaise{\lstinline[language=c]|char|}
+        \mauvaise{\lstinline[language=c]|int|}
+        \bonne{\lstinline[language=c]|float|}
+        \mauvaise{\lstinline[language=c]|double|}\bareme{1}
+        \mauvaise{\lstinline[language=c]|string|}
+      \end{reponses}
+    \end{multicols}
+  \end{question}
+}
+
+\element{niveau1}{
+  \begin{question}{n1-types-salle}
+    Le \textbf{numéro de salle} (par ex. 105) devrait être stocké en :
+    \begin{multicols}{5}
+      \begin{reponses}
+        \bonne{\lstinline[language=c]|int|}
+        \mauvaise{\lstinline[language=c]|float|}
+        \mauvaise{\lstinline[language=c]|char|}
+        \mauvaise{\lstinline[language=c]|double|}
+        \mauvaise{\lstinline[language=c]|float|}
+      \end{reponses}
+    \end{multicols}
+  \end{question}
+}
+
+\element{niveau1}{
+  \begin{question}{n1-types-prix}
+    Un \textbf{prix} (ex. 3.20€) doit être stocké idéalement en :
+    \begin{multicols}{5}
+      \begin{reponses}
+        \bonne{\lstinline[language=c]|double|}
+        \mauvaise{\lstinline[language=c]|int|}
+        \mauvaise{\lstinline[language=c]|char|}
+        \mauvaise{\lstinline[language=c]|bool|}
+        \mauvaise{\lstinline[language=c]|float|}\bareme{0.5}
+      \end{reponses}
+    \end{multicols}
+  \end{question}
+}
+
+\element{niveau1-open}{
+  \begin{question}{n1-open-declarations}
+    Écrire la \textbf{déclaration} (sans initialisation) de variables pour : prénom, âge, taille (en m).
+    \evaluationProfLignes{3}{3}
+  \end{question}
+}
+
+
+\element{niveau1}{
+  \begin{question}{n1-trace-affectations}
+    Que valent \lstinline|x|, \lstinline|y|, \lstinline|z| après ce code ?
+    \lstinputlisting[language=c]{sources/codes/affectation-1.c}
+    \begin{multicols}{5}
+      \begin{reponses}
+        \bonne{\lstinline|x=13, y=6, z=7|}
+        \mauvaise{\lstinline|x=7, y=6, z=13|}
+        \mauvaise{\lstinline|x=14, y=5, z=7|}
+        \mauvaise{\lstinline|x=14, y=6, z=7|}
+        \mauvaise{\lstinline|x=13, y=7, z=7|}
+        \mauvaise{\lstinline|x=7, y=7, z=13|}
+        \mauvaise{\lstinline|x=14, y=5, z=13|}
+        \mauvaise{\lstinline|x=15, y=6, z=13|}
+      \end{reponses}
+    \end{multicols}
+
+  \end{question}
+}
+
+\element{niveau1}{
+  \begin{question}{n1-prediction-division}
+    Prédire l'affichage :
+    \lstinputlisting[language=c]{sources/codes/division.c}
+    \begin{multicols}{5}
+      \begin{reponses}
+        \bonne{\lstinline|C:3| \\ \lstinline|D:3.500000|}
+        \mauvaise{\lstinline|C:3| \\ \lstinline|D:3.000000|}
+        \mauvaise{\lstinline|C:3.500000| \\ \lstinline|D:3|}
+        \mauvaise{\lstinline|C:3| \\ \lstinline|D:3.5|}
+        \mauvaise{\lstinline|C:3.000000| \\ \lstinline|D:3.500000|}
+      \end{reponses}
+    \end{multicols}
+  \end{question}
+}
+
+% ==================== NIVEAU 1 — CONDITIONS (10) ====================
+
+\element{niveau1}{
+  \begin{question}{n1-if-majeur}
+    Que doit afficher ce code si \lstinline|age=16| ?
+    \lstinputlisting[language=c]{sources/codes/bonjour.c}
+    \begin{multicols}{5}
+      \begin{reponses}
+        \bonne{\lstinline|Au revoir|\\}
+        \mauvaise{\lstinline|Bienvenue|\\}
+        \mauvaise{\lstinline|Bienvenue|\\\lstinline|Au revoir|}
+        \mauvaise{Rien\\}
+        \mauvaise{Erreur\\}
+      \end{reponses}
+    \end{multicols}
+  \end{question}
+}
+
+\element{niveau1}{
+  \begin{question}{n1-parite}
+    Quelle condition teste que \texttt{n} est \textbf{pair} ?
+    \begin{multicols}{5}
+    \begin{reponses}
+      \bonne{\lstinline[language=C]|n \% 2 == 0|}
+      \mauvaise{\lstinline[language=C]|n / 2 == 0|}
+      \mauvaise{\lstinline[language=C]|n == 2|}
+      \mauvaise{\lstinline[language=C]|n \% 2 == 1|}
+      \mauvaise{\lstinline[language=C]|n / 2 == 1|}
+    \end{reponses}
+  \end{multicols}
+  \end{question}
+}
+
+\element{niveau1-open}{
+  \begin{question}{n1-open-comparaison}
+    Écrire une suite \lstinline|if/else if/else| qui affiche le plus grand entre \lstinline|a| et \lstinline|b|, ou \og Égaux \fg{}.
+    \evaluationProfLignes{3}{3}
+  \end{question}
+}
+
+\element{niveau1}{
+  \begin{question}{n1-prediction-simple}
+    Sortie du programme ?
+    \lstinputlisting[language=c]{sources/codes/prediction-simple-1.c}
+    \begin{multicols}{5}
+      \begin{reponses}
+        \bonne{\lstinline|<=5|}
+        \mauvaise{\lstinline|>5|}
+        \mauvaise{Rien}
+        \mauvaise{Erreur}
+      \end{reponses}
+    \end{multicols}
+  \end{question}
+}
+
+\element{niveau1-if-open}{
+  \begin{question}{n1-open-nbmystere}
+    On a \lstinline|int mystere=7;| et l'utilisateur propose \lstinline|p|.
+    Ecrire un code qui répond \texttt{Bravo !} si l'utilisateur a trouvé. Sinon, il indiquera \texttt{Plus grand} ou \texttt{Plus petit} afin de l'aider s'il n'a pas trouvé. 
+    \evaluationProfLignes{3}{4}
+  \end{question}
+}
+
+\element{niveau1}{
+  \begin{question}{n1-if-syntaxe}
+    Quelle écriture est \textbf{correcte} ?
+    \begin{multicols}{5}
+      \begin{reponses}
+        \bonne{\lstinline[language=C]|if (age>=18) { printf("Majeur"); } else { printf("Mineur"); }|}
+        \mauvaise{\lstinline[language=C]|if (age>=18) printf("Majeur") else printf("Mineur");|}
+        \mauvaise{\lstinline[language=C]|if age>=18 then printf("Majeur");|}
+        \mauvaise{\lstinline[language=C]|if (age>=18) { printf("Majeur") } else printf("Mineur")|}
+      \end{reponses}
+    \end{multicols}
+  \end{question}
+}
+
+\element{niveau1}{
+  \begin{question}{n1-prediction-multi}
+    Prédire la sortie de ce programme :
+    \lstinputlisting[language=c]{sources/codes/prediction-simple-2.c}
+    \begin{multicols}{5}
+      \begin{reponses}
+        \bonne{\lstinline|E|}
+        \mauvaise{\lstinline|A|}
+        \mauvaise{\lstinline|B|}
+        \mauvaise{Rien}
+      \end{reponses}
+    \end{multicols}
+
+  \end{question}
+}
+
+\element{niveau1-open}{
+  \begin{question}{n1-open-cond-rediger}
+    Rédiger une condition qui affiche \og Accès \fg{} si \lstinline|badge==1|, sinon \og Refus \fg{}.
+    \evaluationProfLignes{3}{1}
+  \end{question}
+}

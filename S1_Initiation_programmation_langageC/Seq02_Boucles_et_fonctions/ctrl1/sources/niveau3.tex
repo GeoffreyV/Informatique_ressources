@@ -1,0 +1,248 @@
+% ==================== NIVEAU 3 — VARIABLES / TYPES (10) ====================
+
+\element{niveau3}{
+\begin{question}{n3-trace1}
+Donner les valeurs finales de \lstinline|a|, \lstinline|b|, \lstinline|c|.
+\begin{lstlisting}[language=C]
+int a=5, b=10, c=0;
+c = a + b;
+b = c - a;
+a = a + 1;
+c = a + b + c;
+\end{lstlisting}
+\begin{reponses}
+  \bonne{a=6, b=10, c=31}
+  \mauvaise{a=6, b=5, c=21}
+  \mauvaise{a=5, b=10, c=15}
+  \mauvaise{a=16, b=5, c=21}
+  \mauvaise{a=0, b=0, c=0}
+  \mauvaise{Erreur}
+\end{reponses}
+\end{question}
+}
+
+% \element{niveau3}{
+% \begin{question}{n3-trace2}
+% Donner les valeurs finales de \lstinline|x|, \lstinline|y|, \lstinline|z|.
+% \begin{lstlisting}[language=C]
+% int x=2,y=3,z=4;
+% x=y+z;
+% y=x-z;
+% z=x+y+z;
+% \end{lstlisting}
+% \begin{reponses}
+%   \bonne{x=7,y=3,z=14}
+%   \mauvaise{x=5,y=2,z=7}
+%   \mauvaise{x=7,y=1,z=8}
+%   \mauvaise{x=9,y=3,z=12}
+%   \mauvaise{x=0,y=0,z=0}
+%   \mauvaise{Erreur}
+% \end{reponses}
+% \end{question}
+% }
+
+% \element{niveau3}{
+% \begin{question}{n3-open-struct}
+% Proposer une organisation en C pour stocker les informations de plusieurs étudiants (prénom, âge, moyenne).  
+% Comparer l’utilisation de tableaux parallèles et de \lstinline|struct|.
+% \evaluationProfLignes{4}{4}
+% \end{question}
+% }
+
+% \element{niveau3}{
+% \begin{question}{n3-open-doublefloat}
+% Expliquer en 3 phrases la différence entre \lstinline|float| et \lstinline|double| (taille, précision, plage).  
+% Illustrer avec un exemple de calcul où le choix du type change le résultat.
+% \evaluationProfLignes{3}{3}
+% \end{question}
+% }
+
+% \element{niveau3}{
+% \begin{question}{n3-cast}
+% Que vaut \lstinline|(int)(10/4 + 10.0/4)| ?
+% \begin{reponses}
+%   \bonne{7}
+%   \mauvaise{5}
+%   \mauvaise{2}
+%   \mauvaise{2.5}
+%   \mauvaise{4}
+%   \mauvaise{Erreur}
+% \end{reponses}
+% \end{question}
+% }
+
+% \element{niveau3}{
+% \begin{question}{n3-open-debordement}
+% Expliquer ce qui se passe pour :  
+% \lstinline|int x = 2000000000 + 2000000000;|  
+% Donner un exemple d’impact concret (finance, capteur…).
+% \evaluationProfLignes{3}{3}
+% \end{question}
+% }
+
+% \element{niveau3}{
+% \begin{question}{n3-affichage-mix}
+% Que va afficher ce code ?
+% \begin{lstlisting}[language=C]
+% int i=7, j=3;
+% float u=7, v=3;
+% i = i + j/2;
+% u = u / v;
+% printf("%d %f\n", i, u);
+% \end{lstlisting}
+% \begin{reponses}
+%   \bonne{8 ; 2.333333}
+%   \mauvaise{7 ; 2.333333}
+%   \mauvaise{8 ; 2}
+%   \mauvaise{7 ; 2}
+%   \mauvaise{Erreur}
+%   \mauvaise{9 ; 2.333333}
+% \end{reponses}
+% \end{question}
+% }
+
+% \element{niveau3}{
+% \begin{question}{n3-open-erreurs}
+% Pourquoi \lstinline|0.1+0.1+0.1| peut-il donner \lstinline|0.30000000000000004| en C ?  
+% Expliquer en deux phrases.
+% \evaluationProfLignes{2}{2}
+% \end{question}
+% }
+
+% \element{niveau3}{
+% \begin{question}{n3-modulo}
+% Que vaut \lstinline|(10*3)%7| ?
+% \begin{reponses}
+%   \bonne{2}
+%   \mauvaise{1}
+%   \mauvaise{0}
+%   \mauvaise{3}
+%   \mauvaise{7}
+%   \mauvaise{Erreur}
+% \end{reponses}
+% \end{question}
+% }
+
+% \element{niveau3}{
+% \begin{question}{n3-open-somme}
+% Écrire un code en C qui calcule la somme des 100 premiers entiers (\(1+2+…+100\)).  
+% Proposer une amélioration en utilisant la formule mathématique.
+% \evaluationProfLignes{4}{3}
+% \end{question}
+% }
+
+% % ==================== NIVEAU 3 — CONDITIONS (10) ====================
+
+% \element{niveau3}{
+% \begin{question}{n3-cond-tranche}
+% Ajouter la règle : gratuit si âge multiple de 10, sinon barème classique.  
+% Quelle structure est correcte ?
+% \begin{reponses}
+%   \bonne{\lstinline[language=C]|if(age%10==0) {...} else if(age<12)...|}
+%   \mauvaise{\lstinline[language=C]|if(age/10==0)...|}
+%   \mauvaise{\lstinline[language=C]|if(age*10==0)...|}
+%   \mauvaise{Toujours gratuit}
+%   \mauvaise{Jamais gratuit}
+%   \mauvaise{Erreur}
+% \end{reponses}
+% \end{question}
+% }
+
+% \element{niveau3}{
+% \begin{question}{n3-open-cond-imbrique}
+% Écrire un enchaînement \lstinline|if| imbriqués pour contrôler l’accès :  
+% badge OK, tenue OK ou formation OK, ou responsable.  
+% Puis réécrire en une seule expression booléenne.
+% \evaluationProfLignes{4}{4}
+% \end{question}
+% }
+
+% \element{niveau3}{
+% \begin{question}{n3-cond-court1}
+% Que va afficher ?
+% \begin{lstlisting}[language=C]
+% int j=0, i=5;
+% if( (j!=0) && (i/j>2) ) puts("OK"); else puts("SAFE");
+% \end{lstlisting}
+% \begin{reponses}
+%   \bonne{SAFE}
+%   \mauvaise{OK}
+%   \mauvaise{Erreur}
+%   \mauvaise{Rien}
+%   \mauvaise{Toujours vrai}
+%   \mauvaise{Toujours faux}
+% \end{reponses}
+% \end{question}
+% }
+
+% \element{niveau3}{
+% \begin{question}{n3-cond-court2}
+% Pourquoi \lstinline|(y!=0)&&(x%y==1)| est-il plus sûr que l’inverse ?
+% \evaluationProfLignes{2}{2}
+% \end{question}
+% }
+
+% \element{niveau3}{
+% \begin{question}{n3-open-reduction}
+% Rédiger une condition : réduction si étudiant ET (bourse OU mention).  
+% Proposer deux cas de test.
+% \evaluationProfLignes{3}{3}
+% \end{question}
+% }
+
+% \element{niveau3}{
+% \begin{question}{n3-cond-equivalence}
+% Simplifier \lstinline|!(x<5)&&!(x>10)|.
+% \begin{reponses}
+%   \bonne{x>=5 && x<=10}
+%   \mauvaise{x<5 || x>10}
+%   \mauvaise{x<=5 && x>=10}
+%   \mauvaise{Toujours vrai}
+%   \mauvaise{Toujours faux}
+%   \mauvaise{Erreur}
+% \end{reponses}
+% \end{question}
+% }
+
+% \element{niveau3}{
+% \begin{question}{n3-open-bool}
+% Écrire une condition : alarme si (temp>Tmax ET !override) OU (fumée ET ventilOff).  
+% Donner un exemple vrai et un exemple faux.
+% \evaluationProfLignes{3}{3}
+% \end{question}
+% }
+
+% \element{niveau3}{
+% \begin{question}{n3-cond-ouexcl}
+% Quelle expression teste le OU exclusif (XOR) de p et q ?
+% \begin{reponses}
+%   \bonne{(p||q)&&!(p&&q)}
+%   \mauvaise{p||q}
+%   \mauvaise{p&&q}
+%   \mauvaise{!(p||q)}
+%   \mauvaise{!(p)&&!(q)}
+%   \mauvaise{Erreur}
+% \end{reponses}
+% \end{question}
+% }
+
+% \element{niveau3}{
+% \begin{question}{n3-open-exemples}
+% Donner trois exemples de conditions imbriquées rencontrées dans des applications réelles.
+% \evaluationProfLignes{3}{3}
+% \end{question}
+% }
+
+% \element{niveau3}{
+% \begin{question}{n3-cond-syntaxe}
+% Laquelle est correcte ?
+% \begin{reponses}
+%   \bonne{\lstinline[language=C]|if((x>0 && y>0) || isAdmin) printf("OK");|}
+%   \mauvaise{\lstinline[language=C]|if(x>0 and y>0 or isAdmin)|}
+%   \mauvaise{\lstinline[language=C]|if((x>0 && y>0) || isAdmin) { printf("OK") }|}
+%   \mauvaise{\lstinline[language=C]|if x>0 && y>0 printf("OK");|}
+%   \mauvaise{\lstinline[language=C]|if((x>0)&&(y>0)||(isAdmin)); printf("OK");|}
+%   \mauvaise{Aucune}
+% \end{reponses}
+% \end{question}
+% }

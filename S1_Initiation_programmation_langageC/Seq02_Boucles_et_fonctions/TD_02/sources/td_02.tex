@@ -1,0 +1,156 @@
+\section{Exercices complémentaires}
+
+
+\begin{UPSTIexercice}{Rectangle vide}
+    \begin{minipage}{0.8\textwidth}
+  \UPSTIquestion{Ecrire un programme qui affiche un rectangle vide de largeur `w` et de hauteur `h` donnés par l'utilisateur. Par exemple, pour `w=6` et `h=4`, le programme affichera le dessin ci-contre.}
+\end{minipage}%
+\hfill
+    \begin{minipage}{0.1\textwidth}
+\begin{verbatim}
+******
+*    *
+*    *
+******\end{verbatim}
+\end{minipage}
+\end{UPSTIexercice}
+
+
+\begin{UPSTIexercice}{Triangle de Pascal}
+    \begin{minipage}
+{0.8\textwidth}
+ Le triangle de Pascal est une disposition triangulaire des coefficients binomiaux. Chaque nombre est la somme des deux nombres directement au-dessus de lui dans le triangle.
+      \UPSTIquestion{Ecrire un programme qui affiche les `n` premières lignes du triangle de Pascal, où `n` est un entier donné par l'utilisateur. Par exemple, pour `n=5`, le programme affichera le dessin ci-contre.
+}\end{minipage}
+\hfill
+\begin{minipage}{0.1\textwidth}
+\begin{verbatim}
+    1
+   1 1
+  1 2 1
+ 1 3 3 1
+1 4 6 4 1\end{verbatim}
+\end{minipage}
+\end{UPSTIexercice}
+
+\begin{UPSTIexercice}{Prédire l'affichage}
+  \UPSTIquestion{Prédire l'affichage généré par le code suivant :
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+int main() {
+    int n = 5;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= i; j++) {
+            printf("*");
+        }
+        printf("\n");
+    }
+    return 0;
+}
+\end{lstlisting}}
+  \UPSTIquestion{Prédire l'affichage généré par le code suivant :
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+int main() {
+    int n = 5;
+    for (int i = n; i >= 1; i--) {
+        for (int j = 1; j <= i; j++) {
+            printf("*");
+        }
+        printf("\n");
+    }
+    return 0;
+}
+\end{lstlisting}}
+  \UPSTIquestion{Prédire l'affichage généré par le code suivant : 
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+int main() {
+    int n = 5;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n - i; j++) {
+            printf(" ");
+        }
+        for (int k = 1; k <= i; k++) {
+            printf("*");
+        }
+        printf("\n");
+    }
+    return 0;
+}
+\end{lstlisting}}
+\end{UPSTIexercice}
+
+\begin{UPSTIprofOnlyEnv}
+\begin{UPSTIcorrectionP}{Prédire l'affichage}
+    Voici les affichages attendus pour les trois exercices de prédiction :
+    \begin{itemize}
+        \item Premier exercice :
+        \begin{verbatim}
+*
+**
+***
+****
+*****
+        \end{verbatim}
+        \item Deuxième exercice :
+        \begin{verbatim}*****
+*****
+****
+***
+**
+*
+        \end{verbatim}
+        \item Troisième exercice :
+        \begin{verbatim}
+    *
+   **
+  ***
+ ****
+*****
+        \end{verbatim}
+    \end{itemize}
+\end{UPSTIprofOnlyEnv}
+
+\section{Très difficile}
+\begin{UPSTIexercice}{Disque et cercle}
+  \UPSTIquestion{Ecrire un programme qui affiche un disque plein et un cercle vide de rayon `r` donnés par l'utilisateur. Par exemple, pour `r=5`, le programme affichera :
+}\begin{verbatim}
+  *****
+ *******
+*********
+*********
+*********
+*********
+ *******
+  *****\end{verbatim}
+  
+\end{UPSTIexercice}
+
+\begin{UPSTIprofOnlyEnv}
+  \begin{UPSTIcorrectionP}{Disque et cercle}
+    Voici un exemple de solution pour afficher un cercle vide. L'affichage d'un disque plein est laissé en exercice.
+    \begin{lstlisting}[language=C]
+#include <stdio.h>
+#include <math.h>
+#define PI 3.14159265358979323846
+int main() {
+    int r;
+    printf("Entrez le rayon du cercle : ");
+    scanf("%d", &r);
+
+    for (int y = -r; y <= r; y++) {
+        for (int x = -r; x <= r; x++) {
+            if (fabs(sqrt(x*x + y*y) - r) < 0.5) {
+                printf("*");
+            } else {
+                printf(" ");
+            }
+        }
+        printf("\n");
+    }
+    return 0;
+}
+    \end{lstlisting}
+  \end{UPSTIcorrectionP}
+\end{UPSTIprofOnlyEnv}

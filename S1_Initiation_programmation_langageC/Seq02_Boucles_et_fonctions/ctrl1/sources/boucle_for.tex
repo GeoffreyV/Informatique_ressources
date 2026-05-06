@@ -1,0 +1,94 @@
+% ==================== NIVEAU 2 — BOUCLES ====================
+
+\element{niveau2-for}{
+  \begin{question}{n2-for-somme-1a10}
+    Que va afficher ce code ?
+    \lstinputlisting[language=c]{sources/codes/niveau2/boucle-for-somme.c}
+    \begin{multicols}{4}\begin{reponses}
+      \bonne{55}
+      \mauvaise{45}
+      \mauvaise{10}
+      \mauvaise{9}
+      \mauvaise{1}
+      \mauvaise{100}
+      \mauvaise{0}
+      \lastchoices
+      \mauvaise{Ne compile pas}
+    \end{reponses}\end{multicols}
+  \end{question}
+}
+
+\element{niveau2-for}{
+  \begin{question}{n2-for-bornes}
+    Quelle boucle affiche exactement \texttt{0 1 2 3 4} ?
+    \begin{multicols}{2}\begin{reponses}
+      \bonne{\lstinline|for (int i=0; i<5; i++) printf("\%d ", i);|}
+      \mauvaise{\lstinline|for (int i=0; i<=5; i++) printf("\%d ", i);|}
+      \mauvaise{\lstinline|for (int i=1; i<=5; i++) printf("\%d ", i);|}
+      \mauvaise{\lstinline|for (int i=1; i<5; i++) printf("\%d ", i);|}
+      \mauvaise{\lstinline|for (int i=0; i<4; i++) printf("\%d ", i);|}
+      \lastchoices
+      \mauvaise{Aucune de ces réponses}
+    \end{reponses}\end{multicols}
+  \end{question}
+}
+
+\element{niveau2-for}{
+  \begin{question}{n2-while-factorielle}
+    Que va afficher ce programme si l'utilisateur saisit \texttt{5} ?
+    \lstinputlisting[language=c]{sources/codes/niveau2/boucle-while-factorielle.c}
+    \begin{multicols}{5}\begin{reponses}
+      \bonne{120}
+      \mauvaise{100}
+    \mauvaise{30}
+    \mauvaise{50}
+      \mauvaise{25}
+      \mauvaise{15}
+      \mauvaise{5}
+      \mauvaise{Erreur}
+      \mauvaise{Boucle infinie}
+    \end{reponses}\end{multicols}
+  \end{question}
+}
+
+
+\element{niveau2-for}{
+  \begin{question}{n2-dowhile-menu}
+    Ce programme répète le menu tant que l'utilisateur ne tape pas 0.
+    Que se passe-t-il si l'utilisateur saisit directement 0 au premier tour ?
+    \lstinputlisting[language=c]{sources/codes/niveau2/boucle-dowhile-menu.c}
+    \begin{multicols}{2}\begin{reponses}
+      \bonne{Le menu s'affiche une fois}
+      \mauvaise{Le menu ne s'affiche jamais}
+      \mauvaise{Le menu s'affiche deux fois}
+      \mauvaise{Erreur de compilation}/bareme{1}
+      \mauvaise{Boucle infinie}
+      \mauvaise{Comportement indéfini}
+    \end{reponses}\end{multicols}
+  \end{question}
+}
+
+\element{boucle-ouverte}{
+  \begin{question}{n2-dowhile-nbvalide}
+    Compléter ce programme pour qu'il demande un entier entre 1 et 10 inclus
+    et répète la saisie tant que la valeur n'est pas correcte.
+    \lstinputlisting[language=c]{sources/codes/niveau2/boucle-dowhile-nbvalide.c}
+    \evaluationProfLignes{3}{3}
+  \end{question}
+}
+
+\element{boucle-ouverte}{
+  \begin{question}{n2-for-moyenne}
+    Compléter ce programme pour qu'il affiche la moyenne de 10 nombres saisis par l'utilisateur. 
+    \lstinputlisting[language=c]{sources/codes/niveau2/boucle-dowhile-nbvalide.c}
+    \evaluationProfLignes{3}{6}
+  \end{question}
+}
+
+\element{boucle-ouverte}{
+  \begin{question}{n2-for-moyenne}
+    Compléter ce programme pour qu'il affiche les 100 premiers nombres pairs entiers.
+    \lstinputlisting[language=c]{sources/codes/niveau2/boucle-dowhile-nbvalide.c}
+    \evaluationProfLignes{3}{6}
+  \end{question}
+}
