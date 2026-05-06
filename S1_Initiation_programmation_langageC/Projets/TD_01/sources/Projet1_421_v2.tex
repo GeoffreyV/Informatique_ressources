@@ -1,0 +1,59 @@
+\section{Projet 1 — Le 421 simplifié}
+
+\subsection*{Règles du jeu}
+\begin{itemize}
+  \item Le jeu se joue à deux joueurs.
+  \item Chaque joueur dispose de 30 points au début de la partie.
+  \item Le premier joueur lance trois dés.
+  \item Il peut ensuite relancer un ou plusieurs dés, dans la limite de trois lancers au total.
+  \item Il peut s’arrêter avant le troisième lancer s’il le souhaite.
+  \item Le second joueur joue ensuite de la même manière et doit effectuer exactement le même nombre de lancers que le premier.
+  \item À la fin de la manche, on compare les combinaisons. Le vainqueur prend à son adversaire un nombre de points dépendant de sa combinaison.
+  \item Le vainqueur d’une manche commence la manche suivante.
+\end{itemize}
+
+\subsection*{Combinaisons gagnantes}
+Voici les combinaisons possibles, classées de la meilleure à la moins bonne :
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Combinaison} & \textbf{Description} & \textbf{Points} \\ \hline
+4--2--1 & Spéciale & \textbf{21} \\ \hline
+Triplette & Trois dés identiques & Valeur du dé $\times 2$ \\ \hline
+Paire & Deux dés identiques (le troisième départage) & Valeur du dé de la paire \\ \hline
+Aucune & Le plus grand nombre formé l’emporte & 1 \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection*{Cahiers des charges}
+\begin{UPSTICahierDesCharges}{Fonctionnement normal - Score manuel}
+  Le programme
+  \begin{itemize}
+    \item Explique les règles
+    \item Permet aux joueurs de jouer au jeu, en gérant les lancers et relances
+    \item Seul le score de chaque manche n'est pas calculé automatiquement : 
+    \begin{itemize}
+      \item Le programme demande le vainqueur
+      \item Le programme demande le nombre de points à transférer
+    \end{itemize}
+  \end{itemize}
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{Score automatique}
+  Calcul du score automatique.
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{L'ordinateur joue}
+  Mode solo : jouer contre l'ordinateur.
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{Idées d'améliorations} 
+  \begin{itemize}
+    \item Afficher les dés sous forme de carrés 
+    \item Ajouter les combinaisons manquantes du vrai jeu 421
+    \item Autres ?
+  \end{itemize}
+\end{UPSTICahierDesCharges}
+
+\subsection*{Aide pour le projet}
+\lstinputlisting[language=C]{421\_squelette.c}

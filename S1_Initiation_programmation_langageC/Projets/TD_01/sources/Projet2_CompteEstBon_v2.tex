@@ -1,0 +1,62 @@
+\section{Projet 2 — Le compte est bon}
+\setcounter{UPSTInumeroCahier des charges}{0}
+
+\subsection*{Objectif du jeu}
+Obtenir une \textbf{cible} comprise entre 100 et 999 en combinant \textbf{six nombres tirés} dans une liste donnée, à l’aide des opérations $+,-,\times,/$ (division exacte uniquement).
+
+\subsection*{Règles du jeu}
+\begin{itemize}
+  \item Six nombres sont tirés au hasard dans la liste officielle : deux occurrences de 1 à 10, puis 25, 50, 75, 100.
+  \item Une \textbf{cible} aléatoire entre 100 et 999 est annoncée.
+  \item Chaque nombre peut être utilisé \textbf{au plus une fois}.
+  \item Les opérations autorisées sont $+,-,\times,/$ et les divisions doivent être \textbf{entières}.
+  \item Une manche dure \textbf{60 secondes} (vous pouvez réduire à 3 s pour les tests).
+\end{itemize}
+
+\subsection*{Cahiers des charges} 
+\begin{UPSTICahierDesCharges}{Jeu simple}
+\begin{itemize}
+  \item  Tirage des \textbf{6 nombres} et d'une \textbf{cible} puis affichage.
+  \item A la fin du temps, le joueur \textbf{annonce} s'il a réussi ou non.
+  \item S'il a réussi, il gagne un point. Sinon, il perd un point (il ne peut pas avoir de points négatifs).
+  \item Le joueur gagne s'il atteint 3 points.
+\end{itemize}
+
+\textit{Aide :} utilisez \texttt{srand(time(NULL))}, \texttt{rand()} et \texttt{\%} pour borner les tirages ; un chronométrage simple peut se faire avec \texttt{time(NULL)} et une boucle d'attente.
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{Tirage sans remise}
+  \begin{itemize}
+    \item Tirage \textbf{sans remise} à partir du tableau de 24 valeurs (respect des probabilités).
+  \end{itemize}
+On considère que les nombres sont tirés à partir d'un panier dans lequel les balles ne sont pas replacées après tirage. Ainsi, si, par exemple, un 5 est tiré, il n'en reste plus qu'un au lieu de deux dans le panier. 
+
+En programmation, cela revient à tirer au sort dans le tableau et à ne plus pouvoir tirer la case au sort. 
+
+\textit{Proposition de technique :} \og \textbf{swap avec la dernière case}\fg{} : lorsqu'une case est choisie, copiez la dernière case à sa place et réduisez la borne de tirage (24 $\rightarrow$ 23 $\rightarrow$ …). 
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{Saisie des opérations}
+\begin{itemize}
+  \item L'ordinateur affiche les nombre disponibles et le résultat à obtenir
+  \item Le joueur saisi les opérations au clavier 
+  \item Après chaque opération, l'ordinateur retire les nombres déjà utilisés et affiche les nouveau nombres disponibles (résultats de l'opération). Par exemple : 
+  \begin{enumerate}
+    \item Cible : 645, avec 50, 6, 7, 1, 5, 2
+    \item Le joueur saisit l'opération 6 + 7
+    \item Cible : 645, avec 50, 13, 0, 1, 5, 2
+    \item etc.
+  \end{enumerate}
+  \item Si la cible est atteinte, l'ordinateur affiche \textbf{Le compte est bon}
+\end{itemize}  
+\end{UPSTICahierDesCharges}
+\begin{UPSTICahierDesCharges}{Améliorations possibles}
+\begin{itemize}
+  \item Affichage du compte à rebours
+  \item ...
+\end{itemize}  
+
+\end{UPSTICahierDesCharges}
+
+\subsection*{Squelette de départ}
+\lstinputlisting[language=C]{compte\_squelette.c}

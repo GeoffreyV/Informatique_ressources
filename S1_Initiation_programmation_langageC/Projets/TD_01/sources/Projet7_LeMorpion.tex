@@ -1,0 +1,39 @@
+\section{Projet 7 — Le morpion}
+\setcounter{UPSTInumeroCahier des charges}{0}
+
+\subsection*{Objectif du jeu}
+Réaliser un morpion (3×3) jouable à deux joueurs au clavier, avec affichage ASCII et détection de victoire/égalité.
+
+\subsection*{Règles du jeu}
+\begin{itemize}
+  \item La grille est un tableau de \textbf{9 cases} : \texttt{0} = vide, \texttt{1} = 'X' (J1), \texttt{2} = 'O' (J2).
+  \item Les joueurs jouent à tour de rôle. \textbf{Même code} pour les deux joueurs (variable joueur).
+  \item Un joueur gagne s’il aligne 3 symboles en ligne, colonne ou diagonale. Sinon, partie nulle.
+\end{itemize}
+
+\subsection*{Cahier des charges}
+\begin{UPSTICahierDesCharges}{1}
+\begin{itemize}
+  \item Boucle principale avec alternance J1/J2, \textbf{saisie} d’une case et \textbf{affichage} de la grille.
+  \item Affecter 1 ou 2 selon le joueur, sans validation initiale.
+  \item Afficher la grille après chaque coup.
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{2}
+\begin{itemize}
+  \item \textbf{Valider} la saisie (case existante et libre), sinon rejouer.
+  \item \textbf{Détecter} la victoire (lignes, colonnes, diagonales) et l’égalité.
+  \item Présenter un \textbf{récapitulatif} en fin de partie.
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{3}
+\begin{itemize}
+  \item Ajouter un \textbf{mode IA} basique (ne pas perdre) ou des options (rejouer).
+  \item Structurer le code (fonctions d’affichage et de test).
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\subsection*{Squelette de départ}
+\lstinputlisting[language=C]{morpion_squelette.c}

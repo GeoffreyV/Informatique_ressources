@@ -1,0 +1,40 @@
+\section{Projet 10 — Le pendu}
+\setcounter{UPSTInumeroCahier des charges}{0}
+
+\subsection*{Objectif du jeu}
+Faire deviner un mot lettre par lettre avec 7 erreurs autorisées, en affichant la progression.
+
+\subsection*{Règles du jeu}
+\begin{itemize}
+  \item Un utilisateur saisit un \textbf{mot} (minuscule, sans accents ni espaces).
+  \item Un joueur propose des lettres; le programme affiche le mot avec \_ pour les lettres non trouvées.
+  \item À chaque lettre absente, \textbf{+1 erreur}. La partie s’arrête à 7 erreurs ou si le mot est trouvé.
+  \item Variante 2 joueurs : inversion des rôles, 3 manches.
+\end{itemize}
+
+\subsection*{Cahier des charges}
+\begin{UPSTICahierDesCharges}{1}
+\begin{itemize}
+  \item Saisir le mot \textbf{secret}, l’afficher \textbf{caractère par caractère} pour vérification, puis masquer.
+  \item Boucle de jeu : saisie d’une lettre, mise à jour de l’affichage, \textbf{comptage des erreurs}.
+  \item Condition de victoire/défaite.
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{2}
+\begin{itemize}
+  \item Validation des saisies, gestion des lettres déjà proposées.
+  \item Affichage du temps de jeu.
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{3}
+\begin{itemize}
+  \item Présentation soignée -> Dessin ?
+  \item Mode 2 joueurs avec alternance des rôles sur 3 manches.
+  \item Option : dictionnaire de mots.
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\subsection*{Squelette de départ}
+\lstinputlisting[language=C]{pendu_squelette.c}

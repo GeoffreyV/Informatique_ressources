@@ -1,0 +1,35 @@
+\section{Projet 14 — Codenames}
+\setcounter{UPSTInumeroCahier des charges}{0}
+
+\subsection*{Objectif du jeu}
+Mettre en place une version console de \textit{Codenames} permettant de jouer à deux équipes avec un plateau 5×5, un maître‑espion par équipe et une gestion claire des tours, révélations et conditions de fin.
+
+\subsection*{Règles du jeu}
+\begin{itemize}
+  \item \textbf{Constitution du plateau} : 25 cartes (mots) sont placées en grille 5×5. Sous ces cartes se cachent des rôles : cartes \textbf{équipe Rouge}, cartes \textbf{équipe Bleue}, \textbf{neutres} et une carte \textbf{Assassin}. Une équipe commence (elle a une carte de plus).
+  \item \textbf{Rôles} : chaque équipe a un \textbf{maître‑espion} (voit la carte‑clé indiquant la couleur de chaque mot) et des \textbf{agents} (devinent).
+  \item \textbf{Tour de jeu} : le maître‑espion donne \textbf{un seul indice} (un mot) suivi d’un \textbf{nombre} indiquant combien de cartes de sa couleur sont visées. Les agents discutent et \textbf{désignent des cartes une par une}. Chaque désignation révèle la carte.
+  \item \textbf{Révélations} : si la carte est de la couleur de l’équipe, elle reste au tour et peut continuer jusqu’à nombre + 1 maximum. Si elle est \textbf{neutre}, le tour s’arrête. Si elle est de la \textbf{couleur adverse}, le tour s’arrête et l’autre équipe marque la carte. Si c’est l’\textbf{Assassin}, l’équipe active \textbf{perd immédiatement}.
+  \item \textbf{Fin de partie} : dès qu’une équipe a révélé toutes ses cartes, elle \textbf{gagne}. Si l’Assassin est révélé, l’autre équipe \textbf{gagne} aussitôt.
+\end{itemize}
+
+\subsection*{Cahier des charges}
+\begin{UPSTICahierDesCharges}{1}
+\begin{itemize}
+  \item Le programme affiche la grille
+  \item Le programme demande puis affiche une carte espions pour les que les espions la connaissent
+  \item Une touche permet de cacher la carte espion
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{2}
+\begin{itemize}
+  \item On peut choisir une case, la case est alors cachée et remplacée par le numéro de l'équipe à laquelle elle correspond
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{3}
+\begin{itemize}
+  \item Gestion automatique des tours de jeu
+\end{itemize}
+\end{UPSTICahierDesCharges}

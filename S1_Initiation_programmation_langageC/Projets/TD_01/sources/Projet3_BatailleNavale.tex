@@ -1,0 +1,46 @@
+\section{Projet 3 — Bataille navale}
+\setcounter{UPSTInumeroCahier des charges}{0}
+
+\subsection*{Objectif du jeu}
+Couler les bateaux cachés dans une \textbf{mer 6$\times$6} en proposant des \textbf{coordonnées} de tir. Le jeu se joue \textbf{joueur vs processeur}.
+
+\subsection*{Règles du jeu}
+\begin{itemize}
+  \item La mer est une grille 6$\times$6.
+  \item Deux bateaux : \textbf{Bateau n°1} (2 cases) et \textbf{Bateau n°2} (3 cases).
+  \item Les bateaux sont placés \textbf{aléatoirement}, \textbf{horizontalement ou verticalement}, sans chevauchement et entièrement dans la grille.
+  \item Le joueur propose des coordonnées. \textbf{Touché} si la case contient un bateau, \textbf{Coulé} lorsque toutes les cases d’un même bateau sont touchées.
+  \item \textbf{Victoire} quand les deux bateaux sont coulés ; afficher le \textbf{nombre de tentatives} et le \textbf{temps de jeu}.
+\end{itemize}
+
+\subsection*{Codage conseillé des cases (pour la logique interne)}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Valeur} & \textbf{Signification} \\ \hline
+0 & Case vide \\ \hline
+1 & Bateau n°1, non touchée \\ \hline
+10 & Bateau n°1, touchée \\ \hline
+2 & Bateau n°2, non touchée \\ \hline
+20 & Bateau n°2, touchée \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection*{Cahiers des charges}
+\begin{UPSTICahierDesCharges}{Grille, placement et tirs}
+\begin{itemize}
+  \item Le joueur joue contre l'ordinateur et tente de couler ses bateaux.
+  \item La mer doit être affichée après chaque tir, avec les cases déjà tirées marquées (Tirées vides / Touchées).
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{Deux joueurs}
+Un joueur place les bateaux, l'autre tente de les couler. Alterner les rôles.
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{Deux joueurs}
+Le vrai jeu. Chaque joueur place ses bateaux en début de partie (sans les montrer à l'autre). Les joueurs jouent à tour de rôle, chacun tentant de couler les bateaux adverses. 
+\end{UPSTICahierDesCharges}
+
+\subsection*{Squelette de départ}
+\lstinputlisting[language=C]{bataille\_squelette.c}

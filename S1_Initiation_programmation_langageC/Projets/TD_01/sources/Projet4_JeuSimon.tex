@@ -1,0 +1,45 @@
+\section{Projet 4 — Jeu Simon}
+\setcounter{UPSTInumeroCahier des charges}{0}
+
+\subsection*{Objectif du jeu}
+Tester la mémoire des joueurs en construisant une \textbf{séquence de caractères} de plus en plus longue. À chaque tour, le joueur courant doit reproduire la séquence précédente puis \textbf{ajouter un nouveau caractère}.
+
+\subsection*{Règles du jeu}
+\begin{itemize}
+  \item Le jeu se joue à deux personnes qui jouent en alternance, ou contre l’ordinateur.
+  \item Le premier joueur saisit un \textbf{caractère minuscule} affiché à l’écran.
+  \item Le second joueur doit alors saisir la même séquence \textbf{plus} un nouveau caractère. \textbf{Seul le dernier caractère saisi est affiché}. Si la séquence est incorrecte, il perd et le jeu s’arrête.
+  \item Si la séquence du second joueur est juste, on repasse la main au premier joueur, et ainsi de suite : à chaque tour, on \textbf{rejoue la séquence complète} puis on ajoute un caractère.
+  \item Deux offres de jeu : \textbf{Jeu 1} (2 joueurs physiques) ; \textbf{Jeu 2} (contre l’ordinateur, on affiche le \textbf{nombre de coups} en fin de partie).
+\end{itemize}
+
+\subsection*{Cahier des charges}
+\begin{UPSTICahierDesCharges}{Séquence à deux joueurs}
+\begin{itemize}
+  \item Gérer la construction de la séquence \textbf{commune} (longueur max 50) et l’alternance des joueurs.
+  \item À chaque tour : reproduire la séquence précédente, puis saisir \textbf{un nouveau caractère} (afficher uniquement le \textbf{dernier} caractère saisi).
+  \item En cas d’erreur de séquence, \textbf{annoncer le perdant} et arrêter la partie.
+\end{itemize}
+\textit{Aide :} une \textbf{seule boucle} pour les deux joueurs (même code) avec une variable de joueur (\texttt{0/1}) ; afficher la séquence courante en parcourant le tableau de 0 à \texttt{nbrCoup}.
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{Mode contre l’ordinateur}
+\begin{itemize}
+  \item L’ordinateur joue en alternance avec le joueur humain et \textbf{ajoute} un caractère à la séquence.
+  \item En fin de partie, afficher le \textbf{nombre de coups} joués.
+  \item Prévoir \textbf{plusieurs niveaux de difficulté} (fréquence d’erreurs de l’IA).
+\end{itemize}
+\textit{Aide :} générer le caractère de l’ordinateur aléatoirement, et introduire une \og erreur \fg{} selon une probabilité paramétrable.
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{Robustesse et présentation}
+\begin{itemize}
+  \item Valider les saisies (lettre minuscule), gérer la \textbf{taille max} de 50 caractères et les \textbf{messages} de statut.
+  \item Proposer un \textbf{menu} : Jeu 1 (2 joueurs) / Jeu 2 (contre l’ordinateur).
+  \item Soigner l'affichage (Rendre le jeu le plus beau possible) 
+\end{itemize}
+\textit{Aide :} stocker la séquence correcte et la séquence saisie dans \texttt{char tab[50]}; \texttt{time(NULL)} pour initialiser l’aléatoire.
+\end{UPSTICahierDesCharges}
+
+\subsection*{Squelette de départ}
+\lstinputlisting[language=C]{simon\_squelette.c}

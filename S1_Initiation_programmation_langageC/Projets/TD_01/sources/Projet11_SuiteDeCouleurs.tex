@@ -1,0 +1,41 @@
+\section{Projet 11 — Mastermind -- Suite de couleurs}
+\setcounter{UPSTInumeroCahier des charges}{0}
+
+\subsection*{Objectif du jeu}
+Deviner une suite cachée de 4 couleurs codées (0..3) avec indication des bien/mal placées.
+
+\subsection*{Règles du jeu}
+\begin{itemize}
+  \item Le programme tire au hasard une \textbf{suite de 4 couleurs} parmi Rouge, Vert, Bleu, Noir (\textbf{avec répétitions possibles}).
+  \item Codage : \texttt{0}=Noir, \texttt{1}=Rouge, \texttt{2}=Vert, \texttt{3}=Bleu.
+  \item Le joueur saisit un \textbf{entier à 4 chiffres}; le programme le \textbf{décompose} en tableau.
+  \item Le programme indique \textbf{nombre de bien placées} et \textbf{nombre de mal placées}. Score = tentatives × temps / 10.
+\end{itemize}
+
+\subsection*{Cahier des charges}
+\begin{UPSTICahierDesCharges}{1}
+\begin{itemize}
+  \item Tirer la suite et \textbf{mémoriser} le code (tableau 4 cases); \textbf{ne pas l’afficher}.
+  \item Le joueur saisit la proposition (entier 4 chiffres), \textbf{décomposer} en tableau, comparer et afficher les compteurs.
+  \item Boucler jusqu’à la bonne réponse.
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{2}
+\begin{itemize}
+  \item Gérer les répétitions correctement (bien/mal placées).
+  \item Ajouter \textbf{chrono} et calcul du score; récapitulatif.
+  \item Valider la saisie.
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{3}
+\begin{itemize}
+  \item Mode \textbf{2 joueurs} en alternance; afficher les tentatives de chacun.
+  \item Présentation (affichage de carrés ANSI) et rejouabilité.
+  \item Factoriser en fonctions.
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\subsection*{Squelette de départ}
+\lstinputlisting[language=C]{suitecouleurs_squelette.c}

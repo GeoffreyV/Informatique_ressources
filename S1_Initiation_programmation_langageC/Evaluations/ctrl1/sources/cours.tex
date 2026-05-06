@@ -1,0 +1,82 @@
+\element{condition}{
+    \begin{question}{n2-intervalle}
+        Comment écrire la condition \(5 \le x \le 10\) (inclus) :
+        \begin{multicols}{4}
+            \begin{reponses}
+                \bonne{\lstinline[language=C]|x >= 5 && x <= 10|}
+                \mauvaise{\lstinline[language=C]|x > 5 || x < 10|}
+                \mauvaise{\lstinline[language=C]|x > 5 && x < 10|}
+                \mauvaise{\lstinline[language=C]|x <= 5 && x >= 10|}
+            \end{reponses}
+        \end{multicols}
+    \end{question}
+}
+
+\element{condition}{
+    \begin{question}{n2-cond-intervalle}
+        Quelle est la condition correcte pour tester \texttt{(0 < t < 100)} :
+        \begin{multicols}{5}\begin{reponses}
+                \bonne{\lstinline[language=C]{t>0 && t<100}}
+                \mauvaise{\lstinline[language=C]{t>0 || t<100}}
+                \mauvaise{\lstinline[language=C]|t>=0 && t<=100|}
+                \mauvaise{\lstinline[language=C]|t=0 && t=100|}
+                \mauvaise{\lstinline[language=C]|t<0 && t>100|}
+                \lastchoices
+                \mauvaise{Aucune}
+            \end{reponses}\end{multicols}
+    \end{question}
+}
+
+\element{boucle}{
+    \begin{question}{boucle-1}
+        Soit le code ci-dessous, qu'affichera le programme en fin d'exécution ?
+        \lstinputlisting{sources/codes/boucle-1.c}
+        \begin{multicols}{7}
+            \begin{reponses}
+                \bonne{10}
+                \mauvaise{15}
+                \mauvaise{0}
+                \mauvaise{4}
+                \mauvaise{5}
+                \mauvaise{6}
+                \mauvaise{i}
+            \end{reponses}
+        \end{multicols}
+    \end{question}
+}
+
+\element{boucle}{
+    \begin{question}{boucle-2}
+        Soit le code ci-dessous, qu'affichera le programme en fin d'exécution ?
+        \lstinputlisting{sources/codes/boucle-2.c}
+        \begin{multicols}{7}
+            \begin{reponses}
+                \mauvaise{10}
+                \bonne{15}
+                \mauvaise{0}
+                \mauvaise{4}
+                \mauvaise{5}
+                \mauvaise{6}
+                \mauvaise{i}
+            \end{reponses}
+        \end{multicols}
+    \end{question}
+}
+
+\element{boucle}{
+    \begin{question}{boucle-3}
+        Soit le code ci-dessous, qu'affichera le programme en fin d'exécution ?
+        \lstinputlisting{sources/codes/boucle-3.c}
+        \begin{multicols}{7}
+            \begin{reponses}
+                \mauvaise{10}
+                \mauvaise{15}
+                \mauvaise{0}
+                \mauvaise{4}
+                \mauvaise{5}
+                \bonne{6}
+                \mauvaise{i}
+            \end{reponses}
+        \end{multicols}
+    \end{question}
+}

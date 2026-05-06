@@ -1,0 +1,34 @@
+\element{climatisation}{
+    \begin{question}{clim-1}
+        En supposant que toutes les variables sont correctement déclarées, en considérant le programme ci-dessous : compléter le tableau donnant la puissance de la climatisation à la suite de l'exécution du programme.
+
+        \begin{minipage}{.55\textwidth}
+            \lstinputlisting{sources/codes/climatisation.c}
+        \end{minipage}\hfill
+        \begin{minipage}{.4\textwidth}
+            {
+                \Large
+                \begin{tabular}{|c|c|}
+                    \hline
+                    \textbf{temperature} & \textbf{Puissance} \\\hline
+                    5                    &                    \\\hline
+                    28                   &                    \\\hline
+                    35                   &                    \\\hline
+                \end{tabular}
+            }
+        \end{minipage}
+
+        \evaluationProf
+    \end{question}
+
+    \begin{question}{clim-2}
+        Analyser le code de cette climatisation en apportant une critique de son fonctionnement.
+
+        \evaluationProfGrille{1}{3}
+    \end{question}
+
+    \begin{question}{clim-3}
+        Modifier le code (directement sur le sujet) pour le rendre plus fonctionnel et optimiser les tests effectués.
+        \evaluationProf
+    \end{question}
+}

@@ -1,0 +1,40 @@
+\section{Projet 8 — Puissance 4}
+\setcounter{UPSTInumeroCahier des charges}{0}
+
+\subsection*{Objectif du jeu}
+Programmer un Puissance 4 sur une grille 6×6 en ASCII, jouable à deux, avec détection de 4 alignés.
+
+\subsection*{Règles du jeu}
+\begin{itemize}
+  \item Une \textbf{grille 6×6} commune aux deux joueurs (1 et 2).
+  \item À son tour, un joueur choisit une \textbf{colonne}; le pion tombe dans la \textbf{case libre la plus basse}.
+  \item Afficher la grille après chaque coup. Le premier à aligner 4 pions gagne (—, | ou /).
+\end{itemize}
+
+\subsection*{Cahier des charges}
+\begin{UPSTICahierDesCharges}{1}
+\begin{itemize}
+  \item Initialiser la grille à 0 et l’afficher.
+  \item Boucle principale avec alternance J1/J2 et \textbf{choix d’une colonne} (sans validation initiale).
+  \item Placer le pion en bas de la colonne, réafficher.
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{2}
+\begin{itemize}
+  \item \textbf{Valider} la colonne (existence et place libre), sinon rejouer.
+  \item Détecter \textbf{4 alignés} et l’égalité.
+  \item Récapitulatif de fin.
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{3}
+\begin{itemize}
+  \item Mode \textbf{joueur vs ordinateur} simple.
+  \item Rejouabilité et présentation.
+  \item Factoriser en fonctions (affichage, pose, test alignements).
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\subsection*{Squelette de départ}
+\lstinputlisting[language=C]{puissance4_squelette.c}

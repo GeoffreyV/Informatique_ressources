@@ -1,0 +1,41 @@
+\section{Projet 9 — Le bandit manchot}
+\setcounter{UPSTInumeroCahier des charges}{0}
+
+\subsection*{Objectif du jeu}
+Simuler un bandit manchot à 3 rouleaux et gérer le capital du joueur selon les combinaisons obtenues.
+
+\subsection*{Règles du jeu}
+\begin{itemize}
+  \item 3 \textbf{rouleaux} de 11 figures (tableau 2D). Codes : \texttt{7, B, L, C} (sept, barre, citron, cerise).
+  \item Le joueur commence avec \textbf{100 points} et mise 1 ou 3 points.
+  \item Appui sur \texttt{J} : tirage aléatoire d’une figure par rouleau; affichage en ligne des trois codes.
+  \item Gagne/perd selon les combinaisons définies; le capital est mis à jour; le joueur peut continuer (\texttt{O/N}).
+\end{itemize}
+
+\subsection*{Cahier des charges}
+\begin{UPSTICahierDesCharges}{1}
+\begin{itemize}
+  \item Initialiser les \textbf{3 rouleaux} (tableau 3×11) et afficher leur contenu pour vérification.
+  \item Tirer et afficher \textbf{une figure par rouleau} (codes).
+  \item Mettre à jour le capital selon résultat simple (ex.\,égalité des 3).
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{2}
+\begin{itemize}
+  \item Implémenter les \textbf{mises} (1 ou 3), détailler les combinaisons gagnantes/perdantes.
+  \item Autoriser de \textbf{conserver} un ou plusieurs rouleaux (ex.\,saisie \texttt{23}) avec pénalité de points.
+  \item Récapitulatif clair de fin.
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{3}
+\begin{itemize}
+  \item Présentation et rejouabilité; options de test (rouleaux biaisés).
+  \item Structuration en fonctions (tirage, calcul gain, affichage).
+  \item Robustesse des saisies.
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\subsection*{Squelette de départ}
+\lstinputlisting[language=C]{bandit_squelette.c}

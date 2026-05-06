@@ -1,0 +1,54 @@
+\documentclass[QCM, noCustomPackages]{UPSTI_Document}
+\usepackage{IUT_Annecy}
+\usepackage{logos_iut}
+\input{../preamble.tex}
+\input{../../preamble_module.tex}
+
+\def\photodir{photos}
+
+
+\documentVersion{E}
+\newcommand{\UPSTInumeroVersion}{0}
+\newcommand{\UPSTImessage}{test} 
+
+
+\newcommand{\sujet}{% Début de la boucle sur les étudiants
+\exemplaire{1}{%
+\renewcommand{\UPSTImessage}{\champnom{\nom \prenom}} 
+\renewcommand{\UPSTInumeroVersion}{\id{}}
+\renewcommand{\UPSTIlogoLycee}{\photo}
+\UPSTIbuildPage
+\setcounter{figure}{0}
+\setcounter{table}{0}
+
+\section{Préambule}
+\restituegroupe[1]{condition}
+\restituegroupe[1]{boucle}
+\restituegroupe[1]{prediction}
+\section{Climatisation}
+\restituegroupe[1]{climatisation}
+\pagebreak
+\restituegroupe[1]{calcul}
+\pagebreak
+\section{Un peu de dessin avec des fonctions}
+\restituegroupe{fonction}
+\AMCcleardoublepage
+}
+}
+
+
+
+
+\begin{document}
+\setdefaultgroupmode{withoutreplacement}
+\AMCrandomseed{1237893}
+\input{sources/prediction.tex}
+\input{sources/calcul.tex}
+\input{sources/climatisation.tex}
+\input{sources/cours.tex}
+\input{sources/fonctions.tex}
+
+
+\def\AMCformQuestion#1{{\sc Question #1 :}}
+\csvreader[head to column names,]{students.csv}{}{\sujet}
+\end{document}

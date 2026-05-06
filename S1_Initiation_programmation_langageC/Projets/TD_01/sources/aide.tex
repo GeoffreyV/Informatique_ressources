@@ -1,0 +1,103 @@
+\section{Tirage \emph{sans remise}}
+\label{sec:tirage-sans-remise}
+
+\subsection*{Idée générale}
+On veut tirer des éléments \textbf{sans jamais retomber deux fois sur le même} (par exemple, des cartes d’un paquet).  
+Le principe le plus simple et robuste consiste à :
+\begin{enumerate}
+  \item Stocker tous les éléments dans un tableau (paquet).
+  \item À chaque tirage $k$, \textbf{tirer un index aléatoire} parmi les positions encore disponibles $[0\,..\,\texttt{borne}]$.
+  \item \textbf{Échanger} l’élément tiré avec celui en fin de zone disponible (\texttt{borne}), puis \textbf{réduire la borne} d’1.
+\end{enumerate}
+Ainsi, la zone \texttt{[0..borne]} contient encore les cartes disponibles, et la zone \texttt{[borne+1..fin]} contient les cartes déjà tirées.
+
+\subsection*{Schéma visuel pas à pas}
+Exemple avec 6 cartes initiales : \texttt{[A, B, C, D, E, F]} (indices \texttt{0..5}), \texttt{borne = 5}.
+
+\paragraph{Tirage \#1} on tire un index aléatoire \texttt{i = 2} (la carte \texttt{C}) dans \texttt{[0..5]}.
+\[
+\begin{array}{c|c|c|c|c|c}
+\texttt{0} & \texttt{1} & \color{blue}{\texttt{2}} & \texttt{3} & \texttt{4} & \color{gray}{\texttt{5}}\\
+\boxed{\texttt{A}} & \boxed{\texttt{B}} & \boxed{\texttt{C}} & \boxed{\texttt{D}} & \boxed{\texttt{E}} & \boxed{\texttt{F}} \\
+\hline
+\end{array}
+\]
+On \textbf{échange} la case \texttt{i=2} avec la case \texttt{borne=5} :
+\[
+\begin{array}{c|c|c|c|c|c}
+\texttt{0} & \texttt{1} & \color{blue}{\texttt{2}} & \texttt{3} & \texttt{4} & \color{gray}{\texttt{5}}\\
+\boxed{\texttt{A}} & \boxed{\texttt{B}} & \boxed{\texttt{F}} & \boxed{\texttt{D}} & \boxed{\texttt{E}} & \fbox{\texttt{C}} \\
+\hline
+\end{array}
+\]
+Puis \texttt{borne ← 4}. La carte \texttt{C} est « sortie » (à droite), elle ne sera plus retirable.
+
+\paragraph{Tirage \#2} on tire \texttt{i = 1} dans \texttt{[0..4]} (car \texttt{borne=4}) :
+\[
+\begin{array}{c|c|c|c|c|c}
+\texttt{0} & \color{blue}{\texttt{1}} & \texttt{2} & \texttt{3} & \color{gray}{\texttt{4}} & \color{gray}{\texttt{5}}\\
+\boxed{\texttt{A}} & \boxed{\color{blue}{\texttt{B}}} & \boxed{\texttt{F}} & \boxed{\texttt{D}} & \boxed{\texttt{E}} & \fbox{\texttt{C}} \\
+\hline
+\end{array}
+\]
+On \textbf{échange} avec \texttt{borne=4}, puis \texttt{borne ← 3} :
+\[
+\begin{array}{c|c|c|c|c|c}
+\texttt{0} & \texttt{1} & \texttt{2} & \texttt{3} & \color{gray}{\texttt{4 (tirée)}} & \color{gray}{\texttt{5 (tirée)}}\\
+\boxed{\texttt{A}} & \boxed{\texttt{E}} & \boxed{\texttt{F}} & \boxed{\texttt{D}} & \fbox{\texttt{B}} & \fbox{\texttt{C}} \\
+\hline
+\end{array}
+\]
+On poursuit ainsi jusqu’à ce que \texttt{borne < 0} (toutes les cartes tirées), ou qu’on ait tiré le nombre voulu de cartes.
+
+% \subsection*{Invariants et garanties}
+% \begin{itemize}
+%   \item \textbf{Uniformité} : à chaque tirage, tous les éléments encore disponibles ont la même probabilité d’être choisis (car on choisit l’index \texttt{i} uniformément dans \texttt{[0..borne]}).
+%   \item \textbf{Sans doublon} : un élément tiré est \textbf{sorti} de la zone \texttt{[0..borne]} ; il ne peut plus être re-tiré.
+%   \item \textbf{Coût linéaire} : chaque tirage fait au plus un échange (opération \texttt{O(1)}) ; tirer $K$ cartes coûte \texttt{O(K)}.
+% \end{itemize}
+
+% \subsection*{Façons d’utiliser l’idée}
+% \paragraph{(A) Tirer quelques cartes seulement.}
+% On répète le processus $K$ fois (avec $K \le$ taille du paquet). À chaque fois, on choisit \texttt{i} dans \texttt{[0..borne]}, on échange, puis \texttt{borne ← borne - 1}.
+
+% \paragraph{(B) Mélanger (shuffle) entièrement.}
+% On applique la même logique en parcourant \texttt{borne} de la fin vers le début :
+% \begin{enumerate}
+%   \item Pour \texttt{borne = n-1} jusqu’à \texttt{1} :
+%   \item \quad tirer \texttt{i} uniformément dans \texttt{[0..borne]} et échanger les cases \texttt{i} et \texttt{borne}.
+% \end{enumerate}
+% Au final, le tableau est un \textbf{mélange uniforme} (algorithme de Fisher–Yates).
+
+% \subsection*{Exemple de squelette (C) pour \emph{tirer $K$ éléments sans remise}}
+% \begin{lstlisting}[language=C]
+% // l_tab contient N éléments disponibles
+% // borne marque la limite de la zone encore "tirable"
+% int borne = N - 1;
+
+% for (int tir = 0; tir < K; tir++) {
+%     // index aléatoire uniforme dans [0..borne]
+%     int i = rand() % (borne + 1);
+
+%     // récupérer l'élément tiré
+%     int carte = l_tab[i];
+
+%     // échanger l_tab[i] avec l_tab[borne] pour "sortir" la carte
+%     int tmp = l_tab[i];
+%     l_tab[i] = l_tab[borne];
+%     l_tab[borne] = tmp;
+
+%     // la carte tirée est désormais en fin de zone
+%     // (on peut la stocker, l'afficher, etc.)
+%     printf("Tirage #%d : %d\n", tir+1, carte);
+
+%     // réduire la zone disponible
+%     borne--;
+% }
+% \end{lstlisting}
+
+\subsection*{Erreurs fréquentes à éviter}
+\begin{itemize}
+  \item \textbf{Ne pas réduire la borne} $\Rightarrow$ risque de re-tirer la même carte.
+  \item \textbf{Tirer sur toute la longueur} \texttt{[0..N-1]} à chaque fois $\Rightarrow$ doublons possibles.
+  \end{itemize}

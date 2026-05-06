@@ -1,0 +1,39 @@
+\section{Projet 12 — Black Jack adapté}
+\setcounter{UPSTInumeroCahier des charges}{0}
+
+\subsection*{Objectif du jeu}
+Adapter un Black Jack simplifié avec un jeu de 32 cartes, tirage sans remise, calcul de la main et du gagnant.
+
+\subsection*{Règles du jeu}
+\begin{itemize}
+  \item Jeu de \textbf{32 cartes} encodées \texttt{CCVV} (couleur×100 + valeur). Couleurs : 72='H' (coeur), 80='P' (pique), 84='T' (trèfle), 67='C' (carreau). 
+  \item Valeurs des cartes : 1 (As),2,3,4,5,6,7,8,9,10,11 (V), 12 (D), 13 (R).
+  \item Un joueur reçoit \textbf{2 cartes} \textbf{sans remise} ; 
+  \item Il peut demander des cartes supplémentaires, autant qu'il le souhaite, mais si son score dépasse 21, son score devient 0 et son tour se termine.
+  \item Le programme doit alors tirer le même nombre de cartes que le joueur et le meilleur score gagne.
+\end{itemize}
+
+\subsection*{Cahier des charges}
+\begin{UPSTICahierDesCharges}{1}
+\begin{itemize}
+  \item Affichage des cartes tirées et propositions de tirer de nouvelles cartes.
+  \item Afficher la main, la valeur et \textbf{la combinaison gagnante éventuelle}. 
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{2}
+\begin{itemize}
+  \item En cas de match nul, on ajoute une carte aux deux joueurs
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{3}
+\begin{itemize}
+  \item Mode \textbf{2 joueurs}; comparaison et annonce du gagnant.
+  \item Rejouabilité et présentation.
+  \item Factoriser en fonctions.
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\subsection*{Squelette de départ}
+\lstinputlisting[language=C]{blackjack_squelette.c}

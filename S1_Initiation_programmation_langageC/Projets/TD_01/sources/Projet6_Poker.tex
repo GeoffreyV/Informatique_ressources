@@ -1,0 +1,42 @@
+\section{Projet 6 — Poker}
+\setcounter{UPSTInumeroCahier des charges}{0}
+
+\subsection*{Objectif du jeu}
+Construire un jeu simplifié de Poker à 5 cartes pour un joueur, reconnaître les combinaisons demandées et calculer un score. Étendre ensuite à deux joueurs.
+
+\subsection*{Règles du jeu}
+\begin{itemize}
+  \item On joue avec un \textbf{jeu de 32 cartes} (valeurs 7,8,9,10, V, D, R, As) et 4 couleurs.
+  \item Le joueur reçoit \textbf{5 cartes} tirées au hasard \textbf{sans remise}. Il peut remplacer une ou plusieurs cartes.
+  \item Combinaisons gagnantes : \textbf{paire} (+1), \textbf{brelan} (+2), \textbf{full} (+3), \textbf{carré} (+5).
+  \item Afficher la main et la combinaison gagnante éventuelle. En version deux joueurs, \textbf{la meilleure main gagne}.
+\end{itemize}
+
+\subsection*{Cahier des charges}
+\begin{UPSTICahierDesCharges}{Jeu de base}
+\begin{itemize}
+  \item Tirer \textbf{5 cartes sans remise} depuis le jeu de 32 cartes, les afficher (couleur et valeur).
+  \item Permettre au joueur d’indiquer les cartes à remplacer (ex.\,un entier \texttt{134} pour 1,3,4), puis \textbf{re\-tirer} sans remise.
+  \item Afficher la main finale.
+\end{itemize}
+\textit{Aide :} tirage sans remise par \og échange avec la dernière case \fg{} (réduire la borne).
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{Score automatique}
+\begin{itemize}
+  \item Détecter automatiquement : \textbf{paire}, \textbf{brelan}, \textbf{full}, \textbf{carré} et \textbf{calculer le score}.
+  \item Afficher un \textbf{récapitulatif} clair (main, combinaison, score).
+  \item Vérifier la \textbf{saisie} des cartes à remplacer.
+\end{itemize}
+\textit{Aide :} ranger les valeurs des 5 cartes, compter les occurrences.
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{Mode deux joueurs}
+\begin{itemize}
+  \item Mode \textbf{deux joueurs} : chacun joue sa main, comparaison des combinaisons et \textbf{annonce du vainqueur}.
+  \item Présentation soignée, possibilité de \textbf{rejouer} plusieurs manches.
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\subsection*{Squelette de départ}
+\lstinputlisting[language=C]{poker_squelette.c}

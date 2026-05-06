@@ -1,0 +1,43 @@
+\section{Projet 5 — Jeu des couleurs}
+\setcounter{UPSTInumeroCahier des charges}{0}
+
+\subsection*{Objectif du jeu}
+L’ordinateur tire une \textbf{suite de 10 couleurs} parmi \textit{noir, vert, rouge, bleu}. Les couleurs s’affichent brièvement, puis disparaissent. Le joueur doit \textbf{reproduire la séquence} dans le bon ordre (codage numérique). Le score et la durée sont affichés en fin de partie. Un mode 2 joueurs est ensuite proposé.
+
+\subsection*{Règles du jeu}
+\begin{itemize}
+  \item L'ordinateur choisit 10 couleurs au hasard parmi \{noir, vert, rouge, bleu\}. 
+  \item Les 10 carrés de couleurs s'affichent en ligne pendant 5\,s, puis l’écran est effacé.
+  \item Le joueur saisit la séquence en codes : \texttt{0} pour noir, \texttt{1} pour bleu, \texttt{2} pour vert, \texttt{3} pour rouge.
+  \item À chaque saisie correcte, \textbf{+1 point}. À chaque erreur, \textbf{-1 point}.
+  \item En fin de partie : Afficher le \textbf{score}.
+\end{itemize}
+
+\subsection*{Cahier des charges}
+\begin{UPSTICahierDesCharges}{Mode 1 joueur simplifié}
+\begin{itemize}
+  \item Affichage de la séquence, puis effacement de l'écran
+  \item Le joueur tente de reformer la suite
+  \item Affichage du score en fin de partie.
+\end{itemize}
+\textit{Aide :} utiliser \texttt{srand(time(NULL))}, \texttt{rand()\%4}, \texttt{sleep(5)}, \texttt{system("clear")}; ANSI \texttt{\textbackslash033[40m..\textbackslash033[0m} pour les carrés.
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{Mode 1 joueur complet}
+\begin{itemize}
+  \item A la fin de la partie, la séquence originale et la séquence du joueur sont affichées pour comparaison
+  \item La durée et le score sont également affichés
+\end{itemize}
+\end{UPSTICahierDesCharges}
+
+\begin{UPSTICahierDesCharges}{Mode 2 joueurs et bilan complet}
+\begin{itemize}
+  \item Chaque joueur saisit sa propre \textbf{séquence} ; comparer les scores et \textbf{annoncer le vainqueur}.
+  \item Afficher les \textbf{trois séquences} : tirage, joueur~1, joueur~2, ainsi que leurs scores et durées.
+  \item Soigner la \textbf{présentation} (espaces, retours à la ligne, lisibilité des carrés).
+\end{itemize}
+\textit{Aide :} réutiliser l’affichage des carrés et une fonction de calcul de score pour éviter la duplication.
+\end{UPSTICahierDesCharges}
+
+\subsection*{Squelette de départ}
+\lstinputlisting[language=C]{couleurs\_squelette.c}
